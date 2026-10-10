@@ -1,0 +1,1054 @@
+﻿<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Épargne & Investissement Pro — Faites Fructifier Votre Capital</title>
+    <!-- Tailwind CSS pour la mise en page générale -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Lucide Icons & jsPDF -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap');
+
+      :root {
+        --ff-sans: 'Google Sans', 'Open Sans', sans-serif;
+        --primary: #3186ff;
+        --on-surface-default: #1f1f1f;
+        --on-surface-de-emphasis: #444746;
+        --surface: #FAF9F9;
+        --surface-bright: #ffffff;
+        --surface-container: #f2f0f0;
+        --stroke-default: #e3e3e3;
+        --outline-variant: #c4c7c5;
+        --positive: #008052;
+        --negative: #de2d29;
+        --chart-1: #3186ff;
+      }
+
+      * { box-sizing: border-box; }
+      body {
+        font-family: var(--ff-sans);
+        background: var(--surface);
+        color: var(--on-surface-default);
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .widget { max-width: 100%; margin: 0 auto; }
+
+      .dynamic-header {
+        background: var(--surface-bright);
+        border: 1px solid var(--stroke-default);
+        border-radius: 12px;
+        padding: 16px 20px;
+        margin-bottom: 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      }
+      .dh-left { display: flex; flex-direction: column; }
+      .dh-title { font-size: 13px; color: var(--on-surface-de-emphasis); }
+      .dh-year { font-size: 18px; font-weight: 500; }
+      .dh-right { text-align: right; }
+      .dh-val { font-size: 24px; font-weight: 500; color: var(--primary); font-variant-numeric: tabular-nums; }
+
+      .chart-section { margin: 0; width: 100%; overflow-x: hidden; }
+      .chart-section svg { display: block; width: 100%; height: auto; }
+
+      .legend-section {
+        display: flex; gap: 20px; justify-content: center;
+        margin-top: 16px; flex-wrap: wrap;
+      }
+      .legend-item { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--on-surface-de-emphasis); }
+      .legend-dot { width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; }
+
+      .sliders-section { margin-top: 28px; }
+      .breakdown-title { font-size: 18px; font-weight: 500; margin-bottom: 16px; }
+      .slider-grid { display: grid; grid-template-columns: 1fr; gap: 16px 24px; }
+      @media (min-width: 540px) { .slider-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } }
+      .slider-row { margin-bottom: 12px; }
+      .slider-label {
+        font-size: 13px; color: var(--on-surface-de-emphasis); margin-bottom: 4px;
+        display: flex; justify-content: space-between; align-items: center;
+      }
+      .slider-control { display: flex; align-items: center; gap: 12px; }
+
+      input[type="range"] {
+        -webkit-appearance: none; appearance: none;
+        flex: 1; height: 32px; margin: 0; background: transparent;
+        border-radius: 999px; outline: none; cursor: pointer;
+      }
+      input[type="range"]::-webkit-slider-runnable-track {
+        height: 3px;
+        background: linear-gradient(
+          to right,
+          var(--on-surface-default) 0%, var(--on-surface-default) var(--progress, 50%),
+          rgba(128,128,128,0.3) var(--progress, 50%), rgba(128,128,128,0.3) 100%
+        );
+        border-radius: 999px; border: none;
+      }
+      input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none; appearance: none;
+        width: 12px; height: 24px; border-radius: 999px;
+        background: var(--surface); border: 3px solid var(--on-surface-default);
+        box-sizing: border-box; margin-top: -10.5px; cursor: pointer;
+      }
+
+      .slider-value {
+        font-size: 14px; font-weight: 500;
+        min-width: 64px; width: 98px; flex-shrink: 0; text-align: right;
+        font-variant-numeric: tabular-nums;
+        background: var(--surface-container); color: var(--on-surface-default);
+        padding: 6px 10px; border-radius: 8px;
+        border: 1px solid var(--stroke-default);
+        outline: none;
+      }
+
+      .operations-section {
+        margin-top: 24px;
+        background: var(--surface-bright);
+        border: 1px solid var(--stroke-default);
+        border-radius: 12px;
+        padding: 16px;
+      }
+      .ops-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+      .ops-title { font-size: 15px; font-weight: 500; }
+      .btn-add {
+        background: var(--primary); color: #fff; border: none;
+        padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 13px; font-weight: 500;
+      }
+      .op-item { display: flex; gap: 10px; align-items: center; margin-bottom: 8px; }
+      .op-input {
+        flex: 1; padding: 6px 10px; border-radius: 6px; border: 1px solid var(--stroke-default);
+        background: var(--surface-container); color: var(--on-surface-default); font-size: 13px;
+      }
+      .btn-del {
+        background: transparent; color: var(--negative); border: none; cursor: pointer; font-size: 16px; padding: 4px 8px;
+      }
+
+      .export-bar {
+        margin-top: 28px;
+        display: flex;
+        gap: 12px;
+        justify-content: flex-end;
+      }
+      .btn-export {
+        background: var(--surface-bright);
+        color: var(--on-surface-default);
+        border: 1px solid var(--stroke-default);
+        padding: 8px 16px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 13px;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        transition: background 0.2s;
+      }
+
+      .tables-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 24px;
+        margin-top: 16px;
+      }
+      @media (min-width: 900px) { .tables-container { grid-template-columns: 1fr 1fr; } }
+
+      .recap-section {
+        background: var(--surface-bright);
+        border: 1px solid var(--stroke-default);
+        border-radius: 12px;
+        padding: 16px;
+        overflow-x: auto;
+      }
+      .recap-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 13px;
+        text-align: left;
+        margin-top: 12px;
+      }
+      .recap-table th, .recap-table td {
+        padding: 10px 12px;
+        border-bottom: 1px solid var(--stroke-default);
+      }
+      .recap-table th {
+        font-weight: 500;
+        color: var(--on-surface-de-emphasis);
+        background: var(--surface-container);
+      }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased">
+
+    <!-- NAVBAR -->
+    <nav class="sticky top-0 z-50 backdrop-blur-md bg-white/90 border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center space-x-3">
+                    <div class="p-2 bg-brand-600 text-white rounded-xl shadow-md">
+                        <i data-lucide="trending-up" class="w-6 h-6"></i>
+                    </div>
+                    <span class="text-xl font-bold text-slate-900">
+                        Épargne & Investissement <span class="text-brand-600">Pro</span>
+                    </span>
+                </div>
+                <div class="hidden md:flex space-x-8 text-sm font-medium text-slate-600">
+                    <a href="#accueil" class="hover:text-brand-600 transition">Accueil</a>
+                    <a href="#pourquoi" class="hover:text-brand-600 transition">Pourquoi Épargner</a>
+                    <a href="#projets" class="hover:text-brand-600 transition">Projets Idéaux</a>
+                    <a href="#comptes" class="hover:text-brand-600 transition">Types de Comptes</a>
+                    <a href="#simulateur" class="hover:text-brand-600 transition">Simulateur</a>
+                    <a href="#faq" class="hover:text-brand-600 transition">FAQ</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <select id="currencySelect" onchange="renderChart()" class="px-3 py-1.5 text-xs font-semibold bg-slate-100 border border-slate-300 rounded-lg text-slate-700 outline-none cursor-pointer">
+                        <option value="TND">TND (Dinar Tunisien)</option>
+                        <option value="EUR">EUR (€)</option>
+                        <option value="USD">USD ($)</option>
+                    </select>
+                    <a href="#simulateur" class="px-5 py-2.5 text-sm font-semibold text-white bg-brand-600 hover:bg-brand-700 rounded-xl shadow-md transition">
+                        Simuler mon Épargne
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="accueil" class="py-16 lg:py-20 bg-gradient-to-b from-blue-50/50 to-transparent text-center border-b border-slate-200">
+        <div class="max-w-4xl mx-auto px-4">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-emerald-700 bg-emerald-100/80 rounded-full mb-6">
+                <span class="w-2 h-2 rounded-full bg-emerald-500"></span> Optimisez votre avenir financier dès aujourd'hui
+            </span>
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight mb-6">
+                Faites fructifier votre argent <span class="text-brand-600">intelligemment</span>
+            </h1>
+            <p class="text-lg text-slate-600 max-w-2xl mx-auto mb-8">
+                Découvrez comment protéger votre capital contre l'inflation, exploiter la puissance des intérêts composés et choisir les meilleurs supports d'investissement adaptés à vos projets.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4 mb-12">
+                <a href="#simulateur" class="inline-flex items-center justify-center px-6 py-3.5 text-base font-semibold text-white bg-brand-600 hover:bg-brand-700 rounded-xl shadow-lg transition">
+                    Lancer le simulateur <i data-lucide="arrow-right" class="w-5 h-5 ml-2"></i>
+                </a>
+                <a href="#comptes" class="inline-flex items-center justify-center px-6 py-3.5 text-base font-semibold text-slate-700 bg-white hover:bg-slate-100 border border-slate-300 rounded-xl transition">
+                    Explorer les comptes <i data-lucide="layers" class="w-5 h-5 ml-2"></i>
+                </a>
+            </div>
+            <div class="grid grid-cols-3 gap-6 pt-8 border-t border-slate-200/60 max-w-xl mx-auto">
+                <div>
+                    <div class="text-2xl font-bold text-slate-900">100%</div>
+                    <div class="text-xs text-slate-500">Objectivité & Clarté</div>
+                </div>
+                <div>
+                    <div class="text-2xl font-bold text-slate-900" id="heroZeroVal">0 TND</div>
+                    <div class="text-xs text-slate-500">Simulation Gratuite</div>
+                </div>
+                <div>
+                    <div class="text-2xl font-bold text-emerald-600">+8.5%</div>
+                    <div class="text-xs text-slate-500">Rendement visé/an</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EMPLACEMENT PUBLICITAIRE 1 : BANDEAU GOOGLE ADSENSE / PARTENAIRE -->
+    <div class="max-w-5xl mx-auto px-4 my-8">
+        <div class="bg-slate-100 border border-dashed border-slate-300 rounded-2xl p-4 text-center text-xs text-slate-400">
+            <!-- Remplacez ce bloc par votre code script Google AdSense (ex: <script async src="..."></script>) -->
+            <span>Annonce Publicitaire / Espace Partenaire Financier</span>
+        </div>
+    </div>
+
+    <!-- SECTION : POURQUOI ÉPARGNER -->
+    <section id="pourquoi" class="py-16 bg-white border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-brand-600 font-semibold text-xs uppercase tracking-wider">Méthodologie Financière</span>
+                <h2 class="text-3xl font-bold text-slate-900 mt-1">La Meilleure Façon de Fructifier son Capital</h2>
+                <p class="mt-3 text-slate-600">Laisser son argent sur un compte courant génère une perte silencieuse due à l'inflation. Voici la stratégie structurée en 3 piliers.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="p-6 bg-slate-50 rounded-2xl border border-slate-200">
+                    <div class="w-12 h-12 bg-blue-100 text-brand-600 rounded-xl flex items-center justify-center mb-4">
+                        <i data-lucide="shield-alert" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">1. Le Fonds de Sécurité</h3>
+                    <p class="text-slate-600 text-sm">Avant tout investissement, mettez de côté l'équivalent de 3 à 6 mois de charges réelles dans des supports 100% liquides et sans risque.</p>
+                </div>
+                <div class="p-6 bg-slate-50 rounded-2xl border border-slate-200">
+                    <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center mb-4">
+                        <i data-lucide="trending-up" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">2. L'Effet de Levier</h3>
+                    <p class="text-slate-600 text-sm">Exploitez la capitalisation : réinvestissez systématiquement vos intérêts générés pour créer un effet « boule de neige » exponentiel.</p>
+                </div>
+                <div class="p-6 bg-slate-50 rounded-2xl border border-slate-200">
+                    <div class="w-12 h-12 bg-purple-100 text-purple-600 rounded-xl flex items-center justify-center mb-4">
+                        <i data-lucide="pie-chart" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">3. La Diversification</h3>
+                    <p class="text-slate-600 text-sm">Ne mettez jamais tous vos œufs dans le même panier. Répartissez vos investissements entre l'immobilier, les marchés financiers et l'entreprise.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION : PROJETS IDÉAUX AVEC GUIDES ÉTAPE PAR ÉTAPE -->
+    <section id="projets" class="py-16 bg-slate-50/50 border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-brand-600 font-semibold text-xs uppercase tracking-wider">PROJETS D'AVENIR</span>
+                <h2 class="text-3xl font-bold text-slate-900 mt-1">Guide des Projets d'Investissement Idéaux</h2>
+                <p class="mt-2 text-base font-medium text-brand-600">Comment devenir riche : Les étapes stratégiques pour bâtir une indépendance financière durable</p>
+                <p class="mt-1 text-sm text-slate-500">Chaque projet nécessite un parcours structuré. Suivez ces étapes éprouvées pour maximiser vos chances de réussite.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between hover:border-brand-500 transition">
+                    <div>
+                        <div class="w-10 h-10 bg-amber-100 text-amber-600 rounded-xl flex items-center justify-center mb-4">
+                            <i data-lucide="home" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-1">Immobilier & Foncier</h3>
+                        <p class="text-xs text-slate-500 mb-4">Constitution d'un apport personnel ou acquisition de biens locatifs.</p>
+                        <div class="border-t border-slate-100 pt-3 space-y-2">
+                            <span class="text-xs font-bold text-slate-700 uppercase tracking-wider block">Guide Étape par Étape :</span>
+                            <ul class="text-xs text-slate-600 space-y-1.5 list-disc list-inside">
+                                <li><strong>Étape 1 :</strong> Épargner 20% d'apport personnel.</li>
+                                <li><strong>Étape 2 :</strong> Analyser le rendement locatif de la zone.</li>
+                                <li><strong>Étape 3 :</strong> Négocier le crédit bancaire et l'assurance.</li>
+                                <li><strong>Étape 4 :</strong> Réinvestir le cash-flow positif.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between hover:border-brand-500 transition">
+                    <div>
+                        <div class="w-10 h-10 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center mb-4">
+                            <i data-lucide="briefcase" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-1">Création d'Entreprise</h3>
+                        <p class="text-xs text-slate-500 mb-4">Financement du fonds de roulement et lancement de projet.</p>
+                        <div class="border-t border-slate-100 pt-3 space-y-2">
+                            <span class="text-xs font-bold text-slate-700 uppercase tracking-wider block">Guide Étape par Étape :</span>
+                            <ul class="text-xs text-slate-600 space-y-1.5 list-disc list-inside">
+                                <li><strong>Étape 1 :</strong> Valider le besoin marché (MVP).</li>
+                                <li><strong>Étape 2 :</strong> Prévoir 6 mois de fonds de roulement.</li>
+                                <li><strong>Étape 3 :</strong> Structurer le statut juridique (SUARL/SARL).</li>
+                                <li><strong>Étape 4 :</strong> Automatiser et déléguer pour scaler.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between hover:border-brand-500 transition">
+                    <div>
+                        <div class="w-10 h-10 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center mb-4">
+                            <i data-lucide="line-chart" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-1">Marchés Financiers</h3>
+                        <p class="text-xs text-slate-500 mb-4">Portefeuille boursier, placements dynamiques et ETF.</p>
+                        <div class="border-t border-slate-100 pt-3 space-y-2">
+                            <span class="text-xs font-bold text-slate-700 uppercase tracking-wider block">Guide Étape par Étape :</span>
+                            <ul class="text-xs text-slate-600 space-y-1.5 list-disc list-inside">
+                                <li><strong>Étape 1 :</strong> Ouvrir un compte-titres/PEA adapté.</li>
+                                <li><strong>Étape 2 :</strong> Investir régulièrement via la méthode DCA.</li>
+                                <li><strong>Étape 3 :</strong> Privilégier les ETF indiciels mondiaux.</li>
+                                <li><strong>Étape 4 :</strong> Réinvestir tous les dividendes perçus.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between hover:border-brand-500 transition">
+                    <div>
+                        <div class="w-10 h-10 bg-indigo-100 text-indigo-600 rounded-xl flex items-center justify-center mb-4">
+                            <i data-lucide="heart-handshake" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-1">Sécurité & Projets de Vie</h3>
+                        <p class="text-xs text-slate-500 mb-4">Fonds d'urgence, épargne de précaution et projets familiaux.</p>
+                        <div class="border-t border-slate-100 pt-3 space-y-2">
+                            <span class="text-xs font-bold text-slate-700 uppercase tracking-wider block">Guide Étape par Étape :</span>
+                            <ul class="text-xs text-slate-600 space-y-1.5 list-disc list-inside">
+                                <li><strong>Étape 1 :</strong> Calculer le coût de vie mensuel strict.</li>
+                                <li><strong>Étape 2 :</strong> Automatiser un virement en début de mois.</li>
+                                <li><strong>Étape 3 :</strong> Placer le solde sur des livrets sans risque.</li>
+                                <li><strong>Étape 4 :</strong> Réévaluer le fonds à chaque changement de vie.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION : TYPES DE COMPTES -->
+    <section id="comptes" class="py-16 bg-white border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-brand-600 font-semibold text-xs uppercase tracking-wider">PANORAMA BANCAIRE</span>
+                <h2 class="text-3xl font-bold text-slate-900 mt-1">Les Supports d'Épargne & de Placement</h2>
+                <p class="mt-2 text-slate-600">Choisissez le bon véhicule financier selon la disponibilité souhaitée et votre horizon.</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200">
+                    <h4 class="font-bold text-slate-900 mb-2">Livrets & Comptes Épargne</h4>
+                    <p class="text-xs text-slate-600">Capital garanti à 100%, disponibilité immédiate des fonds. Idéal pour l'épargne de précaution.</p>
+                </div>
+                <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200">
+                    <h4 class="font-bold text-slate-900 mb-2">Comptes à Terme (CAT)</h4>
+                    <p class="text-xs text-slate-600">Taux fixe et garanti pendant une période bloquée. Parfait pour sécuriser un capital sur 1 à 5 ans.</p>
+                </div>
+                <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200">
+                    <h4 class="font-bold text-slate-900 mb-2">Comptes Titres & Bourse</h4>
+                    <p class="text-xs text-slate-600">Potentiel de rendement supérieur, idéal à long terme pour battre l'inflation avec une stratégie diversifiée.</p>
+                </div>
+                <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200">
+                    <h4 class="font-bold text-slate-900 mb-2">Épargne Logement & Projet</h4>
+                    <p class="text-xs text-slate-600">Supports orientés vers l'obtention de conditions de crédit préférentielles pour des acquisitions futures.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION : SIMULATEUR COMPLET -->
+    <section id="simulateur" class="py-12 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="widget" id="simWidget">
+              <div class="dynamic-header" id="dynamicHeader">
+                <div class="dh-left">
+                  <span class="dh-title">Valeur à l'horizon (Survolez la courbe pour détailler)</span>
+                  <span class="dh-year" id="dhYearText">Fin de simulation</span>
+                </div>
+                <div class="dh-right">
+                  <div class="dh-val" id="dhValText">0 TND</div>
+                </div>
+              </div>
+
+              <div class="chart-section">
+                <svg id="simChart" xmlns="http://www.w3.org/2000/svg"></svg>
+              </div>
+
+              <div class="legend-section">
+                <div class="legend-item"><div class="legend-dot" style="background:var(--chart-1);"></div><span>Capital Projeté</span></div>
+              </div>
+
+              <div class="sliders-section">
+                <div class="breakdown-title">Ajustez vos paramètres</div>
+                <div id="slidersContainer"></div>
+
+                <div class="slider-row" style="margin-top: 16px;">
+                  <div class="slider-label">
+                    <span>Épargne mensuelle active</span>
+                    <input type="checkbox" id="monthlyActiveToggle" checked onchange="renderChart()" style="transform: scale(1.2); cursor: pointer;">
+                  </div>
+                </div>
+
+                <div class="slider-row" style="margin-top: 16px;">
+                  <div class="slider-label">Mois / Année de début (Capital initial)</div>
+                  <div class="slider-control">
+                    <input type="month" id="startDateInput" class="op-input" value="2026-01" style="width:100%;" onchange="renderChart()">
+                  </div>
+                </div>
+              </div>
+
+              <div class="operations-section">
+                <div class="ops-header">
+                  <span class="ops-title">Opérations ponctuelles (Versements ou prélèvements)</span>
+                  <button class="btn-add" onclick="addOperation()">+ Ajouter</button>
+                </div>
+                <div id="operationsList"></div>
+              </div>
+
+              <div class="export-bar">
+                <button class="btn-export" onclick="exportToExcel()">📊 Exporter les deux tableaux en Excel (CSV)</button>
+                <button class="btn-export" onclick="exportToPDF()">📄 Exporter les deux tableaux en PDF</button>
+              </div>
+
+              <div class="tables-container">
+                <div class="recap-section">
+                  <div class="breakdown-title" style="margin-bottom: 4px;">Tableau Mensuel</div>
+                  <table class="recap-table" id="monthlyTable">
+                    <thead>
+                      <tr>
+                        <th>Période</th>
+                        <th>Début de mois</th>
+                        <th>Épargne</th>
+                        <th>Opération</th>
+                        <th>Intérêts</th>
+                        <th>Fin de Mois</th>
+                      </tr>
+                    </thead>
+                    <tbody id="recapTableBody"></tbody>
+                  </table>
+                </div>
+
+                <div class="recap-section">
+                  <div class="breakdown-title" style="margin-bottom: 4px;">Tableau Trimestriel</div>
+                  <table class="recap-table" id="quarterTable">
+                    <thead>
+                      <tr>
+                        <th>Trimestre</th>
+                        <th>Début</th>
+                        <th>Épargne</th>
+                        <th>Operations</th>
+                        <th>Intérêts</th>
+                        <th>Taxes</th>
+                        <th>Fin</th>
+                      </tr>
+                    </thead>
+                    <tbody id="quarterTableBody"></tbody>
+                  </table>
+                </div>
+              </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- EMPLACEMENT PUBLICITAIRE 2 : SOUS LES TABLEAUX DE SYNTHÈSE -->
+    <div class="max-w-5xl mx-auto px-4 my-8">
+        <div class="bg-slate-100 border border-dashed border-slate-300 rounded-2xl p-4 text-center text-xs text-slate-400">
+            <!-- Emplacement publicitaire secondaire (idéal pour AdSense ou bannière d'affiliation) -->
+            <span>Espace Publicitaire — Offres de Partenaires & Banques</span>
+        </div>
+    </div>
+
+    <!-- SECTION : FAQ -->
+    <section id="faq" class="py-16 bg-white border-t border-slate-200">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-slate-900 text-center mb-8">Foire Aux Questions</h2>
+            <div class="space-y-4">
+                <details class="group bg-slate-50 p-4 rounded-xl border border-slate-200">
+                    <summary class="font-bold text-sm sm:text-base cursor-pointer flex justify-between items-center text-slate-900">
+                        Comment fonctionne le calcul des intérêts composés ?
+                        <i data-lucide="chevron-down" class="w-4 h-4 group-open:rotate-180 transition-transform"></i>
+                    </summary>
+                    <p class="mt-3 text-xs sm:text-sm text-slate-600">
+                        Chaque mois, l'intérêt est calculé sur le capital total accumulé (vos versements + vos intérêts déjà générés). Cela permet une croissance exponentielle de votre épargne au fil du temps.
+                    </p>
+                </details>
+                <details class="group bg-slate-50 p-4 rounded-xl border border-slate-200">
+                    <summary class="font-bold text-sm sm:text-base cursor-pointer flex justify-between items-center text-slate-900">
+                        Puis-je changer de devise ?
+                        <i data-lucide="chevron-down" class="w-4 h-4 group-open:rotate-180 transition-transform"></i>
+                    </summary>
+                    <p class="mt-3 text-xs sm:text-sm text-slate-600">
+                        Oui, utilisez le sélecteur situé dans la barre de navigation supérieure pour afficher la simulation en Dinar Tunisien (TND), Euro (€) ou Dollar ($).
+                    </p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-900 text-slate-400 py-8 border-t border-slate-800 text-center text-xs">
+        <p>&copy; <script>document.write(new Date().getFullYear())</script> Épargne & Investissement Pro — Tous droits réservés.</p>
+    </footer>
+
+    <!-- LOGIQUE JAVASCRIPT DU MOTEUR -->
+    <script>
+      lucide.createIcons();
+
+      const params = [
+        { key: "initial", label: "Capital initial", value: 0, min: 0, max: 100000, step: 1000, format: "currency" },
+        { key: "monthly", label: "Épargne mensuelle", value: 1000, min: 0, max: 5000, step: 50, format: "currency" },
+        { key: "rate", label: "Rendement estimé (%)", value: 12, min: 0, max: 25, step: 0.5, format: "percent" },
+        { key: "years", label: "Horizon (années)", value: 10, min: 1, max: 30, step: 1, format: "years" }
+      ];
+
+      const paramValues = {};
+      params.forEach(p => { paramValues[p.key] = p.value; });
+
+      let customOperations = [{ amount: 1000, date: "2026-06" }];
+
+      function getDeviseSymbol() {
+        const cur = document.getElementById('currencySelect').value;
+        if (cur === 'EUR') return ' €';
+        if (cur === 'USD') return ' $';
+        return ' TND';
+      }
+
+      function fmt(n, format) {
+        const sym = getDeviseSymbol();
+        if (format === 'currency') return Math.round(n).toLocaleString('fr-FR') + sym;
+        if (format === 'percent') return n + '%';
+        return n.toLocaleString('fr-FR');
+      }
+
+      function updateSliderProgress(el) {
+        const min = parseFloat(el.min) || 0;
+        const max = parseFloat(el.max) || 100;
+        const val = parseFloat(el.value) || 0;
+        const pct = (val - min) / (max - min) * 100;
+        el.style.setProperty('--progress', pct + '%');
+      }
+
+      let simulationDetails = [];
+      let quarterlyDetails = [];
+      let computedData = [];
+      let xValues = [];
+
+      function runSimulation() {
+        const init = paramValues.initial;
+        const isMonthlyActive = document.getElementById('monthlyActiveToggle') ? document.getElementById('monthlyActiveToggle').checked : true;
+        const monthly = isMonthlyActive ? paramValues.monthly : 0;
+        const rate = paramValues.rate / 100;
+        const rm = rate / 12;
+        const totalYears = Math.ceil(paramValues['years'] || 10);
+
+        const startInputVal = document.getElementById('startDateInput') ? document.getElementById('startDateInput').value : "2026-01";
+        let [startYear, startMonth] = startInputVal.split('-').map(Number);
+        if (!startYear || !startMonth) { startYear = 2026; startMonth = 1; }
+
+        xValues = [];
+        for (let i = 0; i <= totalYears; i++) xValues.push(i);
+
+        simulationDetails = [];
+        quarterlyDetails = [];
+        computedData = [init];
+
+        let currentVal = init;
+        let currY = startYear;
+        let currM = startMonth;
+
+        let qStartVal = init;
+        let qSaving = 0;
+        let qOp = 0;
+        let qInterest = 0;
+        let qTaxes = 0;
+
+        for (let y = 1; y <= totalYears; y++) {
+          for (let m = 1; m <= 12; m++) {
+            const monthStr = String(currM).padStart(2, '0');
+            const dateKey = `${currY}-${monthStr}`;
+
+            let startOfMonthVal = currentVal;
+            let baseForInterest = currentVal + monthly;
+            let opAmount = 0;
+            customOperations.forEach(op => {
+              if (op.date === dateKey) {
+                opAmount += op.amount;
+              }
+            });
+
+            baseForInterest += opAmount;
+            if (baseForInterest < 0) baseForInterest = 0;
+
+            let interestEarned = baseForInterest * rm;
+            let finalMonthVal = baseForInterest + interestEarned;
+            if (finalMonthVal < 0) finalMonthVal = 0;
+
+            simulationDetails.push({
+              monthLabel: `${monthStr}/${currY}`,
+              startVal: startOfMonthVal,
+              monthlySaving: monthly,
+              operation: opAmount,
+              interest: interestEarned,
+              result: finalMonthVal
+            });
+
+            qSaving += monthly;
+            qOp += opAmount;
+            qInterest += interestEarned;
+
+            const currentQuarter = Math.ceil(currM / 3);
+            const nextMonthM = currM + 1;
+            const nextQuarter = Math.ceil(nextMonthM / 3);
+
+            if (nextQuarter !== currentQuarter || m === 12 || (y === totalYears && m === 12)) {
+              quarterlyDetails.push({
+                label: `T${currentQuarter} ${currY}`,
+                startVal: qStartVal,
+                saving: qSaving,
+                operation: qOp,
+                interest: qInterest,
+                taxes: qTaxes,
+                result: finalMonthVal
+              });
+              qStartVal = finalMonthVal;
+              qSaving = 0;
+              qOp = 0;
+              qInterest = 0;
+              qTaxes = 0;
+            }
+
+            currentVal = finalMonthVal;
+            currM++;
+            if (currM > 12) {
+              currM = 1;
+              currY++;
+            }
+          }
+          computedData.push(currentVal);
+        }
+      }
+
+      let SVG_W = 1000, SVG_H = 420, PAD = { top: 30, bottom: 50, left: 90, right: 30 };
+
+      function renderChart() {
+        runSimulation();
+        const svg = document.getElementById('simChart');
+        svg.setAttribute('viewBox', `0 0 ${SVG_W} ${SVG_H}`);
+
+        const plotW = SVG_W - PAD.left - PAD.right;
+        const plotH = SVG_H - PAD.top - PAD.bottom;
+
+        const maxVal = Math.max(...computedData, 1000);
+        const yMax = Math.ceil(maxVal * 1.1 / 10000) * 10000 || 10000;
+
+        function xPos(i) { return PAD.left + (xValues.length > 1 ? (i / (xValues.length - 1)) * plotW : 0); }
+        function yPos(v) { return PAD.top + plotH - (v / yMax) * plotH; }
+
+        let svgContent = `<g id="gridLayer">`;
+        for (let i = 0; i <= 4; i++) {
+          const val = (yMax / 4) * i;
+          const y = yPos(val);
+          svgContent += `<line x1="${PAD.left}" y1="${y}" x2="${SVG_W - PAD.right}" y2="${y}" stroke="var(--stroke-default)" stroke-dasharray="4 4" stroke-width="1"/>`;
+          svgContent += `<text x="${PAD.left - 14}" y="${y + 5}" text-anchor="end" fill="var(--on-surface-default)" font-size="14">${Math.round(val).toLocaleString()}</text>`;
+        }
+        xValues.forEach((t, i) => {
+          if (i % Math.max(1, Math.ceil(xValues.length / 10)) === 0 || i === xValues.length - 1) {
+            const x = xPos(i);
+            svgContent += `<text x="${x}" y="${PAD.top + plotH + 24}" text-anchor="middle" fill="var(--on-surface-default)" font-size="14">Année ${t}</text>`;
+          }
+        });
+        svgContent += `</g><g id="pathLayer">`;
+
+        let pathArea = `M ${xPos(0)},${yPos(computedData[0])}`;
+        let pathLine = `M ${xPos(0)},${yPos(computedData[0])}`;
+        for (let i = 1; i < computedData.length; i++) {
+          pathArea += ` L ${xPos(i)},${yPos(computedData[i])}`;
+          pathLine += ` L ${xPos(i)},${yPos(computedData[i])}`;
+        }
+        pathArea += ` L ${xPos(computedData.length - 1)},${yPos(0)} L ${xPos(0)},${yPos(0)} Z`;
+
+        const color = '#3186ff';
+        svgContent += `<path d="${pathArea}" fill="${color}" opacity="0.15"/>`;
+        svgContent += `<path d="${pathLine}" fill="none" stroke="${color}" stroke-width="3" stroke-linejoin="round"/>`;
+        svgContent += `</g><g id="hoverLayer">`;
+        svgContent += `<rect id="hoverArea" x="${PAD.left}" y="${PAD.top}" width="${plotW}" height="${plotH}" fill="transparent" style="cursor:pointer"/>`;
+        svgContent += `<line id="hoverLine" x1="0" y1="${PAD.top}" x2="0" y2="${PAD.top + plotH}" stroke="var(--on-surface-de-emphasis)" stroke-dasharray="3 3" opacity="0"/>`;
+        svgContent += `<circle id="hoverDot" cx="0" cy="0" r="6" fill="${color}" stroke="var(--surface)" stroke-width="2" opacity="0"/>`;
+        svgContent += `</g>`;
+
+        svg.innerHTML = svgContent;
+
+        const lastIdx = computedData.length - 1;
+        updateHeaderDisplay(`Année ${xValues[lastIdx]}`, computedData[lastIdx]);
+        document.getElementById('heroZeroVal').innerText = '0' + getDeviseSymbol();
+        renderRecapTables();
+
+        attachHover(plotW, plotH, yMax);
+      }
+
+      function updateHeaderDisplay(title, val) {
+        document.getElementById('dhYearText').textContent = title;
+        document.getElementById('dhValText').textContent = fmt(val, 'currency');
+      }
+
+      function attachHover(plotW, plotH, yMax) {
+        const hoverArea = document.getElementById('hoverArea');
+        const hoverLine = document.getElementById('hoverLine');
+        const hoverDot = document.getElementById('hoverDot');
+        const svg = document.getElementById('simChart');
+        if (!hoverArea) return;
+
+        function xPos(i) { return PAD.left + (xValues.length > 1 ? (i / (xValues.length - 1)) * plotW : 0); }
+        function yPos(v) { return PAD.top + plotH - (v / yMax) * plotH; }
+
+        hoverArea.onmousemove = (e) => {
+          const rect = svg.getBoundingClientRect();
+          const svgX = ((e.clientX - rect.left) / rect.width) * SVG_W;
+          const idx = Math.round(((svgX - PAD.left) / plotW) * (xValues.length - 1));
+          const ci = Math.max(0, Math.min(xValues.length - 1, idx));
+          
+          const x = xPos(ci);
+          const y = yPos(computedData[ci]);
+
+          hoverLine.setAttribute('x1', x);
+          hoverLine.setAttribute('x2', x);
+          hoverLine.setAttribute('opacity', '1');
+
+          hoverDot.setAttribute('cx', x);
+          hoverDot.setAttribute('cy', y);
+          hoverDot.setAttribute('opacity', '1');
+
+          updateHeaderDisplay(`Année ${xValues[ci]}`, computedData[ci]);
+        };
+
+        hoverArea.onmouseleave = () => {
+          hoverLine.setAttribute('opacity', '0');
+          hoverDot.setAttribute('opacity', '0');
+          const lastIdx = computedData.length - 1;
+          updateHeaderDisplay(`Année ${xValues[lastIdx]}`, computedData[lastIdx]);
+        };
+      }
+
+      function renderSliders() {
+        const container = document.getElementById('slidersContainer');
+        container.replaceChildren();
+
+        const gridDiv = document.createElement('div');
+        gridDiv.className = 'slider-grid';
+
+        params.forEach(p => {
+          const rowDiv = document.createElement('div');
+          rowDiv.className = 'slider-row';
+
+          const labelDiv = document.createElement('div');
+          labelDiv.className = 'slider-label';
+          labelDiv.textContent = p.label;
+
+          const ctrlDiv = document.createElement('div');
+          ctrlDiv.className = 'slider-control';
+
+          const rangeInput = document.createElement('input');
+          rangeInput.type = 'range';
+          rangeInput.min = p.min;
+          rangeInput.max = p.max;
+          rangeInput.step = p.step;
+          rangeInput.value = paramValues[p.key];
+          rangeInput.addEventListener('input', () => {
+            paramValues[p.key] = parseFloat(rangeInput.value);
+            textInput.value = fmt(paramValues[p.key], p.format);
+            updateSliderProgress(rangeInput);
+            renderChart();
+          });
+
+          const textInput = document.createElement('input');
+          textInput.type = 'text';
+          textInput.className = 'slider-value';
+          textInput.value = fmt(paramValues[p.key], p.format);
+          textInput.addEventListener('change', () => {
+            const val = parseFloat(textInput.value.replace(/[^0-9.-]/g, '')) || 0;
+            paramValues[p.key] = val;
+            rangeInput.value = val;
+            updateSliderProgress(rangeInput);
+            renderChart();
+          });
+
+          ctrlDiv.append(rangeInput, textInput);
+          rowDiv.append(labelDiv, ctrlDiv);
+          gridDiv.appendChild(rowDiv);
+          updateSliderProgress(rangeInput);
+        });
+
+        container.appendChild(gridDiv);
+      }
+
+      function addOperation() {
+        customOperations.push({ amount: 1000, date: "2026-06" });
+        renderOperations();
+        renderChart();
+      }
+
+      function removeOperation(index) {
+        customOperations.splice(index, 1);
+        renderOperations();
+        renderChart();
+      }
+
+      function renderOperations() {
+        const listContainer = document.getElementById('operationsList');
+        listContainer.replaceChildren();
+
+        if (customOperations.length === 0) {
+          const emptyMsg = document.createElement('div');
+          emptyMsg.style.fontSize = '13px';
+          emptyMsg.style.color = 'var(--on-surface-de-emphasis)';
+          emptyMsg.style.padding = '4px 0';
+          emptyMsg.textContent = 'Aucune opération ponctuelle ajoutée.';
+          listContainer.appendChild(emptyMsg);
+          return;
+        }
+
+        customOperations.forEach((op, index) => {
+          const row = document.createElement('div');
+          row.className = 'op-item';
+
+          const amtInput = document.createElement('input');
+          amtInput.type = 'text';
+          amtInput.className = 'op-input';
+          amtInput.placeholder = 'Montant (+ ou -)';
+          amtInput.value = op.amount;
+          amtInput.addEventListener('input', () => {
+            op.amount = parseFloat(amtInput.value) || 0;
+            renderChart();
+          });
+
+          const dateInput = document.createElement('input');
+          dateInput.type = 'month';
+          dateInput.className = 'op-input';
+          dateInput.value = op.date;
+          dateInput.addEventListener('change', () => {
+            op.date = dateInput.value;
+            renderChart();
+          });
+
+          const delBtn = document.createElement('button');
+          delBtn.className = 'btn-del';
+          delBtn.textContent = '✕';
+          delBtn.onclick = () => removeOperation(index);
+
+          row.append(amtInput, dateInput, delBtn);
+          listContainer.appendChild(row);
+        });
+      }
+
+      function renderRecapTables() {
+        const sym = getDeviseSymbol();
+        const tbodyM = document.getElementById('recapTableBody');
+        tbodyM.replaceChildren();
+
+        simulationDetails.forEach(row => {
+          const tr = document.createElement('tr');
+          const tdPeriod = document.createElement('td'); tdPeriod.textContent = row.monthLabel;
+          const tdStart = document.createElement('td'); tdStart.textContent = Math.round(row.startVal) + sym;
+          const tdSaving = document.createElement('td'); tdSaving.textContent = Math.round(row.monthlySaving) + sym;
+          const tdOp = document.createElement('td'); 
+          tdOp.textContent = row.operation !== 0 ? Math.round(row.operation) + sym : '-';
+          if (row.operation > 0) tdOp.style.color = 'var(--positive)';
+          if (row.operation < 0) tdOp.style.color = 'var(--negative)';
+          const tdInterest = document.createElement('td'); tdInterest.textContent = Math.round(row.interest) + sym; tdInterest.style.color = 'var(--positive)';
+          const tdResult = document.createElement('td'); tdResult.textContent = Math.round(row.result) + sym; tdResult.style.fontWeight = '500';
+
+          tr.append(tdPeriod, tdStart, tdSaving, tdOp, tdInterest, tdResult);
+          tbodyM.appendChild(tr);
+        });
+
+        const tbodyQ = document.getElementById('quarterTableBody');
+        tbodyQ.replaceChildren();
+
+        quarterlyDetails.forEach(row => {
+          const tr = document.createElement('tr');
+          const tdLabel = document.createElement('td'); tdLabel.textContent = row.label; tdLabel.style.fontWeight = '500';
+          const tdStart = document.createElement('td'); tdStart.textContent = Math.round(row.startVal) + sym;
+          const tdSaving = document.createElement('td'); tdSaving.textContent = Math.round(row.saving) + sym;
+          const tdOp = document.createElement('td'); 
+          tdOp.textContent = row.operation !== 0 ? Math.round(row.operation) + sym : '-';
+          if (row.operation > 0) tdOp.style.color = 'var(--positive)';
+          if (row.operation < 0) tdOp.style.color = 'var(--negative)';
+          const tdInterest = document.createElement('td'); tdInterest.textContent = Math.round(row.interest) + sym; tdInterest.style.color = 'var(--positive)';
+          const tdTaxes = document.createElement('td'); tdTaxes.textContent = Math.round(row.taxes) + sym;
+          const tdResult = document.createElement('td'); tdResult.textContent = Math.round(row.result) + sym; tdResult.style.fontWeight = '500';
+
+          tr.append(tdLabel, tdStart, tdSaving, tdOp, tdInterest, tdTaxes, tdResult);
+          tbodyQ.appendChild(tr);
+        });
+      }
+
+      function exportToExcel() {
+        let csv = 'TABLEAU MENSUEL\n';
+        csv += 'Periode;Debut de mois;Epargne;Operation;Interets;Fin de Mois\n';
+        simulationDetails.forEach(row => {
+          csv += `${row.monthLabel};${Math.round(row.startVal)};${Math.round(row.monthlySaving)};${Math.round(row.operation)};${Math.round(row.interest)};${Math.round(row.result)}\n`;
+        });
+
+        csv += '\n\nTABLEAU TRIMESTRIEL\n';
+        csv += 'Trimestre;Debut;Epargne;Operations;Interets;Taxes;Fin\n';
+        quarterlyDetails.forEach(row => {
+          csv += `${row.label};${Math.round(row.startVal)};${Math.round(row.saving)};${Math.round(row.operation)};${Math.round(row.interest)};${Math.round(row.taxes)};${Math.round(row.result)}\n`;
+        });
+
+        const blob = new Blob(["\ufeff" + csv], { type: 'text/csv;charset=utf-8;' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `epargne_investissement_pro_${document.getElementById('currencySelect').value}.csv`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+      }
+
+      function exportToPDF() {
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+        const sym = getDeviseSymbol();
+
+        doc.setFontSize(16);
+        doc.text(`Rapport - Épargne & Investissement Pro (${document.getElementById('currencySelect').value})`, 14, 20);
+
+        doc.setFontSize(11);
+        doc.setTextColor(100);
+        doc.text("Tableau Mensuel", 14, 30);
+
+        const monthlyData = simulationDetails.map(row => [
+          row.monthLabel,
+          Math.round(row.startVal) + sym,
+          Math.round(row.monthlySaving) + sym,
+          row.operation !== 0 ? Math.round(row.operation) + sym : '-',
+          Math.round(row.interest) + sym,
+          Math.round(row.result) + sym
+        ]);
+
+        doc.autoTable({
+          startY: 35,
+          head: [['Periode', 'Debut', 'Epargne', 'Operation', 'Interets', 'Fin']],
+          body: monthlyData,
+          theme: 'grid',
+          headStyles: { fillColor: [49, 134, 255] },
+          styles: { fontSize: 8 }
+        });
+
+        const finalY = doc.lastAutoTable.finalY + 15;
+        doc.setFontSize(11);
+        doc.setTextColor(100);
+        doc.text("Tableau Trimestriel", 14, finalY);
+
+        const quarterlyData = quarterlyDetails.map(row => [
+          row.label,
+          Math.round(row.startVal) + sym,
+          Math.round(row.saving) + sym,
+          row.operation !== 0 ? Math.round(row.operation) + sym : '-',
+          Math.round(row.interest) + sym,
+          Math.round(row.taxes) + sym,
+          Math.round(row.result) + sym
+        ]);
+
+        doc.autoTable({
+          startY: finalY + 5,
+          head: [['Trimestre', 'Debut', 'Epargne', 'Operations', 'Interets', 'Taxes', 'Fin']],
+          body: quarterlyData,
+          theme: 'grid',
+          headStyles: { fillColor: [49, 134, 255] },
+          styles: { fontSize: 8 }
+        });
+
+        doc.save(`epargne_investissement_pro_${document.getElementById('currencySelect').value}.pdf`);
+      }
+
+      renderSliders();
+      renderOperations();
+      renderChart();
+    </script>
+</body>
+</html>
