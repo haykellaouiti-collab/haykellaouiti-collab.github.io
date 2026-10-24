@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Projet 1 : Épargne & Investissement Pro -->
+  <url>
+    <loc>https://haykellaouiti-collab.github.io/</loc>
+    <priority>1.00</priority>
+  </url>
+  
+  <!-- Projet 2 : Boussole & Goals -->
+  <url>
+    <loc>https://haykellaouiti-collab.github.io/boussole-goals/</loc>
+    <priority>0.80</priority>
+  </url>
+  
+  <!-- Projet 3 : Trafic Alerte v63 -->
+  <url>
+    <loc>https://haykellaouiti-collab.github.io/traffic-alerte/</loc>
+    <priority>0.80</priority>
+  </url>
+</urlset>
