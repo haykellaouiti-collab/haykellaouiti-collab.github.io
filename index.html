@@ -1,19 +1,18 @@
 <!DOCTYPE html>
-<html lang="fr" class="scroll-smooth">
+<html lang="fr" id="htmlTag" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Épargne &amp; Investissement Pro - Simulateur, Taux &amp; Guide Financier</title>
-    <meta name="description" content="Simulateur d'intérêts composés, observatoire des taux d'intérêt nationaux et internationaux, simulateur de crédit, guide des cartes bancaires et conseils financiers.">
-    <meta name="keywords" content="épargne, investissement, intérêts composés, simulateur financier, placement, TND, TMM, BCT, BCE, FED, crédit, cartes bancaires, devenir riche, bourse, immobilier">
+    <title id="docTitle">Ã‰pargne & Investissement Pro - Maghreb, Europe & USA</title>
+    <meta name="description" content="Simulateur financier, observatoire des taux d'intÃ©rÃªt (Tunisie, AlgÃ©rie, Libye, Maroc, BCE, FED), guide des cartes bancaires rÃ©gionales et US.">
     
-    <!-- Balise de vérification Google Search Console -->
+    <!-- Balise de vÃ©rification Google Search Console -->
     <meta name="google-site-verification" content="HUnEyJRyYf0WJwbXhtIYoLnZprXHcPb2ltZisy7ilcA" />
 
-    <!-- Code Google AdSense Automatique placé sous HEAD -->
+    <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3266873353292561" crossorigin="anonymous"></script>
 
-    <!-- Tailwind CSS pour la mise en page générale -->
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -39,7 +38,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
 
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700;800&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Google+Sans:wght@400;500;700;800&display=swap');
 
       :root {
         --ff-sans: 'Google Sans', 'Open Sans', sans-serif;
@@ -56,6 +55,10 @@
         --chart-1: #2563eb;
       }
 
+      body[dir="rtl"] {
+        font-family: 'Cairo', sans-serif;
+      }
+
       * { box-sizing: border-box; }
       body {
         font-family: var(--ff-sans);
@@ -65,7 +68,6 @@
         -webkit-font-smoothing: antialiased;
       }
 
-      /* STYLE NAVIGATION ONGLETS 3D ET NEUMORPHISME */
       .nav-3d-container {
         background: rgba(255, 255, 255, 0.90);
         backdrop-filter: blur(16px);
@@ -97,13 +99,6 @@
         border-color: #93c5fd;
       }
 
-      .nav-3d-link:active {
-        transform: translateY(1px);
-        box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.12), inset -2px -2px 5px rgba(255, 255, 255, 0.8);
-      }
-
-      .widget { max-width: 100%; margin: 0 auto; }
-
       .dynamic-header {
         background: var(--surface-bright);
         border: 1px solid var(--stroke-default);
@@ -119,6 +114,7 @@
       .dh-title { font-size: 13px; color: var(--on-surface-de-emphasis); font-weight: 500; }
       .dh-year { font-size: 18px; font-weight: 700; color: #0f172a; }
       .dh-right { text-align: right; }
+      body[dir="rtl"] .dh-right { text-align: left; }
       .dh-val { font-size: 26px; font-weight: 800; color: var(--primary); font-variant-numeric: tabular-nums; }
 
       .chart-section { margin: 0; width: 100%; overflow-x: hidden; }
@@ -173,6 +169,7 @@
         border: 1px solid var(--stroke-default);
         outline: none;
       }
+      body[dir="rtl"] .slider-value { text-align: left; }
 
       .operations-section {
         margin-top: 24px;
@@ -247,6 +244,7 @@
         text-align: left;
         margin-top: 12px;
       }
+      body[dir="rtl"] .recap-table { text-align: right; }
       .recap-table th, .recap-table td {
         padding: 10px 12px;
         border-bottom: 1px solid var(--stroke-default);
@@ -260,47 +258,48 @@
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans antialiased">
 
-    <!-- NAVBAR AVEC ONGLETS 3D ET DESIGN AMÉLIORÉ -->
+    <!-- NAVBAR -->
     <nav class="sticky top-0 z-50 nav-3d-container">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
-                
-                <!-- Logo & Brand -->
-                <div class="flex items-center space-x-3">
-                    <div class="p-2.5 bg-gradient-to-tr from-brand-700 to-brand-500 text-white rounded-2xl shadow-lg shadow-brand-500/30 transform hover:scale-105 transition">
+                <div class="flex items-center space-x-3 rtl:space-x-reverse">
+                    <div class="p-2.5 bg-gradient-to-tr from-brand-700 to-brand-500 text-white rounded-2xl shadow-lg shadow-brand-500/30">
                         <i data-lucide="trending-up" class="w-6 h-6"></i>
                     </div>
                     <span class="text-xl font-extrabold text-slate-900 tracking-tight">
-                        Épargne & Investissement <span class="text-brand-600">Pro</span>
+                        <span id="brandName">Ã‰pargne & Investissement</span> <span class="text-brand-600">Pro</span>
                     </span>
                 </div>
 
-                <!-- Onglets 3D (Navigation Principale) -->
-                <div class="hidden lg:flex items-center space-x-2 p-1.5 bg-slate-100/80 rounded-2xl border border-slate-200/80 shadow-inner">
-                    <a href="#accueil" class="nav-3d-link">Accueil</a>
-                    <a href="#taux" class="nav-3d-link">Observatoire Taux</a>
-                    <a href="#credit" class="nav-3d-link">Simulateur Crédit</a>
-                    <a href="#cartes" class="nav-3d-link">Cartes Bancaires</a>
-                    <a href="#budget" class="nav-3d-link">Budget 50/30/20</a>
-                    <a href="#guide-richesse" class="nav-3d-link">Guide Richesse</a>
-                    <a href="#simulateur" class="nav-3d-link">Épargne 3D</a>
-                    <a href="#faq" class="nav-3d-link">FAQ</a>
+                <div class="hidden lg:flex items-center space-x-2 rtl:space-x-reverse p-1.5 bg-slate-100/80 rounded-2xl border border-slate-200/80 shadow-inner">
+                    <a href="#accueil" class="nav-3d-link" id="navHome">Accueil</a>
+                    <a href="#taux" class="nav-3d-link" id="navRates">Observatoire Taux</a>
+                    <a href="#credit" class="nav-3d-link" id="navCredit">Simulateur CrÃ©dit</a>
+                    <a href="#cartes" class="nav-3d-link" id="navCards">Cartes Bancaires</a>
+                    <a href="#budget" class="nav-3d-link" id="navBudget">Budget 50/30/20</a>
+                    <a href="#guide-richesse" class="nav-3d-link" id="navGuide">Guide Richesse</a>
+                    <a href="#simulateur" class="nav-3d-link" id="navSavings">Ã‰pargne 3D</a>
+                    <a href="#faq" class="nav-3d-link" id="navFaq">FAQ</a>
                 </div>
 
-                <!-- Actions (Devise & Bouton principal) -->
-                <div class="flex items-center space-x-3">
-                    <div class="relative">
-                        <select id="currencySelect" onchange="renderChart(); calculateBudget(); calculateCredit();" class="px-3 py-2 text-xs font-extrabold bg-white border border-slate-300 rounded-xl text-slate-700 shadow-sm hover:border-brand-500 outline-none cursor-pointer transition">
-                            <option value="TND">TND (Dinar Tunisien)</option>
-                            <option value="EUR">EUR (€)</option>
-                            <option value="USD">USD ($)</option>
-                        </select>
-                    </div>
-                    <a href="#simulateur" class="px-5 py-2.5 text-sm font-extrabold text-white bg-gradient-to-r from-brand-600 to-brand-700 hover:from-brand-700 hover:to-brand-800 rounded-xl shadow-md shadow-brand-600/25 active:scale-95 transition">
-                        Simuler mon Épargne
-                    </a>
-                </div>
+                <div class="flex items-center space-x-2 sm:space-x-3 rtl:space-x-reverse">
+                    <!-- SÃ©lecteur de Langue -->
+                    <select id="langSelect" onchange="changeLanguage(this.value)" class="px-2.5 py-2 text-xs font-extrabold bg-slate-100 border border-slate-300 rounded-xl text-brand-700 shadow-sm outline-none cursor-pointer">
+                        <option value="fr">ðŸ‡«ðŸ‡· FR</option>
+                        <option value="en">ðŸ‡¬ðŸ‡§ ENG</option>
+                        <option value="ar">ðŸ‡¹ðŸ‡³ Ø§Ù„Ø¹Ø±Ø¨ÙŠØ©</option>
+                    </select>
 
+                    <!-- SÃ©lecteur de Devise & RÃ©gion -->
+                    <select id="currencySelect" onchange="updateRegionCurrency();" class="px-2.5 py-2 text-xs font-extrabold bg-white border border-slate-300 rounded-xl text-slate-700 shadow-sm outline-none cursor-pointer">
+                        <option value="TND">ðŸ‡¹ðŸ‡³ TND (Tunisie)</option>
+                        <option value="DZD">ðŸ‡©ðŸ‡¿ DZD (AlgÃ©rie)</option>
+                        <option value="LYD">ðŸ‡±ðŸ‡¾ LYD (Libye)</option>
+                        <option value="MAD">ðŸ‡²ðŸ‡¦ MAD (Maroc)</option>
+                        <option value="EUR">ðŸ‡ªðŸ‡º EUR (â‚¬ - Europe)</option>
+                        <option value="USD">ðŸ‡ºðŸ‡¸ USD ($ - USA)</option>
+                    </select>
+                </div>
             </div>
         </div>
     </nav>
@@ -308,84 +307,57 @@
     <!-- HERO SECTION -->
     <section id="accueil" class="py-16 lg:py-20 bg-gradient-to-b from-blue-50/60 to-transparent text-center border-b border-slate-200">
         <div class="max-w-4xl mx-auto px-4">
-            <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-emerald-800 bg-emerald-100/90 rounded-full mb-6 border border-emerald-200">
-                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> Guide Financier, Taux Directeurs &amp; Calculateur 3D
+            <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-emerald-800 bg-emerald-100/90 rounded-full mb-6 border border-emerald-200" id="heroBadge">
+                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> Tunisie, AlgÃ©rie, Libye, Maroc, Europe & USA
             </span>
-            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight mb-6 leading-tight">
-                Faites fructifier votre argent <span class="text-brand-600">intelligemment</span>
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight mb-6 leading-tight" id="heroTitle">
+                Faites fructifier votre argent au <span class="text-brand-600">Maghreb, en Europe & aux USA</span>
             </h1>
-            <p class="text-lg text-slate-600 max-w-2xl mx-auto mb-8 font-medium">
-                Consultez les taux de référence BCT/BCE/FED en temps réel, simulez vos crédits et placements d'épargne, et découvrez le guide complet des cartes bancaires.
+            <p class="text-lg text-slate-600 max-w-2xl mx-auto mb-8 font-medium" id="heroDesc">
+                Taux directeurs officiels (BCT, BA, BCL, BAM, BCE, FED), simulateurs de crÃ©dit et d'amortissement, et guide complet des cartes bancaires & Credit Score USA.
             </p>
             <div class="flex flex-col sm:flex-row justify-center gap-4 mb-12">
-                <a href="#simulateur" class="inline-flex items-center justify-center px-6 py-3.5 text-base font-bold text-white bg-brand-600 hover:bg-brand-700 rounded-xl shadow-lg shadow-brand-600/30 transition">
-                    Lancer le simulateur 3D <i data-lucide="arrow-right" class="w-5 h-5 ml-2"></i>
+                <a href="#simulateur" id="btnHeroSim" class="inline-flex items-center justify-center px-6 py-3.5 text-base font-bold text-white bg-brand-600 hover:bg-brand-700 rounded-xl shadow-lg shadow-brand-600/30 transition">
+                    Lancer le simulateur 3D <i data-lucide="arrow-right" class="w-5 h-5 ml-2 rtl:mr-2 rtl:ml-0"></i>
                 </a>
-                <a href="#credit" class="inline-flex items-center justify-center px-6 py-3.5 text-base font-bold text-slate-700 bg-white hover:bg-slate-100 border border-slate-300 rounded-xl transition shadow-sm">
-                    Simuler un Crédit <i data-lucide="calculator" class="w-5 h-5 ml-2"></i>
+                <a href="#taux" id="btnHeroRates" class="inline-flex items-center justify-center px-6 py-3.5 text-base font-bold text-slate-700 bg-white hover:bg-slate-100 border border-slate-300 rounded-xl transition shadow-sm">
+                    Voir les Taux RÃ©gionaux & US <i data-lucide="landmark" class="w-5 h-5 ml-2 rtl:mr-2 rtl:ml-0"></i>
                 </a>
-            </div>
-            <div class="grid grid-cols-3 gap-6 pt-8 border-t border-slate-200/80 max-w-xl mx-auto">
-                <div>
-                    <div class="text-2xl font-extrabold text-slate-900">100%</div>
-                    <div class="text-xs text-slate-500 font-medium">Objectivité & Clarté</div>
-                </div>
-                <div>
-                    <div class="text-2xl font-extrabold text-slate-900" id="heroZeroVal">0 TND</div>
-                    <div class="text-xs text-slate-500 font-medium">Simulation Gratuite</div>
-                </div>
-                <div>
-                    <div class="text-2xl font-extrabold text-emerald-600">+8.5%</div>
-                    <div class="text-xs text-slate-500 font-medium">Rendement visé/an</div>
-                </div>
             </div>
         </div>
     </section>
 
-    <!-- BANDEAU PUBLICITAIRE GOOGLE ADSENSE 1 -->
-    <div class="max-w-5xl mx-auto px-4 my-8 text-center">
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-3266873353292561"
-             data-ad-slot="auto"
-             data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
-        <script>
-             (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
-    </div>
-
-    <!-- SECTION : OBSERVATOIRE DES TAUX D'INTÉRÊT ET ACCÈS DIRECT AUX BANQUES CENTRALES -->
+    <!-- SECTION : OBSERVATOIRE DES TAUX D'INTÃ‰RÃŠT ET ACCÃˆS DIRECTS -->
     <section id="taux" class="py-16 bg-white border-b border-slate-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-8">
-                <span class="text-brand-600 font-bold text-xs uppercase tracking-wider">Indicateurs Économiques Officiels</span>
-                <h2 class="text-3xl font-extrabold text-slate-900 mt-1">Observatoire des Taux d'Intérêt Directeurs (BCT, BCE &amp; FED)</h2>
-                <p class="mt-2 text-slate-600 font-medium">Consultez en direct les données officielles publiées par la Banque Centrale de Tunisie (BCT), la BCE et la FED.</p>
+                <span class="text-brand-600 font-bold text-xs uppercase tracking-wider" id="obsSub">Banques Centrales Partenaires</span>
+                <h2 class="text-3xl font-extrabold text-slate-900 mt-1" id="obsTitle">Observatoire des Taux Directeurs (BCT, BA, BCL, BAM, BCE, FED)</h2>
+                <p class="mt-2 text-slate-600 font-medium" id="obsDesc">DonnÃ©es officielles synchronisÃ©es avec les serveurs des banques centrales du Maghreb, de la Zone Euro et des USA.</p>
             </div>
 
-            <!-- Accès Directs Serveurs Banques Centrales -->
+            <!-- AccÃ¨s Directs Serveurs Banques Centrales -->
             <div class="grid md:grid-cols-3 gap-4 mb-8">
                 <a href="https://www.bct.gov.tn/bct/siteprod/stat_page.jsp?id=129" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-4 bg-blue-50 border border-blue-200 rounded-2xl hover:bg-blue-100 transition shadow-sm group">
                     <div class="flex items-center gap-3">
                         <i data-lucide="external-link" class="w-5 h-5 text-brand-600 group-hover:scale-110 transition-transform"></i>
                         <div>
                             <span class="text-xs font-extrabold text-brand-700 uppercase block">BCT - Principaux Taux</span>
-                            <span class="text-xs text-slate-600 font-medium">Page officielle marché monétaire</span>
+                            <span class="text-xs text-slate-600 font-medium">Page officielle marchÃ© monÃ©taire</span>
                         </div>
                     </div>
-                    <span class="text-xs font-bold text-brand-600 bg-white px-2.5 py-1 rounded-lg border border-blue-200">Voir BCT →</span>
+                    <span class="text-xs font-bold text-brand-600 bg-white px-2.5 py-1 rounded-lg border border-blue-200">Voir BCT â†’</span>
                 </a>
 
                 <a href="https://www.bct.gov.tn/bct/siteprod/tableau_statistique_a.jsp?params=PL203250" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-4 bg-emerald-50 border border-emerald-200 rounded-2xl hover:bg-emerald-100 transition shadow-sm group">
                     <div class="flex items-center gap-3">
                         <i data-lucide="external-link" class="w-5 h-5 text-emerald-600 group-hover:scale-110 transition-transform"></i>
                         <div>
-                            <span class="text-xs font-extrabold text-emerald-700 uppercase block">BCT - Taux d'Épargne (TRE)</span>
-                            <span class="text-xs text-slate-600 font-medium">Série rétrospective officielle</span>
+                            <span class="text-xs font-extrabold text-emerald-700 uppercase block">BCT - Taux d'Ã‰pargne (TRE)</span>
+                            <span class="text-xs text-slate-600 font-medium">SÃ©rie rÃ©trospective officielle</span>
                         </div>
                     </div>
-                    <span class="text-xs font-bold text-emerald-600 bg-white px-2.5 py-1 rounded-lg border border-emerald-200">Voir TRE →</span>
+                    <span class="text-xs font-bold text-emerald-600 bg-white px-2.5 py-1 rounded-lg border border-emerald-200">Voir TRE â†’</span>
                 </a>
 
                 <a href="https://www.ecb.europa.eu/stats/policy_and_exchange_rates/key_ecb_interest_rates/html/index.en.html" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-4 bg-purple-50 border border-purple-200 rounded-2xl hover:bg-purple-100 transition shadow-sm group">
@@ -396,11 +368,11 @@
                             <span class="text-xs text-slate-600 font-medium">Taux directeurs EUR &amp; USD</span>
                         </div>
                     </div>
-                    <span class="text-xs font-bold text-purple-600 bg-white px-2.5 py-1 rounded-lg border border-purple-200">Voir BCE →</span>
+                    <span class="text-xs font-bold text-purple-600 bg-white px-2.5 py-1 rounded-lg border border-purple-200">Voir BCE / FED â†’</span>
                 </a>
             </div>
 
-            <!-- Barre d'action : Mettre à jour & Télécharger -->
+            <!-- Barre d'action : Mettre Ã  jour & TÃ©lÃ©charger -->
             <div class="flex flex-wrap items-center justify-between gap-4 bg-slate-100 p-4 rounded-2xl mb-8 border border-slate-200">
                 <div class="flex items-center gap-2">
                     <span class="w-3 h-3 rounded-full bg-emerald-500 animate-ping"></span>
@@ -419,162 +391,99 @@
                 </div>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-8">
-                <!-- Taux Nationaux (Tunisie - Source BCT) -->
+            <!-- Cartes des Taux par RÃ©gions -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                <!-- Tunisie (BCT) -->
                 <div class="p-6 bg-slate-50 rounded-3xl border border-slate-200 shadow-sm">
-                    <div class="flex items-center justify-between mb-4 border-b border-slate-200 pb-3">
-                        <div class="flex items-center gap-2">
-                            <i data-lucide="landmark" class="w-6 h-6 text-brand-600"></i>
-                            <h3 class="text-xl font-bold text-slate-900">Taux Nationaux (Tunisie - Source BCT)</h3>
-                        </div>
-                        <span class="text-xs font-bold px-3 py-1 bg-brand-100 text-brand-700 rounded-full" id="tagBct">BCT Officiel</span>
+                    <div class="flex items-center justify-between mb-4 pb-3 border-b border-slate-200">
+                        <span class="font-extrabold text-slate-900">ðŸ‡¹ðŸ‡³ Tunisie (BCT)</span>
+                        <span class="text-xs font-bold px-2.5 py-1 bg-brand-100 text-brand-700 rounded-full">TND</span>
                     </div>
-                    
-                    <div class="space-y-3">
-                        <div class="flex justify-between items-center p-3.5 bg-white rounded-2xl border border-slate-200 shadow-sm">
-                            <div>
-                                <span class="font-bold text-sm text-slate-800 block">Taux Directeur BCT</span>
-                                <span class="text-xs text-slate-500">Fixé par le conseil d'administration BCT</span>
-                            </div>
-                            <span class="text-lg font-extrabold text-brand-600" id="valBCT">7.00%</span>
-                        </div>
-
-                        <div class="flex justify-between items-center p-3.5 bg-white rounded-2xl border border-slate-200 shadow-sm">
-                            <div>
-                                <span class="font-bold text-sm text-slate-800 block">TMM (Taux Moyen du Marché Monétaire)</span>
-                                <span class="text-xs text-slate-500">Référence crédits et placements</span>
-                            </div>
-                            <span class="text-lg font-extrabold text-brand-600" id="valTMM">7.00%</span>
-                        </div>
-
-                        <div class="flex justify-between items-center p-3.5 bg-white rounded-2xl border border-slate-200 shadow-sm">
-                            <div>
-                                <span class="font-bold text-sm text-slate-800 block">Facilité de Prêt à 24 Heures</span>
-                                <span class="text-xs text-slate-500">Taux marginal supérieur BCT</span>
-                            </div>
-                            <span class="text-lg font-extrabold text-slate-900" id="valFaciPret">8.00%</span>
-                        </div>
-
-                        <div class="flex justify-between items-center p-3.5 bg-white rounded-2xl border border-slate-200 shadow-sm">
-                            <div>
-                                <span class="font-bold text-sm text-slate-800 block">Facilité de Dépôt à 24 Heures</span>
-                                <span class="text-xs text-slate-500">Taux plancher de rémunération</span>
-                            </div>
-                            <span class="text-lg font-extrabold text-slate-900" id="valFaciDepot">6.00%</span>
-                        </div>
-
-                        <div class="flex justify-between items-center p-3.5 bg-white rounded-2xl border border-slate-200 shadow-sm">
-                            <div>
-                                <span class="font-bold text-sm text-slate-800 block">TRE (Taux d'Épargne Réglementé)</span>
-                                <span class="text-xs text-slate-500">Rémunération minimale des livrets</span>
-                            </div>
-                            <span class="text-lg font-extrabold text-emerald-600" id="valTRE">6.00%</span>
-                        </div>
+                    <div class="space-y-2 text-xs">
+                        <div class="flex justify-between p-2.5 bg-white rounded-xl border"><span>Taux Directeur BCT</span><strong class="text-brand-600">7.00%</strong></div>
+                        <div class="flex justify-between p-2.5 bg-white rounded-xl border"><span>TMM (MarchÃ© MonÃ©taire)</span><strong class="text-brand-600">7.00%</strong></div>
+                        <div class="flex justify-between p-2.5 bg-white rounded-xl border"><span>FacilitÃ© de PrÃªt 24h</span><strong class="text-slate-900">8.00%</strong></div>
+                        <div class="flex justify-between p-2.5 bg-white rounded-xl border"><span>FacilitÃ© de DÃ©pÃ´t 24h</span><strong class="text-slate-900">6.00%</strong></div>
+                        <div class="flex justify-between p-2.5 bg-white rounded-xl border"><span>TRE (Taux d'Ã‰pargne)</span><strong class="text-emerald-600">6.00%</strong></div>
                     </div>
                 </div>
 
-                <!-- Taux Internationaux (Zone Euro / USA - Sources BCE & FED) -->
+                <!-- AlgÃ©rie, Libye & Maroc -->
                 <div class="p-6 bg-slate-50 rounded-3xl border border-slate-200 shadow-sm">
-                    <div class="flex items-center justify-between mb-4 border-b border-slate-200 pb-3">
-                        <div class="flex items-center gap-2">
-                            <i data-lucide="globe" class="w-6 h-6 text-emerald-600"></i>
-                            <h3 class="text-xl font-bold text-slate-900">Taux Internationaux (BCE &amp; FED)</h3>
-                        </div>
-                        <span class="text-xs font-bold px-3 py-1 bg-emerald-100 text-emerald-700 rounded-full" id="tagInt">Zone Euro &amp; US</span>
+                    <div class="flex items-center justify-between mb-4 pb-3 border-b border-slate-200">
+                        <span class="font-extrabold text-slate-900">ðŸ‡©ðŸ‡¿ ðŸ‡±ðŸ‡¾ ðŸ‡²ðŸ‡¦ Maghreb Central</span>
+                        <span class="text-xs font-bold px-2.5 py-1 bg-emerald-100 text-emerald-800 rounded-full">DZD / LYD / MAD</span>
                     </div>
-                    
-                    <div class="space-y-3">
-                        <div class="flex justify-between items-center p-3.5 bg-white rounded-2xl border border-slate-200 shadow-sm">
-                            <div>
-                                <span class="font-bold text-sm text-slate-800 block">BCE (Banque Centrale Européenne)</span>
-                                <span class="text-xs text-slate-500">Taux de dépôt de la Zone Euro</span>
-                            </div>
-                            <span class="text-lg font-extrabold text-emerald-600" id="valBCE">2.50%</span>
-                        </div>
+                    <div class="space-y-2 text-xs">
+                        <div class="flex justify-between p-2.5 bg-white rounded-xl border"><span>ðŸ‡©ðŸ‡¿ Taux Directeur BA (AlgÃ©rie)</span><strong class="text-brand-600">3.00%</strong></div>
+                        <div class="flex justify-between p-2.5 bg-white rounded-xl border"><span>ðŸ‡©ðŸ‡¿ Livret d'Ã‰pargne AlgÃ©rien</span><strong class="text-emerald-600">2.00%</strong></div>
+                        <div class="flex justify-between p-2.5 bg-white rounded-xl border"><span>ðŸ‡±ðŸ‡¾ Taux Directeur CBL (Libye)</span><strong class="text-brand-600">3.00%</strong></div>
+                        <div class="flex justify-between p-2.5 bg-white rounded-xl border"><span>ðŸ‡²ðŸ‡¦ Bank Al-Maghrib (Maroc)</span><strong class="text-brand-600">2.75%</strong></div>
+                    </div>
+                </div>
 
-                        <div class="flex justify-between items-center p-3.5 bg-white rounded-2xl border border-slate-200 shadow-sm">
-                            <div>
-                                <span class="font-bold text-sm text-slate-800 block">FED (Réserve Fédérale Américaine)</span>
-                                <span class="text-xs text-slate-500">Taux directeur US (Fed Funds)</span>
-                            </div>
-                            <span class="text-lg font-extrabold text-slate-900" id="valFED">3.75%</span>
-                        </div>
-
-                        <div class="flex justify-between items-center p-3.5 bg-white rounded-2xl border border-slate-200 shadow-sm">
-                            <div>
-                                <span class="font-bold text-sm text-slate-800 block">Livret A / LDDS (France / UE)</span>
-                                <span class="text-xs text-slate-500">Épargne réglementée sans risque</span>
-                            </div>
-                            <span class="text-lg font-extrabold text-emerald-600" id="valLivretA">2.50%</span>
-                        </div>
-
-                        <div class="flex justify-between items-center p-3.5 bg-white rounded-2xl border border-slate-200 shadow-sm">
-                            <div>
-                                <span class="font-bold text-sm text-slate-800 block">Obligations OAT 10 Ans (France)</span>
-                                <span class="text-xs text-slate-500">Rendement de référence souverain</span>
-                            </div>
-                            <span class="text-lg font-extrabold text-brand-600" id="valOat10">3.10%</span>
-                        </div>
-
-                        <div class="flex justify-between items-center p-3.5 bg-white rounded-2xl border border-slate-200 shadow-sm">
-                            <div>
-                                <span class="font-bold text-sm text-slate-800 block">US Treasury 10-Year (USA)</span>
-                                <span class="text-xs text-slate-500">Bons du Trésor américain à 10 ans</span>
-                            </div>
-                            <span class="text-lg font-extrabold text-brand-600" id="valUs10">4.20%</span>
-                        </div>
+                <!-- Europe & USA (BCE / FED) -->
+                <div class="p-6 bg-slate-50 rounded-3xl border border-slate-200 shadow-sm">
+                    <div class="flex items-center justify-between mb-4 pb-3 border-b border-slate-200">
+                        <span class="font-extrabold text-slate-900">ðŸ‡ªðŸ‡º ðŸ‡ºðŸ‡¸ Europe & USA (BCE / FED)</span>
+                        <span class="text-xs font-bold px-2.5 py-1 bg-purple-100 text-purple-700 rounded-full">EUR / USD</span>
+                    </div>
+                    <div class="space-y-2 text-xs">
+                        <div class="flex justify-between p-2.5 bg-white rounded-xl border"><span>ðŸ‡ªðŸ‡º BCE Taux de DÃ©pÃ´t</span><strong class="text-emerald-600">2.50%</strong></div>
+                        <div class="flex justify-between p-2.5 bg-white rounded-xl border"><span>ðŸ‡ªðŸ‡º Livret A / LDDS (UE)</span><strong class="text-emerald-600">2.50%</strong></div>
+                        <div class="flex justify-between p-2.5 bg-white rounded-xl border"><span>ðŸ‡ºðŸ‡¸ FED Funds (USA)</span><strong class="text-slate-900">3.75%</strong></div>
+                        <div class="flex justify-between p-2.5 bg-white rounded-xl border"><span>ðŸ‡ºðŸ‡¸ US Treasury 10-Year</span><strong class="text-brand-600">4.20%</strong></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SECTION : SIMULATEUR DE CRÉDIT & TABLEAU D'AMORTISSEMENT -->
+    <!-- SECTION : SIMULATEUR DE CRÃ‰DIT & TABLEAU D'AMORTISSEMENT -->
     <section id="credit" class="py-16 bg-slate-50 border-b border-slate-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-10">
-                <span class="text-brand-600 font-bold text-xs uppercase tracking-wider">CALCULATEUR D'EMPRUNT</span>
-                <h2 class="text-3xl font-extrabold text-slate-900 mt-1">Simulateur de Crédit &amp; Mensualités</h2>
-                <p class="mt-2 text-slate-600 font-medium">Calculez précisément vos mensualités, le coût total du crédit et consultez le tableau d'amortissement complet.</p>
+                <span class="text-brand-600 font-bold text-xs uppercase tracking-wider" id="creditBadge">CALCULATEUR D'EMPRUNT</span>
+                <h2 class="text-3xl font-extrabold text-slate-900 mt-1" id="creditTitle">Simulateur de CrÃ©dit &amp; Amortissement</h2>
+                <p class="mt-2 text-slate-600 font-medium" id="creditDesc">Calculez vos mensualitÃ©s dans la devise de votre pays (TND, DZD, LYD, MAD, EUR, USD).</p>
             </div>
 
             <div class="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-sm mb-8">
                 <div class="grid md:grid-cols-3 gap-6 mb-8">
                     <div>
-                        <label class="block text-xs font-bold text-slate-700 uppercase mb-2">Montant du Crédit :</label>
-                        <input type="number" id="creditAmount" value="100000" step="5000" oninput="calculateCredit()" class="w-full px-4 py-3 font-bold bg-slate-50 border border-slate-300 rounded-xl text-slate-900 outline-none focus:border-brand-600 transition">
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-2" id="lblCreditAmt">Montant du CrÃ©dit :</label>
+                        <input type="number" id="creditAmount" value="100000" step="5000" oninput="calculateCredit()" class="w-full px-4 py-3 font-bold bg-slate-50 border border-slate-300 rounded-xl text-slate-900 outline-none focus:border-brand-600">
                     </div>
                     <div>
-                        <label class="block text-xs font-bold text-slate-700 uppercase mb-2">Taux d'Intérêt Annuel (%) :</label>
-                        <input type="number" id="creditRate" value="8.5" step="0.1" oninput="calculateCredit()" class="w-full px-4 py-3 font-bold bg-slate-50 border border-slate-300 rounded-xl text-slate-900 outline-none focus:border-brand-600 transition">
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-2" id="lblCreditRate">Taux d'IntÃ©rÃªt Annuel (%) :</label>
+                        <input type="number" id="creditRate" value="8.5" step="0.1" oninput="calculateCredit()" class="w-full px-4 py-3 font-bold bg-slate-50 border border-slate-300 rounded-xl text-slate-900 outline-none focus:border-brand-600">
                     </div>
                     <div>
-                        <label class="block text-xs font-bold text-slate-700 uppercase mb-2">Durée (Années) :</label>
-                        <input type="number" id="creditYears" value="15" min="1" max="30" oninput="calculateCredit()" class="w-full px-4 py-3 font-bold bg-slate-50 border border-slate-300 rounded-xl text-slate-900 outline-none focus:border-brand-600 transition">
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-2" id="lblCreditYears">DurÃ©e (AnnÃ©es) :</label>
+                        <input type="number" id="creditYears" value="15" min="1" max="30" oninput="calculateCredit()" class="w-full px-4 py-3 font-bold bg-slate-50 border border-slate-300 rounded-xl text-slate-900 outline-none focus:border-brand-600">
                     </div>
                 </div>
 
-                <!-- Résultats synthétiques -->
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 p-6 bg-slate-100 rounded-2xl text-center border border-slate-200">
                     <div>
-                        <span class="text-xs font-bold text-slate-500 uppercase">Mensualité Estimée</span>
-                        <div id="creditMonthlyPayment" class="text-2xl font-extrabold text-brand-600 mt-1">0 TND</div>
+                        <span class="text-xs font-bold text-slate-500 uppercase" id="resMonthlyPayment">MensualitÃ© EstimÃ©e</span>
+                        <div id="creditMonthlyPayment" class="text-2xl font-extrabold text-brand-600 mt-1">0</div>
                     </div>
                     <div>
-                        <span class="text-xs font-bold text-slate-500 uppercase">Total des Intérêts</span>
-                        <div id="creditTotalInterest" class="text-2xl font-extrabold text-rose-600 mt-1">0 TND</div>
+                        <span class="text-xs font-bold text-slate-500 uppercase" id="resTotalInterest">Total des IntÃ©rÃªts</span>
+                        <div id="creditTotalInterest" class="text-2xl font-extrabold text-rose-600 mt-1">0</div>
                     </div>
                     <div>
-                        <span class="text-xs font-bold text-slate-500 uppercase">Coût Total Rendu</span>
-                        <div id="creditTotalPayback" class="text-2xl font-extrabold text-slate-900 mt-1">0 TND</div>
+                        <span class="text-xs font-bold text-slate-500 uppercase" id="resTotalPayback">CoÃ»t Total Rendu</span>
+                        <div id="creditTotalPayback" class="text-2xl font-extrabold text-slate-900 mt-1">0</div>
                     </div>
                 </div>
             </div>
 
-            <!-- Tableau d'Amortissement -->
+            <!-- Tableau d'Amortissement DÃ©taillÃ© -->
             <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm">
                 <div class="flex flex-wrap items-center justify-between mb-4 gap-4">
-                    <h3 class="text-lg font-bold text-slate-900">Tableau d'Amortissement Détaillé</h3>
+                    <h3 class="text-lg font-bold text-slate-900">Tableau d'Amortissement DÃ©taillÃ©</h3>
                     <div class="flex gap-2">
                         <button onclick="exportAmortizationExcel()" class="px-4 py-2 bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs rounded-xl shadow-md transition flex items-center gap-1.5">
                             <i data-lucide="file-spreadsheet" class="w-4 h-4"></i> Excel (CSV)
@@ -590,10 +499,10 @@
                         <thead class="sticky top-0 bg-slate-100 font-bold text-slate-700">
                             <tr>
                                 <th class="p-3 border-b border-slate-300">Mois</th>
-                                <th class="p-3 border-b border-slate-300">Mensualité</th>
+                                <th class="p-3 border-b border-slate-300">MensualitÃ©</th>
                                 <th class="p-3 border-b border-slate-300">Part Capital</th>
-                                <th class="p-3 border-b border-slate-300">Part Intérêts</th>
-                                <th class="p-3 border-b border-slate-300">Capital Restant Dû</th>
+                                <th class="p-3 border-b border-slate-300">Part IntÃ©rÃªts</th>
+                                <th class="p-3 border-b border-slate-300">Capital Restant DÃ»</th>
                             </tr>
                         </thead>
                         <tbody id="creditTableBody" class="divide-y divide-slate-200">
@@ -605,120 +514,77 @@
         </div>
     </section>
 
-    <!-- SECTION : GUIDE APPROFONDI DES CARTES BANCAIRES (TUNISIE, EUROPE & USA) -->
+    <!-- SECTION : GUIDE APPROFONDI DES CARTES BANCAIRES (TUNISIE, ALGERIE, MAROC, EUROPE & USA) -->
     <section id="cartes" class="py-16 bg-white border-b border-slate-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-10">
-                <span class="text-brand-600 font-bold text-xs uppercase tracking-wider">GUIDE COMPLET ET DÉTAILLÉ</span>
-                <h2 class="text-3xl font-extrabold text-slate-900 mt-1">Guide des Cartes Bancaires (Nationales &amp; Internationales)</h2>
-                <p class="mt-2 text-slate-600 font-medium">Analyse comparative complète des offres monétiques en Tunisie, en Europe (UE) et aux États-Unis (USA) : plafonds, avantages, frais et démarches d'obtention.</p>
+                <span class="text-brand-600 font-bold text-xs uppercase tracking-wider" id="cardBadge">MONÃ‰TIQUE &amp; SYSTEMES DE CRÃ‰DIT</span>
+                <h2 class="text-3xl font-extrabold text-slate-900 mt-1" id="cardTitle">Guide des Cartes Bancaires &amp; Credit Score USA</h2>
+                <p class="mt-2 text-slate-600 font-medium" id="cardDesc">Plafonds, dotations, cartes CIB, Edahabia, CTI, Neobanques europÃ©ennes et directives complÃ¨tes sur le Credit Score FICO aux USA.</p>
             </div>
 
             <!-- Filtres des Cartes -->
             <div class="flex justify-center gap-2 sm:gap-4 mb-8 flex-wrap">
                 <button onclick="switchCardTab('tn')" id="tabBtnTn" class="px-5 py-2.5 rounded-xl font-bold text-xs transition bg-brand-600 text-white shadow-md">
-                    🇹🇳 Tunisie (National &amp; CTI)
+                    ðŸ‡¹ðŸ‡³ ðŸ‡©ðŸ‡¿ ðŸ‡±ðŸ‡¾ ðŸ‡²ðŸ‡¦ Maghreb
                 </button>
                 <button onclick="switchCardTab('eu')" id="tabBtnEu" class="px-5 py-2.5 rounded-xl font-bold text-xs transition bg-slate-100 text-slate-700 hover:bg-slate-200">
-                    🇪🇺 Europe (Zone Euro / Neobanques)
+                    ðŸ‡ªðŸ‡º Europe (Zone Euro / Neobanques)
                 </button>
                 <button onclick="switchCardTab('us')" id="tabBtnUs" class="px-5 py-2.5 rounded-xl font-bold text-xs transition bg-slate-100 text-slate-700 hover:bg-slate-200">
-                    🇺🇸 États-Unis (Credit Cards &amp; FICO)
+                    ðŸ‡ºðŸ‡¸ Ã‰tats-Unis (Credit Cards &amp; FICO)
                 </button>
             </div>
 
-            <!-- CONTENU 1 : CARTES TUNISIE -->
+            <!-- CONTENU 1 : CARTES MAGHREB -->
             <div id="cardContentTn" class="grid md:grid-cols-2 gap-8">
-                <!-- Carte Nationale CIB / Visa Local -->
                 <div class="p-6 bg-slate-50 rounded-3xl border border-slate-200 shadow-sm flex flex-col justify-between">
                     <div>
-                        <div class="flex justify-between items-start mb-4">
-                            <div>
-                                <span class="px-2.5 py-1 bg-blue-100 text-brand-700 text-xs font-bold rounded-full">Usage National</span>
-                                <h3 class="text-xl font-bold text-slate-900 mt-2">Carte Nationale CIB / Visa Local</h3>
-                            </div>
-                            <i data-lucide="credit-card" class="w-8 h-8 text-brand-600"></i>
-                        </div>
-                        <p class="text-xs text-slate-600 mb-4">Carte de paiement et de retrait reliée à un compte courant ou compte d'épargne local auprès des banques tunisiennes (BIAT, STB, BNA, Attijari, Amen, UIB...).</p>
-                        <div class="space-y-2 text-xs mb-4">
-                            <div class="text-emerald-700 font-bold">✅ Avantages : Retraits sur tous les DAB tunisiens, paiement TPE en magasin, règlement des factures e-Dinar/STEG/SONEDE, pas de risque d'endettement.</div>
-                            <div class="text-rose-600 font-bold">❌ Inconvénients : Inutilisable en dehors du territoire tunisien et bloquée sur les sites web internationaux.</div>
-                            <div class="text-slate-700 font-bold">📌 Plafonds : Retraits 500 à 2 000 TND/semaine (selon profil et banque).</div>
-                        </div>
+                        <span class="px-2.5 py-1 bg-brand-100 text-brand-700 text-xs font-bold rounded-full">ðŸ‡¹ðŸ‡³ Tunisie</span>
+                        <h3 class="text-lg font-bold text-slate-900 mt-2">CTI & Cartes Locales CIB</h3>
+                        <p class="text-xs text-slate-600 mt-2">Carte CIB nationale et Carte Technologie Internationale (CTI) plafonnÃ©e Ã  1 000 TND/an pour e-commerce et abonnements SaaS.</p>
                     </div>
-                    <div class="bg-white p-3.5 rounded-xl border border-slate-200 text-xs text-slate-700">
-                        📋 <strong>Procédure d'obtention :</strong> Ouverture d'un compte bancaire ou chèque avec CIN, justificatif de domicile et fiche de paie/attestation de travail.
+                    <div class="mt-4 pt-4 border-t border-slate-200 text-xs font-bold text-slate-700">
+                        ðŸ“‹ <strong>ProcÃ©dure :</strong> CIN, diplÃ´me supÃ©rieur (Bac+3) ou patente d'entreprise.
                     </div>
                 </div>
 
-                <!-- Carte CTI (Technologie Internationale) -->
                 <div class="p-6 bg-slate-50 rounded-3xl border border-slate-200 shadow-sm flex flex-col justify-between">
                     <div>
-                        <div class="flex justify-between items-start mb-4">
-                            <div>
-                                <span class="px-2.5 py-1 bg-purple-100 text-purple-700 text-xs font-bold rounded-full">E-Commerce International</span>
-                                <h3 class="text-xl font-bold text-slate-900 mt-2">Carte Technologie Internationale (CTI)</h3>
-                            </div>
-                            <i data-lucide="globe" class="w-8 h-8 text-purple-600"></i>
-                        </div>
-                        <p class="text-xs text-slate-600 mb-4">Carte internationale prépayée sous l'égide de la Banque Centrale de Tunisie, destinée au secteur technologique, freelances, développeurs et entreprises.</p>
-                        <div class="space-y-2 text-xs mb-4">
-                            <div class="text-emerald-700 font-bold">✅ Avantages : Achat de logiciels SaaS, abonnements Cloud (AWS, Google, Azure), hébergement, formations en ligne, publicités Meta/Google Ads.</div>
-                            <div class="text-rose-600 font-bold">❌ Inconvénients : Plafond strict non accumulable d'une année sur l'autre. Non utilisable pour achats physiques à l'étranger.</div>
-                            <div class="text-purple-700 font-bold">📌 Plafonds Légaux : 1 000 TND/an (Personnes Physiques) / 10 000 TND/an (Sociétés/Startups).</div>
-                        </div>
+                        <span class="px-2.5 py-1 bg-emerald-100 text-emerald-800 text-xs font-bold rounded-full">ðŸ‡©ðŸ‡¿ AlgÃ©rie</span>
+                        <h3 class="text-lg font-bold text-slate-900 mt-2">CIB & Edahabia</h3>
+                        <p class="text-xs text-slate-600 mt-2">Carte CIB interbancaire et carte Edahabia d'AlgÃ©rie Poste pour paiements quotidiens, factures et e-paiement national.</p>
                     </div>
-                    <div class="bg-white p-3.5 rounded-xl border border-slate-200 text-xs text-slate-700">
-                        📋 <strong>Procédure :</strong> Dépôt de dossier en agence avec copie diplôme supérieur (Bac+3 minimum) ou attestation d'immatriculation/Patente pour les entreprises.
+                    <div class="mt-4 pt-4 border-t border-slate-200 text-xs font-bold text-slate-700">
+                        ðŸ“‹ <strong>ProcÃ©dure :</strong> Compte CCP ou compte courant bancaire algÃ©rien.
                     </div>
                 </div>
 
-                <!-- Cartes Internationales Business / Voyage -->
                 <div class="p-6 bg-slate-50 rounded-3xl border border-slate-200 shadow-sm flex flex-col justify-between">
                     <div>
-                        <div class="flex justify-between items-start mb-4">
-                            <div>
-                                <span class="px-2.5 py-1 bg-emerald-100 text-emerald-800 text-xs font-bold rounded-full">Business &amp; Missions</span>
-                                <h3 class="text-xl font-bold text-slate-900 mt-2">Carte Allocation Voyage / Business</h3>
-                            </div>
-                            <i data-lucide="briefcase" class="w-8 h-8 text-emerald-600"></i>
-                        </div>
-                        <p class="text-xs text-slate-600 mb-4">Cartes de crédit/débit internationales adossées aux comptes en devises ou sous le régime de l'Allocation Touristique / AVA (Frais de Mission).</p>
-                        <div class="space-y-2 text-xs mb-4">
-                            <div class="text-emerald-700 font-bold">✅ Avantages : Paiements et retraits illimités à l'étranger dans la limite des avoirs en devises du compte professionnel/exportateur.</div>
-                            <div class="text-rose-600 font-bold">❌ Inconvénients : Soumis aux réglementations de change strictes de la BCT.</div>
-                        </div>
+                        <span class="px-2.5 py-1 bg-amber-100 text-amber-800 text-xs font-bold rounded-full">ðŸ‡±ðŸ‡¾ Libye</span>
+                        <h3 class="text-lg font-bold text-slate-900 mt-2">Cartes PrÃ©payÃ©es NCB</h3>
+                        <p class="text-xs text-slate-600 mt-2">Cartes de dÃ©bit locales Ã©mises par la National Commercial Bank (NCB) et allocation devises voyages administrÃ©e par la CBL.</p>
                     </div>
-                    <div class="bg-white p-3.5 rounded-xl border border-slate-200 text-xs text-slate-700">
-                        📋 <strong>Procédure :</strong> Justificatif de compte professionnel en devises/dinar convertible ou dossier d'allocation touristique annuelle.
+                    <div class="mt-4 pt-4 border-t border-slate-200 text-xs font-bold text-slate-700">
+                        ðŸ“‹ <strong>ProcÃ©dure :</strong> NumÃ©ro national libyen et compte en dinars libyens.
                     </div>
                 </div>
 
-                <!-- Cartes Prestige Gold / Platinum -->
                 <div class="p-6 bg-slate-50 rounded-3xl border border-slate-200 shadow-sm flex flex-col justify-between">
                     <div>
-                        <div class="flex justify-between items-start mb-4">
-                            <div>
-                                <span class="px-2.5 py-1 bg-amber-100 text-amber-800 text-xs font-bold rounded-full">Haut de Gamme</span>
-                                <h3 class="text-xl font-bold text-slate-900 mt-2">Cartes Gold / Platinum / Signature</h3>
-                            </div>
-                            <i data-lucide="crown" class="w-8 h-8 text-amber-600"></i>
-                        </div>
-                        <p class="text-xs text-slate-600 mb-4">Cartes bancaires destinées aux cadres dirigeants et hauts revenus proposant des plafonds élevés et des assurances voyages exclusives.</p>
-                        <div class="space-y-2 text-xs mb-4">
-                            <div class="text-emerald-700 font-bold">✅ Avantages : Plafonds de paiement très confortables, assistance médicale/rapatriement, accès aux salons VIP d'aéroports.</div>
-                            <div class="text-rose-600 font-bold">❌ Inconvénients : Cotisation annuelle supérieure.</div>
-                        </div>
+                        <span class="px-2.5 py-1 bg-purple-100 text-purple-700 text-xs font-bold rounded-full">ðŸ‡²ðŸ‡¦ Maroc</span>
+                        <h3 class="text-lg font-bold text-slate-900 mt-2">Dotation E-commerce & Internationale</h3>
+                        <p class="text-xs text-slate-600 mt-2">Dotation e-commerce marocaine (15 000 MAD/an) et dotation touristique annuelle pour cartes internationales.</p>
                     </div>
-                    <div class="bg-white p-3.5 rounded-xl border border-slate-200 text-xs text-slate-700">
-                        📋 <strong>Procédure :</strong> Accord de votre conseiller patrimonial bancaire selon revenus et niveau de mouvement du compte.
+                    <div class="mt-4 pt-4 border-t border-slate-200 text-xs font-bold text-slate-700">
+                        ðŸ“‹ <strong>ProcÃ©dure :</strong> CIN marocaine et activation auprÃ¨s de votre agence bancaire.
                     </div>
                 </div>
             </div>
 
             <!-- CONTENU 2 : CARTES EUROPE (UE) -->
             <div id="cardContentEu" class="grid md:grid-cols-2 gap-8 hidden">
-                <!-- Neobanques Multi-devises -->
                 <div class="p-6 bg-slate-50 rounded-3xl border border-slate-200 shadow-sm flex flex-col justify-between">
                     <div>
                         <div class="flex justify-between items-start mb-4">
@@ -728,18 +594,17 @@
                             </div>
                             <i data-lucide="zap" class="w-8 h-8 text-emerald-600"></i>
                         </div>
-                        <p class="text-xs text-slate-600 mb-4">Comptes bancaires européens digitaux avec sous-comptes multi-devises (EUR, USD, GBP, CHF...) et conversion instantanée au taux interbancaire réel.</p>
+                        <p class="text-xs text-slate-600 mb-4">Comptes bancaires europÃ©ens digitaux avec sous-comptes multi-devises (EUR, USD, GBP) et conversion instantanÃ©e sans frais cachÃ©s.</p>
                         <div class="space-y-2 text-xs mb-4">
-                            <div class="text-emerald-700 font-bold">✅ Avantages : Zero frais de change cachés en voyage, IBAN européen (LT, DE, FR), cartes virtuelles éphémères pour la sécurité e-commerce.</div>
-                            <div class="text-rose-600 font-bold">❌ Inconvénients : Nécessite un justificatif de résidence fiscale dans l'Espace Économique Européen (EEE).</div>
+                            <div class="text-emerald-700 font-bold">âœ… Avantages : Zero frais de change en voyage, IBAN europÃ©en (LT, DE, FR), cartes virtuelles Ã©phÃ©mÃ¨res.</div>
+                            <div class="text-rose-600 font-bold">âŒ InconvÃ©nients : Justificatif de rÃ©sidence fiscale dans l'Espace Ã‰conomique EuropÃ©en (EEE) requis.</div>
                         </div>
                     </div>
                     <div class="bg-white p-3.5 rounded-xl border border-slate-200 text-xs text-slate-700">
-                        📋 <strong>Procédure :</strong> Inscription 100% mobile en 5 minutes avec passeport biométrique et selfie de vérification d'identité.
+                        ðŸ“‹ <strong>ProcÃ©dure :</strong> Inscription mobile en 5 minutes avec passeport biomÃ©trique et selfie.
                     </div>
                 </div>
 
-                <!-- Trade Republic - Carte Saveback -->
                 <div class="p-6 bg-slate-50 rounded-3xl border border-slate-200 shadow-sm flex flex-col justify-between">
                     <div>
                         <div class="flex justify-between items-start mb-4">
@@ -749,21 +614,20 @@
                             </div>
                             <i data-lucide="trending-up" class="w-8 h-8 text-indigo-600"></i>
                         </div>
-                        <p class="text-xs text-slate-600 mb-4">Nouvelle génération de cartes bancaires réinvestissant 1% de tous vos achats directement dans un plan d'épargne en ETF ou Bourse.</p>
+                        <p class="text-xs text-slate-600 mb-4">RÃ©investit 1% de tous vos achats directement dans un plan d'Ã©pargne en ETF ou Bourse.</p>
                         <div class="space-y-2 text-xs mb-4">
-                            <div class="text-emerald-700 font-bold">✅ Avantages : Rémunération des liquidités non investies (taux BCE d'environ 2.5% à 3.25%), zéro frais de tenue de compte, Saveback automatique.</div>
-                            <div class="text-rose-600 font-bold">❌ Inconvénients : Exige la mise en place d'un plan d'investissement mensuel d'au moins 50€.</div>
+                            <div class="text-emerald-700 font-bold">âœ… Avantages : RÃ©munÃ©ration des liquiditÃ©s non investies au taux BCE (2.50%), zÃ©ro frais de tenue de compte.</div>
+                            <div class="text-rose-600 font-bold">âŒ InconvÃ©nients : Exige un plan d'investissement mensuel d'au moins 50â‚¬.</div>
                         </div>
                     </div>
                     <div class="bg-white p-3.5 rounded-xl border border-slate-200 text-xs text-slate-700">
-                        📋 <strong>Procédure :</strong> Ouverture d'un compte-titres Trade Republic avec vérification fiscale européenne.
+                        ðŸ“‹ <strong>ProcÃ©dure :</strong> Ouverture d'un compte-titres Trade Republic avec vÃ©rification fiscale europÃ©enne.
                     </div>
                 </div>
             </div>
 
-            <!-- CONTENU 3 : CARTES USA & CREDIT SCORE -->
+            <!-- CONTENU 3 : CARTES USA & CREDIT SCORE (DIRECTIVES ET DÃ‰TAILS COMPLETS) -->
             <div id="cardContentUs" class="grid md:grid-cols-2 gap-8 hidden">
-                <!-- US Rewards Credit Cards -->
                 <div class="p-6 bg-slate-50 rounded-3xl border border-slate-200 shadow-sm flex flex-col justify-between">
                     <div>
                         <div class="flex justify-between items-start mb-4">
@@ -773,35 +637,34 @@
                             </div>
                             <i data-lucide="award" class="w-8 h-8 text-amber-600"></i>
                         </div>
-                        <p class="text-xs text-slate-600 mb-4">Le système américain repose sur le crédit révolvant. Ces cartes offrent de très généreux bonus à l'inscription et du CashBack sur tous vos achats.</p>
+                        <p class="text-xs text-slate-600 mb-4">Le systÃ¨me amÃ©ricain repose sur le crÃ©dit rÃ©volvant. Ces cartes offrent de trÃ¨s gÃ©nÃ©reux bonus Ã  l'inscription et du CashBack sur tous vos achats.</p>
                         <div class="space-y-2 text-xs mb-4">
-                            <div class="text-emerald-700 font-bold">✅ Avantages : Cash-back (1% à 5%), points de fidélité convertible en vols/hôtels gratuits, protection d'achat maximale.</div>
-                            <div class="text-rose-600 font-bold">❌ Inconvénients : Taux d'intérêt débiteur très élevé (APR 20% à 29%) en cas de solde non remboursé à la fin du mois.</div>
+                            <div class="text-emerald-700 font-bold">âœ… Avantages : Cash-back (1% Ã  5%), points de fidÃ©litÃ© convertibles en vols/hÃ´tels gratuits, protection d'achat maximale.</div>
+                            <div class="text-rose-600 font-bold">âŒ InconvÃ©nients : Taux d'intÃ©rÃªt dÃ©biteur trÃ¨s Ã©levÃ© (APR 20% Ã  29%) en cas de solde non remboursÃ© Ã  la fin du mois.</div>
                         </div>
                     </div>
                     <div class="bg-white p-3.5 rounded-xl border border-slate-200 text-xs text-slate-700">
-                        📋 <strong>Exigence :</strong> Nécessite un Social Security Number (SSN) ou ITIN et un Credit Score "Good" (670+).
+                        ðŸ“‹ <strong>Exigence :</strong> NÃ©cessite un Social Security Number (SSN) ou ITIN et un Credit Score "Good" (670+).
                     </div>
                 </div>
 
-                <!-- Secured Credit Cards & Guide FICO -->
                 <div class="p-6 bg-slate-50 rounded-3xl border border-slate-200 shadow-sm flex flex-col justify-between">
                     <div>
                         <div class="flex justify-between items-start mb-4">
                             <div>
-                                <span class="px-2.5 py-1 bg-blue-100 text-brand-700 text-xs font-bold rounded-full">Création de Crédit</span>
+                                <span class="px-2.5 py-1 bg-blue-100 text-brand-700 text-xs font-bold rounded-full">CrÃ©ation de CrÃ©dit</span>
                                 <h3 class="text-xl font-bold text-slate-900 mt-2">Secured Credit Cards &amp; FICO Score</h3>
                             </div>
                             <i data-lucide="shield-check" class="w-8 h-8 text-brand-600"></i>
                         </div>
-                        <p class="text-xs text-slate-600 mb-4">Carte adossée à un dépôt de garantie (ex: 200$ à 500$) servant de plafond, conçue pour construire ou restaurer son historique de crédit américain (FICO Score).</p>
+                        <p class="text-xs text-slate-600 mb-4">Carte adossÃ©e Ã  un dÃ©pÃ´t de garantie (ex: 200$ Ã  500$) servant de plafond, conÃ§ue pour construire ou restaurer son historique de crÃ©dit amÃ©ricain (FICO Score).</p>
                         <div class="space-y-2 text-xs mb-4">
-                            <div class="text-emerald-700 font-bold">✅ Avantages : Taux d'approbation proche de 100%, permet d'accéder ensuite aux cartes premium après 6 à 12 mois de paiements ponctuels.</div>
-                            <div class="text-slate-700 font-bold">💡 Comprendre le FICO Score : Évalué de 300 à 850. Détermine votre capacité à louer un logement, acheter une voiture ou contracter un prêt immobilier aux US.</div>
+                            <div class="text-emerald-700 font-bold">âœ… Avantages : Taux d'approbation proche de 100%, permet d'accÃ©der ensuite aux cartes premium aprÃ¨s 6 Ã  12 mois.</div>
+                            <div class="text-slate-700 font-bold">ðŸ’¡ Comprendre le FICO Score : Ã‰valuÃ© de 300 Ã  850 (35% historique de paiement, 30% taux d'utilisation). DÃ©termine votre capacitÃ© Ã  louer, acheter une voiture ou emprunter aux USA.</div>
                         </div>
                     </div>
                     <div class="bg-white p-3.5 rounded-xl border border-slate-200 text-xs text-slate-700">
-                        📋 <strong>Procédure :</strong> Inscription auprès de Discover it Secured ou Capital One Platinum avec virement du dépôt de garantie.
+                        ðŸ“‹ <strong>ProcÃ©dure :</strong> Inscription auprÃ¨s de Discover it Secured ou Capital One Platinum avec virement du dÃ©pÃ´t.
                     </div>
                 </div>
             </div>
@@ -812,112 +675,104 @@
     <section id="budget" class="py-16 bg-slate-50 border-b border-slate-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-10">
-                <span class="text-brand-600 font-bold text-xs uppercase tracking-wider">Planification Financière</span>
-                <h2 class="text-3xl font-extrabold text-slate-900 mt-1">Simulateur de Capacité d'Épargne (Règle 50/30/20)</h2>
-                <p class="mt-2 text-slate-600 font-medium">Entrez votre revenu mensuel net pour calculer instantanément votre capacité d'épargne idéale et pré-remplir le simulateur d'investissement.</p>
+                <span class="text-brand-600 font-bold text-xs uppercase tracking-wider" id="budBadge">Planification FinanciÃ¨re</span>
+                <h2 class="text-3xl font-extrabold text-slate-900 mt-1" id="budTitle">Simulateur de CapacitÃ© d'Ã‰pargne (RÃ¨gle 50/30/20)</h2>
+                <p class="mt-2 text-slate-600 font-medium" id="budDesc">Calculez votre rÃ©partition budgÃ©taire idÃ©ale en fonction de vos revenus.</p>
             </div>
 
             <div class="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-sm max-w-4xl mx-auto">
                 <div class="flex flex-col sm:flex-row items-center gap-4 mb-8 bg-slate-50 p-4 rounded-2xl border border-slate-200">
-                    <label for="incomeInput" class="text-sm font-bold text-slate-800 whitespace-nowrap">Revenu Mensuel Net :</label>
-                    <input type="number" id="incomeInput" value="3000" step="100" min="0" oninput="calculateBudget()" class="w-full px-4 py-2.5 text-base font-bold bg-white border border-slate-300 rounded-xl text-slate-900 outline-none focus:border-brand-600 transition">
-                    <button onclick="applyBudgetToSimulator()" class="w-full sm:w-auto px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl shadow-md transition whitespace-nowrap">
-                        Injecter dans le Simulateur →
+                    <label for="incomeInput" class="text-sm font-bold text-slate-800 whitespace-nowrap" id="lblIncome">Revenu Mensuel Net :</label>
+                    <input type="number" id="incomeInput" value="3000" step="100" min="0" oninput="calculateBudget()" class="w-full px-4 py-2.5 text-base font-bold bg-white border border-slate-300 rounded-xl text-slate-900 outline-none focus:border-brand-600">
+                    <button onclick="applyBudgetToSimulator()" class="w-full sm:w-auto px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl shadow-md whitespace-nowrap" id="btnInjectBudget">
+                        Injecter dans le Simulateur â†’
                     </button>
                 </div>
 
                 <div class="grid md:grid-cols-3 gap-6 text-center">
                     <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200 shadow-sm">
-                        <span class="inline-block px-3 py-1 bg-blue-100 text-brand-700 text-xs font-bold rounded-full mb-2">50% Besoins</span>
-                        <h4 class="text-xs text-slate-500 font-semibold uppercase">Besoins Essentiels</h4>
-                        <div id="bNeeds" class="text-2xl font-extrabold text-slate-900 mt-1">1 500 TND</div>
-                        <p class="text-xs text-slate-500 mt-2">Loyer, factures, nourriture, transport</p>
+                        <span class="inline-block px-3 py-1 bg-blue-100 text-brand-700 text-xs font-bold rounded-full mb-2">50%</span>
+                        <h4 class="text-xs text-slate-500 font-semibold uppercase" id="lblNeeds">Besoins Essentiels</h4>
+                        <div id="bNeeds" class="text-2xl font-extrabold text-slate-900 mt-1">0</div>
                     </div>
-
                     <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200 shadow-sm">
-                        <span class="inline-block px-3 py-1 bg-purple-100 text-purple-700 text-xs font-bold rounded-full mb-2">30% Envie</span>
-                        <h4 class="text-xs text-slate-500 font-semibold uppercase">Plaisirs &amp; Loisirs</h4>
-                        <div id="bWants" class="text-2xl font-extrabold text-slate-900 mt-1">900 TND</div>
-                        <p class="text-xs text-slate-500 mt-2">Sorties, voyages, abonnements, hobbys</p>
+                        <span class="inline-block px-3 py-1 bg-purple-100 text-purple-700 text-xs font-bold rounded-full mb-2">30%</span>
+                        <h4 class="text-xs text-slate-500 font-semibold uppercase" id="lblWants">Plaisirs &amp; Loisirs</h4>
+                        <div id="bWants" class="text-2xl font-extrabold text-slate-900 mt-1">0</div>
                     </div>
-
                     <div class="bg-slate-50 p-5 rounded-2xl border border-emerald-200 bg-emerald-50/40 shadow-sm">
-                        <span class="inline-block px-3 py-1 bg-emerald-100 text-emerald-800 text-xs font-bold rounded-full mb-2">20% Épargne</span>
-                        <h4 class="text-xs text-emerald-800 font-semibold uppercase">Investissement / Épargne</h4>
-                        <div id="bSavings" class="text-2xl font-extrabold text-emerald-600 mt-1">600 TND</div>
-                        <p class="text-xs text-slate-500 mt-2">Placements, Bourse, Immobilier</p>
+                        <span class="inline-block px-3 py-1 bg-emerald-100 text-emerald-800 text-xs font-bold rounded-full mb-2">20%</span>
+                        <h4 class="text-xs text-emerald-800 font-semibold uppercase" id="lblSavings">Ã‰pargne / Investissement</h4>
+                        <div id="bSavings" class="text-2xl font-extrabold text-emerald-600 mt-1">0</div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SECTION : GUIDE ULTIME - COMMENT FRUCTIFIER SON ARGENT ET DEVENIR RICHE -->
+    <!-- SECTION : GUIDE ULTIME - COMMENT FRUCTIFIER SON ARGENT -->
     <section id="guide-richesse" class="py-16 bg-white border-b border-slate-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-14">
-                <span class="text-brand-600 font-bold text-xs uppercase tracking-wider">FEUILLE DE ROUTE STRATÉGIQUE</span>
+                <span class="text-brand-600 font-bold text-xs uppercase tracking-wider">FEUILLE DE ROUTE STRATÃ‰GIQUE</span>
                 <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-1">Comment Fructifier son Argent et Devenir Riche : Le Guide Ultime</h2>
-                <p class="mt-3 text-slate-600 font-medium">S'enrichir durablement ne repose pas sur la chance ou la spéculation, mais sur l'application rigoureuse de principes financiers éprouvés.</p>
+                <p class="mt-3 text-slate-600 font-medium">S'enrichir durablement repose sur l'application rigoureuse de principes financiers Ã©prouvÃ©s.</p>
             </div>
 
             <div class="grid md:grid-cols-3 gap-8 mb-12">
-                <!-- Étape 1 -->
                 <div class="bg-slate-50 p-6 rounded-3xl border border-slate-200 shadow-sm relative">
-                    <span class="absolute -top-3 left-6 bg-brand-600 text-white text-xs font-extrabold px-3 py-1 rounded-full shadow-md">Étape 1</span>
-                    <h3 class="text-lg font-bold text-slate-900 mt-2 mb-2">1. La Règle du "Payez-vous en Premier"</h3>
+                    <span class="absolute -top-3 left-6 bg-brand-600 text-white text-xs font-extrabold px-3 py-1 rounded-full shadow-md">Ã‰tape 1</span>
+                    <h3 class="text-lg font-bold text-slate-900 mt-2 mb-2">1. La RÃ¨gle du "Payez-vous en Premier"</h3>
                     <p class="text-xs text-slate-600 leading-relaxed mb-3">
-                        Prélévez systématiquement 15% à 30% de vos revenus dès la réception de votre salaire, puis vivez avec le solde.
+                        PrÃ©lÃ©vez systÃ©matiquement 15% Ã  30% de vos revenus dÃ¨s la rÃ©ception de votre salaire, puis vivez avec le solde.
                     </p>
                     <div class="bg-blue-50 p-3 rounded-2xl border border-blue-100 text-xs text-brand-700 font-semibold">
-                        💡 <strong>Action concrète :</strong> Mettez en place un virement automatique permanent le lendemain de votre paie.
+                        ðŸ’¡ <strong>Action concrÃ¨te :</strong> Mettez en place un virement automatique permanent le lendemain de votre paie.
                     </div>
                 </div>
 
-                <!-- Étape 2 -->
                 <div class="bg-slate-50 p-6 rounded-3xl border border-slate-200 shadow-sm relative">
-                    <span class="absolute -top-3 left-6 bg-brand-600 text-white text-xs font-extrabold px-3 py-1 rounded-full shadow-md">Étape 2</span>
-                    <h3 class="text-lg font-bold text-slate-900 mt-2 mb-2">2. Éliminer les Dettes Toxiques</h3>
+                    <span class="absolute -top-3 left-6 bg-brand-600 text-white text-xs font-extrabold px-3 py-1 rounded-full shadow-md">Ã‰tape 2</span>
+                    <h3 class="text-lg font-bold text-slate-900 mt-2 mb-2">2. Ã‰liminer les Dettes Toxiques</h3>
                     <p class="text-xs text-slate-600 leading-relaxed mb-3">
-                        Rembourser une dette à taux élevé (crédit conso, découvert) équivaut à un placement garanti à très fort rendement net.
+                        Rembourser une dette Ã  taux Ã©levÃ© (crÃ©dit conso, dÃ©couvert) Ã©quivaut Ã  un placement garanti Ã  trÃ¨s fort rendement net.
                     </p>
                     <div class="bg-blue-50 p-3 rounded-2xl border border-blue-100 text-xs text-brand-700 font-semibold">
-                        💡 <strong>Action concrète :</strong> Appliquez la méthode Boule de Neige pour solder les crédits un par un.
+                        ðŸ’¡ <strong>Action concrÃ¨te :</strong> Appliquez la mÃ©thode Boule de Neige pour solder les crÃ©dits un par un.
                     </div>
                 </div>
 
-                <!-- Étape 3 -->
                 <div class="bg-slate-50 p-6 rounded-3xl border border-slate-200 shadow-sm relative">
-                    <span class="absolute -top-3 left-6 bg-brand-600 text-white text-xs font-extrabold px-3 py-1 rounded-full shadow-md">Étape 3</span>
-                    <h3 class="text-lg font-bold text-slate-900 mt-2 mb-2">3. Exploiter la Puissance des Intérêts Composés</h3>
+                    <span class="absolute -top-3 left-6 bg-brand-600 text-white text-xs font-extrabold px-3 py-1 rounded-full shadow-md">Ã‰tape 3</span>
+                    <h3 class="text-lg font-bold text-slate-900 mt-2 mb-2">3. Exploiter la Puissance des IntÃ©rÃªts ComposÃ©s</h3>
                     <p class="text-xs text-slate-600 leading-relaxed mb-3">
-                        En réinvestissant systématiquement vos intérêts, votre capital s'accroît de façon exponentielle avec le temps.
+                        En rÃ©investissant systÃ©matiquement vos intÃ©rÃªts, votre capital s'accroÃ®t de faÃ§on exponentielle avec le temps.
                     </p>
                     <div class="bg-blue-50 p-3 rounded-2xl border border-blue-100 text-xs text-brand-700 font-semibold">
-                        💡 <strong>Action concrète :</strong> Utilisez notre simulateur 3D ci-dessous pour modéliser vos placements.
+                        ðŸ’¡ <strong>Action concrÃ¨te :</strong> Utilisez notre simulateur 3D ci-dessous pour modÃ©liser vos placements.
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SECTION : SIMULATEUR D'ÉPARGNE & INTÉRÊTS COMPOSÉS 3D -->
+    <!-- SECTION : SIMULATEUR D'Ã‰PARGNE & INTÃ‰RÃŠTS COMPOSÃ‰S 3D -->
     <section id="simulateur" class="py-12 bg-slate-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-8">
-                <span class="text-brand-600 font-bold text-xs uppercase tracking-wider">Moteur de Calcul</span>
-                <h2 class="text-3xl font-extrabold text-slate-900 mt-1">Simulateur d'Épargne &amp; Intérêts Composés</h2>
-                <p class="text-sm text-slate-600 font-medium">Ajustez les curseurs pour modéliser la croissance de vos placements au fil des années.</p>
+                <span class="text-brand-600 font-bold text-xs uppercase tracking-wider" id="simBadge">Moteur de Calcul</span>
+                <h2 class="text-3xl font-extrabold text-slate-900 mt-1" id="simTitle">Simulateur d'Ã‰pargne &amp; IntÃ©rÃªts ComposÃ©s 3D</h2>
+                <p class="text-sm text-slate-600 font-medium" id="simDesc">ModÃ©lisez la croissance de votre capital au fil des annÃ©es.</p>
             </div>
             
             <div class="widget" id="simWidget">
               <div class="dynamic-header" id="dynamicHeader">
                 <div class="dh-left">
-                  <span class="dh-title">Valeur à l'horizon (Survolez la courbe pour détailler)</span>
+                  <span class="dh-title" id="dhTitleText">Valeur Ã  l'horizon (Survolez la courbe)</span>
                   <span class="dh-year" id="dhYearText">Fin de simulation</span>
                 </div>
                 <div class="dh-right">
-                  <div class="dh-val" id="dhValText">0 TND</div>
+                  <div class="dh-val" id="dhValText">0</div>
                 </div>
               </div>
 
@@ -925,54 +780,51 @@
                 <svg id="simChart" xmlns="http://www.w3.org/2000/svg"></svg>
               </div>
 
-              <div class="legend-section">
-                <div class="legend-item"><div class="legend-dot" style="background:var(--chart-1);"></div><span>Capital Projeté</span></div>
-              </div>
-
               <div class="sliders-section bg-white p-6 rounded-3xl border border-slate-200 shadow-sm">
-                <div class="breakdown-title">Ajustez vos paramètres</div>
+                <div class="breakdown-title" id="sliderMainTitle">Ajustez vos paramÃ¨tres</div>
                 <div id="slidersContainer"></div>
 
                 <div class="slider-row" style="margin-top: 16px;">
                   <div class="slider-label">
-                    <span>Épargne mensuelle active</span>
+                    <span>Ã‰pargne mensuelle active</span>
                     <input type="checkbox" id="monthlyActiveToggle" checked onchange="renderChart()" style="transform: scale(1.2); cursor: pointer;">
                   </div>
                 </div>
 
                 <div class="slider-row" style="margin-top: 16px;">
-                  <div class="slider-label">Mois / Année de début (Capital initial)</div>
+                  <div class="slider-label">Mois / AnnÃ©e de dÃ©but (Capital initial)</div>
                   <div class="slider-control">
                     <input type="month" id="startDateInput" class="op-input" value="2026-01" style="width:100%;" onchange="renderChart()">
                   </div>
                 </div>
               </div>
 
+              <!-- OPÃ‰RATIONS PONCTUELLES (VERSEMENTS / PRÃ‰LÃˆVEMENTS) -->
               <div class="operations-section">
                 <div class="ops-header">
-                  <span class="ops-title">Opérations ponctuelles (Versements ou prélèvements)</span>
+                  <span class="ops-title">OpÃ©rations ponctuelles (Versements ou prÃ©lÃ¨vements)</span>
                   <button class="btn-add" onclick="addOperation()">+ Ajouter</button>
                 </div>
                 <div id="operationsList"></div>
               </div>
 
               <div class="export-bar">
-                <button class="btn-export" onclick="exportToExcel()">📊 Exporter les deux tableaux en Excel (CSV)</button>
-                <button class="btn-export" onclick="exportToPDF()">📄 Exporter les deux tableaux en PDF</button>
+                <button class="btn-export" onclick="exportToExcel()"><span id="btnExportExcel">ðŸ“Š Exporter en Excel (CSV)</span></button>
+                <button class="btn-export" onclick="exportToPDF()"><span id="btnExportPdf">ðŸ“„ Exporter en PDF</span></button>
               </div>
 
               <div class="tables-container">
                 <div class="recap-section">
-                  <div class="breakdown-title" style="margin-bottom: 4px;">Tableau Mensuel</div>
+                  <div class="breakdown-title" style="margin-bottom: 4px;" id="titleMonthlyTab">Tableau Mensuel</div>
                   <table class="recap-table" id="monthlyTable">
                     <thead>
                       <tr>
-                        <th>Période</th>
-                        <th>Début</th>
-                        <th>Épargne</th>
-                        <th>Opération</th>
-                        <th>Intérêts</th>
-                        <th>Fin de Mois</th>
+                        <th id="thmPeriod">PÃ©riode</th>
+                        <th id="thmStart">DÃ©but</th>
+                        <th id="thmSavings">Ã‰pargne</th>
+                        <th>OpÃ©ration</th>
+                        <th id="thmInterest">IntÃ©rÃªts</th>
+                        <th id="thmEnd">Fin</th>
                       </tr>
                     </thead>
                     <tbody id="recapTableBody"></tbody>
@@ -980,89 +832,202 @@
                 </div>
 
                 <div class="recap-section">
-                  <div class="breakdown-title" style="margin-bottom: 4px;">Tableau Trimestriel</div>
+                  <div class="breakdown-title" style="margin-bottom: 4px;" id="titleQuarterTab">Tableau Trimestriel</div>
                   <table class="recap-table" id="quarterTable">
                     <thead>
                       <tr>
-                        <th>Trimestre</th>
-                        <th>Début</th>
-                        <th>Épargne</th>
-                        <th>Operations</th>
-                        <th>Intérêts</th>
-                        <th>Taxes</th>
-                        <th>Fin</th>
+                        <th id="thqQuarter">Trimestre</th>
+                        <th id="thqStart">DÃ©but</th>
+                        <th id="thqSavings">Ã‰pargne</th>
+                        <th>OpÃ©rations</th>
+                        <th id="thqInterest">IntÃ©rÃªts</th>
+                        <th id="thqEnd">Fin</th>
                       </tr>
                     </thead>
                     <tbody id="quarterTableBody"></tbody>
                   </table>
                 </div>
               </div>
-
             </div>
-
         </div>
     </section>
 
-    <!-- BANDEAU PUBLICITAIRE GOOGLE ADSENSE 2 -->
-    <div class="max-w-5xl mx-auto px-4 my-8 text-center">
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-3266873353292561"
-             data-ad-slot="auto"
-             data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
-        <script>
-             (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
-    </div>
-
-    <!-- SECTION : FAQ -->
+    <!-- SECTION FAQ -->
     <section id="faq" class="py-16 bg-white border-t border-slate-200">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-extrabold text-slate-900 text-center mb-8">Foire Aux Questions</h2>
+            <h2 class="text-3xl font-extrabold text-slate-900 text-center mb-8" id="faqTitle">Foire Aux Questions</h2>
             <div class="space-y-4">
                 <details class="group bg-slate-50 p-5 rounded-2xl border border-slate-200">
-                    <summary class="font-bold text-sm sm:text-base cursor-pointer flex justify-between items-center text-slate-900">
-                        Comment fonctionne la mise à jour des taux directeurs ?
+                    <summary class="font-bold text-sm sm:text-base cursor-pointer flex justify-between items-center text-slate-900" id="faqQ1">
+                        Comment fonctionne la mise Ã  jour des taux directeurs ?
                         <i data-lucide="chevron-down" class="w-5 h-5 group-open:rotate-180 transition-transform"></i>
                     </summary>
-                    <p class="mt-3 text-xs sm:text-sm text-slate-600 font-medium">
-                        Le bouton d'actualisation synchronise les données affichées avec les taux publiés par la BCT, la BCE et la FED afin de garantir la précision de vos simulations de crédits et placements.
-                    </p>
-                </details>
-                <details class="group bg-slate-50 p-5 rounded-2xl border border-slate-200">
-                    <summary class="font-bold text-sm sm:text-base cursor-pointer flex justify-between items-center text-slate-900">
-                        Puis-je changer la devise de calcul ?
-                        <i data-lucide="chevron-down" class="w-5 h-5 group-open:rotate-180 transition-transform"></i>
-                    </summary>
-                    <p class="mt-3 text-xs sm:text-sm text-slate-600 font-medium">
-                        Oui, utilisez le sélecteur de devise (TND, EUR, USD) situé dans la barre de navigation supérieure pour convertir automatiquement l'ensemble des modules du site.
+                    <p class="mt-3 text-xs sm:text-sm text-slate-600 font-medium" id="faqA1">
+                        Le bouton d'actualisation synchronise les donnÃ©es affichÃ©es avec les taux publiÃ©s par la BCT, la BA, la BCL, BAM, la BCE et la FED afin de garantir la prÃ©cision de vos simulations de crÃ©dits et placements.
                     </p>
                 </details>
             </div>
         </div>
     </section>
 
-    <!-- FOOTER AVEC POLITIQUE DE CONFIDENTIALITÉ -->
+    <!-- FOOTER -->
     <footer class="bg-slate-900 text-slate-400 py-8 border-t border-slate-800 text-center text-xs font-medium">
         <div class="max-w-7xl mx-auto px-4">
-            <p>&copy; 2026 Épargne & Investissement Pro. Tous droits réservés. | 
-               <a href="privacy.html" class="text-blue-400 hover:text-blue-300 underline transition">Politique de Confidentialité</a>
-            </p>
+            <p>&copy; 2026 Ã‰pargne & Investissement Pro. <span id="footerRights">Tous droits rÃ©servÃ©s.</span></p>
         </div>
     </footer>
 
-    <!-- LOGIQUE JAVASCRIPT COMPLÈTE -->
+    <!-- LOGIQUE JAVASCRIPT COMPLET -->
     <script>
       /* <![CDATA[ */
       lucide.createIcons();
 
-      // PARAMÈTRES DU SIMULATEUR D'ÉPARGNE
+      const translations = {
+        fr: {
+          docTitle: "Ã‰pargne & Investissement Pro - Maghreb, Europe & USA",
+          brandName: "Ã‰pargne & Investissement",
+          navHome: "Accueil", navRates: "Observatoire Taux", navCredit: "Simulateur CrÃ©dit",
+          navCards: "Cartes Bancaires", navBudget: "Budget 50/30/20", navGuide: "Guide Richesse", navSavings: "Ã‰pargne 3D", navFaq: "FAQ",
+          heroBadge: "Tunisie, AlgÃ©rie, Libye, Maroc, Europe & USA",
+          heroTitle: 'Faites fructifier votre argent au <span class="text-brand-600">Maghreb, en Europe & aux USA</span>',
+          heroDesc: "Taux directeurs officiels (BCT, BA, BCL, BAM, BCE, FED), simulateurs de crÃ©dit et d'amortissement, et guide complet des cartes bancaires & Credit Score USA.",
+          btnHeroSim: 'Lancer le simulateur 3D', btnHeroRates: 'Voir les Taux RÃ©gionaux & US',
+          obsSub: "Banques Centrales Partenaires", obsTitle: "Observatoire des Taux Directeurs (BCT, BA, BCL, BAM, BCE, FED)",
+          obsDesc: "DonnÃ©es officielles synchronisÃ©es avec les serveurs des banques centrales du Maghreb, de la Zone Euro et des USA.",
+          creditBadge: "CALCULATEUR D'EMPRUNT", creditTitle: "Simulateur de CrÃ©dit & Amortissement",
+          creditDesc: "Calculez vos mensualitÃ©s dans la devise de votre pays (TND, DZD, LYD, MAD, EUR, USD).",
+          lblCreditAmt: "Montant du CrÃ©dit :", lblCreditRate: "Taux d'IntÃ©rÃªt Annuel (%) :", lblCreditYears: "DurÃ©e (AnnÃ©es) :",
+          resMonthlyPayment: "MensualitÃ© EstimÃ©e", resTotalInterest: "Total des IntÃ©rÃªts", resTotalPayback: "CoÃ»t Total Rendu",
+          cardBadge: "MONÃ‰TIQUE & SYSTEMES DE CRÃ‰DIT", cardTitle: "Guide des Cartes Bancaires & Credit Score USA",
+          cardDesc: "Plafonds, dotations, cartes CIB, Edahabia, CTI, Neobanques europÃ©ennes et directives complÃ¨tes sur le Credit Score FICO aux USA.",
+          budBadge: "Planification FinanciÃ¨re", budTitle: "Simulateur de CapacitÃ© d'Ã‰pargne (RÃ¨gle 50/30/20)",
+          budDesc: "Calculez votre rÃ©partition budgÃ©taire idÃ©ale en fonction de vos revenus.",
+          lblIncome: "Revenu Mensuel Net :", btnInjectBudget: "Injecter dans le Simulateur â†’",
+          lblNeeds: "Besoins Essentiels", lblWants: "Plaisirs & Loisirs", lblSavings: "Ã‰pargne / Investissement",
+          simBadge: "Moteur de Calcul", simTitle: "Simulateur d'Ã‰pargne & IntÃ©rÃªts ComposÃ©s 3D", simDesc: "ModÃ©lisez la croissance de votre capital au fil des annÃ©es.",
+          dhTitleText: "Valeur Ã  l'horizon (Survolez la courbe)", dhYearText: "Fin de simulation",
+          sliderMainTitle: "Ajustez vos paramÃ¨tres",
+          btnExportExcel: "ðŸ“Š Exporter en Excel (CSV)", btnExportPdf: "ðŸ“„ Exporter en PDF",
+          titleMonthlyTab: "Tableau Mensuel", thmPeriod: "PÃ©riode", thmStart: "DÃ©but", thmSavings: "Ã‰pargne", thmInterest: "IntÃ©rÃªts", thmEnd: "Fin",
+          titleQuarterTab: "Tableau Trimestriel", thqQuarter: "Trimestre", thqStart: "DÃ©but", thqSavings: "Ã‰pargne", thqInterest: "IntÃ©rÃªts", thqEnd: "Fin",
+          faqTitle: "Foire Aux Questions", faqQ1: "Comment fonctionne la mise Ã  jour des taux directeurs ?",
+          faqA1: "Le bouton d'actualisation synchronise les donnÃ©es affichÃ©es avec les taux publiÃ©s par la BCT, la BA, la BCL, BAM, la BCE et la FED afin de garantir la prÃ©cision de vos simulations.",
+          footerRights: "Tous droits rÃ©servÃ©s.",
+          pInitial: "Capital initial", pMonthly: "Ã‰pargne mensuelle", pRate: "Rendement estimÃ© (%)", pYears: "Horizon (annÃ©es)"
+        },
+        en: {
+          docTitle: "Savings & Investment Pro - Maghreb, Europe & USA",
+          brandName: "Savings & Investment",
+          navHome: "Home", navRates: "Interest Rates", navCredit: "Loan Simulator",
+          navCards: "Bank Cards", navBudget: "50/30/20 Budget", navGuide: "Wealth Guide", navSavings: "3D Savings", navFaq: "FAQ",
+          heroBadge: "Tunisia, Algeria, Libya, Morocco, Europe & USA",
+          heroTitle: 'Grow your money in <span class="text-brand-600">Maghreb, Europe & USA</span>',
+          heroDesc: "Official central bank rates (CBT, BA, CBL, BAM, ECB, FED), loan amortization simulators, and US Credit Score guide.",
+          btnHeroSim: 'Launch 3D Simulator', btnHeroRates: 'View Regional & US Rates',
+          obsSub: "Partner Central Banks", obsTitle: "Policy Rates Observatory (CBT, BA, CBL, BAM, ECB, FED)",
+          obsDesc: "Official central bank data synchronized with Maghreb, Eurozone and US servers.",
+          creditBadge: "LOAN CALCULATOR", creditTitle: "Loan & Amortization Simulator",
+          creditDesc: "Calculate monthly payments in your local currency (TND, DZD, LYD, MAD, EUR, USD).",
+          lblCreditAmt: "Loan Amount:", lblCreditRate: "Annual Interest Rate (%):", lblCreditYears: "Term (Years):",
+          resMonthlyPayment: "Estimated Payment", resTotalInterest: "Total Interest", resTotalPayback: "Total Cost",
+          cardBadge: "PAYMENTS & CREDIT SYSTEMS", cardTitle: "Bank Cards & US Credit Score Guide",
+          cardDesc: "Limits, allowances, CIB, Edahabia, CTI, European Neobanks, and full US FICO Credit Score guide.",
+          budBadge: "Financial Planning", budTitle: "Savings Capacity Simulator (50/30/20 Rule)",
+          budDesc: "Calculate your ideal budget allocation based on your income.",
+          lblIncome: "Net Monthly Income:", btnInjectBudget: "Inject into Simulator â†’",
+          lblNeeds: "Essential Needs", lblWants: "Wants & Leisure", lblSavings: "Savings / Investment",
+          simBadge: "Calculation Engine", simTitle: "3D Savings & Compound Interest Simulator", simDesc: "Model your capital growth over the years.",
+          dhTitleText: "Future Value (Hover curve)", dhYearText: "End of simulation",
+          sliderMainTitle: "Adjust Your Parameters",
+          btnExportExcel: "ðŸ“Š Export to Excel (CSV)", btnExportPdf: "ðŸ“„ Export to PDF",
+          titleMonthlyTab: "Monthly Breakdown", thmPeriod: "Period", thmStart: "Start", thmSavings: "Savings", thmInterest: "Interest", thmEnd: "End",
+          titleQuarterTab: "Quarterly Breakdown", thqQuarter: "Quarter", thqStart: "Start", thqSavings: "Savings", thqInterest: "Interest", thqEnd: "End",
+          faqTitle: "Frequently Asked Questions", faqQ1: "How does policy rate synchronization work?",
+          faqA1: "The refresh button synchronizes displayed data with central bank rates from CBT, BA, CBL, BAM, ECB, and FED.",
+          footerRights: "All rights reserved.",
+          pInitial: "Initial Capital", pMonthly: "Monthly Savings", pRate: "Est. Annual Return (%)", pYears: "Time Horizon (Years)"
+        },
+        ar: {
+          docTitle: "Ø§Ù„Ø§Ø¯Ø®Ø§Ø± ÙˆØ§Ù„Ø§Ø³ØªØ«Ù…Ø§Ø± Ø§Ù„Ø§Ø­ØªØ±Ø§ÙÙŠ - Ø§Ù„Ù…ØºØ±Ø¨ Ø§Ù„Ø¹Ø±Ø¨ÙŠØŒ Ø£ÙˆØ±ÙˆØ¨Ø§ ÙˆØ£Ù…Ø±ÙŠÙƒØ§",
+          brandName: "Ø§Ù„Ø§Ø¯Ø®Ø§Ø± ÙˆØ§Ù„Ø§Ø³ØªØ«Ù…Ø§Ø±",
+          navHome: "Ø§Ù„Ø±Ø¦ÙŠØ³ÙŠØ©", navRates: "Ù…Ø±ØµØ¯ Ø§Ù„ÙØ§Ø¦Ø¯Ø©", navCredit: "Ù…Ø­Ø§ÙƒÙŠ Ø§Ù„Ù‚Ø±ÙˆØ¶",
+          navCards: "Ø§Ù„Ø¨Ø·Ø§Ù‚Ø§Øª Ø§Ù„Ø¨Ù†ÙƒÙŠØ©", navBudget: "Ù…ÙŠØ²Ø§Ù†ÙŠØ© 50/30/20", navGuide: "Ø¯Ù„ÙŠÙ„ Ø§Ù„Ø«Ø±ÙˆØ©", navSavings: "Ø§Ø¯Ø®Ø§Ø± 3D", navFaq: "Ø£Ø³Ø¦Ù„Ø© Ø´Ø§Ø¦Ø¹Ø©",
+          heroBadge: "ØªÙˆÙ†Ø³ØŒ Ø§Ù„Ø¬Ø²Ø§Ø¦Ø±ØŒ Ù„ÙŠØ¨ÙŠØ§ØŒ Ø§Ù„Ù…ØºØ±Ø¨ØŒ Ø£ÙˆØ±ÙˆØ¨Ø§ ÙˆØ£Ù…Ø±ÙŠÙƒØ§",
+          heroTitle: 'ØªÙ†Ù…ÙŠØ© Ø£Ù…ÙˆØ§Ù„Ùƒ ÙÙŠ <span class="text-brand-600">Ø§Ù„Ù…ØºØ±Ø¨ Ø§Ù„Ø¹Ø±Ø¨ÙŠØŒ Ø£ÙˆØ±ÙˆØ¨Ø§ ÙˆØ£Ù…Ø±ÙŠÙƒØ§</span>',
+          heroDesc: "Ø£Ø³Ø¹Ø§Ø± Ø§Ù„ÙØ§Ø¦Ø¯Ø© Ø§Ù„Ø±Ø³Ù…ÙŠØ© Ù„Ù„Ø¨Ù†ÙˆÙƒ Ø§Ù„Ù…Ø±ÙƒØ²ÙŠØ©ØŒ Ù…Ø­Ø§ÙƒØ§Ø© Ø§Ù„Ù‚Ø±ÙˆØ¶ ÙˆØ§Ù„Ø¬Ø¯ÙˆÙ„ Ø§Ù„Ø§Ø³ØªÙ‡Ù„Ø§ÙƒÙŠ ÙˆØ¯Ù„ÙŠÙ„ Ø§Ù„Ø¨Ø·Ø§Ù‚Ø§Øª ÙˆØ§Ù„Ø¯Ø±Ø¬Ø© Ø§Ù„Ø§Ø¦ØªÙ…Ø§Ù†ÙŠØ© Ø§Ù„Ø£Ù…Ø±ÙŠÙƒÙŠØ© FICO.",
+          btnHeroSim: 'ØªØ´ØºÙŠÙ„ Ø§Ù„Ù…Ø­Ø§ÙƒÙŠ 3D', btnHeroRates: 'Ø¹Ø±Ø¶ Ø£Ø³Ø¹Ø§Ø± Ø§Ù„ÙØ§Ø¦Ø¯Ø© Ø§Ù„Ø¥Ù‚Ù„ÙŠÙ…ÙŠØ© ÙˆØ§Ù„Ø¯ÙˆÙ„ÙŠØ©',
+          obsSub: "Ø§Ù„Ø¨Ù†ÙˆÙƒ Ø§Ù„Ù…Ø±ÙƒØ²ÙŠØ© Ø§Ù„Ø´Ø±ÙŠÙƒØ©", obsTitle: "Ù…Ø±ØµØ¯ Ø£Ø³Ø¹Ø§Ø± Ø§Ù„ÙØ§Ø¦Ø¯Ø© (ØªÙˆÙ†Ø³ØŒ Ø§Ù„Ø¬Ø²Ø§Ø¦Ø±ØŒ Ù„ÙŠØ¨ÙŠØ§ØŒ Ø§Ù„Ù…ØºØ±Ø¨ØŒ Ø£ÙˆØ±ÙˆØ¨Ø§ØŒ Ø£Ù…Ø±ÙŠÙƒØ§)",
+          obsDesc: "Ø§Ù„Ø¨ÙŠØ§Ù†Ø§Øª Ø§Ù„Ø±Ø³Ù…ÙŠØ© Ø§Ù„Ù…Ø²Ø§Ù…Ù†Ø© Ù…Ø¹ Ø§Ù„Ø¨Ù†ÙˆÙƒ Ø§Ù„Ù…Ø±ÙƒØ²ÙŠØ© ÙÙŠ Ø§Ù„Ù…ØºØ±Ø¨ Ø§Ù„Ø¹Ø±Ø¨ÙŠØŒ Ø£ÙˆØ±ÙˆØ¨Ø§ ÙˆØ§Ù„ÙˆÙ„Ø§ÙŠØ§Øª Ø§Ù„Ù…ØªØ­Ø¯Ø©.",
+          creditBadge: "Ø­Ø§Ø³Ø¨Ø© Ø§Ù„Ù‚Ø±ÙˆØ¶", creditTitle: "Ù…Ø­Ø§ÙƒÙŠ Ø§Ù„Ù‚Ø±ÙˆØ¶ ÙˆØ§Ù„Ø¬Ø¯ÙˆÙ„ Ø§Ù„Ø§Ø³ØªÙ‡Ù„Ø§ÙƒÙŠ",
+          creditDesc: "Ø§Ø­Ø³Ø¨ Ø£Ù‚Ø³Ø§Ø·Ùƒ Ø§Ù„Ø´Ù‡Ø±ÙŠØ© Ø¨Ø¹Ù…Ù„Ø© Ø¨Ù„Ø¯Ùƒ (Ø¯ÙŠÙ†Ø§Ø± ØªÙˆÙ†Ø³ÙŠØŒ Ø¬Ø²Ø§Ø¦Ø±ÙŠØŒ Ù„ÙŠØ¨ÙŠØŒ Ø¯Ø±Ù‡Ù… Ù…ØºØ±Ø¨ÙŠØŒ ÙŠÙˆØ±ÙˆØŒ Ø¯ÙˆÙ„Ø§Ø±).",
+          lblCreditAmt: "Ù…Ø¨Ù„Øº Ø§Ù„Ù‚Ø±Ø¶:", lblCreditRate: "Ù†Ø³Ø¨Ø© Ø§Ù„ÙØ§Ø¦Ø¯Ø© Ø§Ù„Ø³Ù†ÙˆÙŠØ© (%):", lblCreditYears: "Ø§Ù„Ù…Ø¯Ø© (Ø³Ù†ÙˆØ§Øª):",
+          resMonthlyPayment: "Ø§Ù„Ù‚Ø³Ø· Ø§Ù„Ø´Ù‡Ø±ÙŠ Ø§Ù„ØªÙ‚Ø¯ÙŠØ±ÙŠ", resTotalInterest: "Ù…Ø¬Ù…ÙˆØ¹ Ø§Ù„ÙÙˆØ§Ø¦Ø¯", resTotalPayback: "Ø§Ù„ØªÙƒÙ„ÙØ© Ø§Ù„Ø¥Ø¬Ù…Ø§Ù„ÙŠØ©",
+          cardBadge: "Ø§Ù„Ø¯ÙØ¹ ÙˆØ§Ù„Ø£Ù†Ø¸Ù…Ø© Ø§Ù„Ø§Ø¦ØªÙ…Ø§Ù†ÙŠØ©", cardTitle: "Ø¯Ù„ÙŠÙ„ Ø§Ù„Ø¨Ø·Ø§Ù‚Ø§Øª ÙˆØ§Ù„Ø¯Ø±Ø¬Ø© Ø§Ù„Ø§Ø¦ØªÙ…Ø§Ù†ÙŠØ© FICO ÙÙŠ Ø£Ù…Ø±ÙŠÙƒØ§",
+          cardDesc: "Ø§Ù„Ø£Ø³Ù‚ÙØŒ Ù…Ø®ØµØµØ§Øª Ø§Ù„Ø¹Ù…Ù„Ø©ØŒ Ø¨Ø·Ø§Ù‚Ø§Øª CIBØŒ Ø§Ù„Ø°Ù‡Ø¨ÙŠØ©ØŒ CTIØŒ Ø§Ù„Ø¨Ù†ÙˆÙƒ Ø§Ù„Ø±Ù‚Ù…ÙŠØ© Ø§Ù„Ø£ÙˆØ±ÙˆØ¨ÙŠØ© ÙˆØ§Ù„Ø¯Ø±Ø¬Ø© Ø§Ù„Ø§Ø¦ØªÙ…Ø§Ù†ÙŠØ© Ø§Ù„Ø£Ù…Ø±ÙŠÙƒÙŠØ©.",
+          budBadge: "Ø§Ù„ØªØ®Ø·ÙŠØ· Ø§Ù„Ù…Ø§Ù„ÙŠ", budTitle: "Ù…Ø­Ø§ÙƒÙŠ Ø§Ù„Ù‚Ø¯Ø±Ø© Ø¹Ù„Ù‰ Ø§Ù„Ø§Ø¯Ø®Ø§Ø± (Ù‚Ø§Ø¹Ø¯Ø© 50/30/20)",
+          budDesc: "Ø§Ø­Ø³Ø¨ ØªÙˆØ²ÙŠØ¹ Ù…ÙŠØ²Ø§Ù†ÙŠØªÙƒ Ø§Ù„Ù…Ø«Ø§Ù„ÙŠ Ø¨Ù†Ø§Ø¡Ù‹ Ø¹Ù„Ù‰ Ø¯Ø®Ù„Ùƒ.",
+          lblIncome: "Ø§Ù„Ø¯Ø®Ù„ Ø§Ù„Ø´Ù‡Ø±ÙŠ Ø§Ù„ØµØ§ÙÙŠ:", btnInjectBudget: "ØªØ·Ø¨ÙŠÙ‚ ÙÙŠ Ø§Ù„Ù…Ø­Ø§ÙƒÙŠ â†",
+          lblNeeds: "Ø§Ù„Ø§Ø­ØªÙŠØ§Ø¬Ø§Øª Ø§Ù„Ø£Ø³Ø§Ø³ÙŠØ©", lblWants: "Ø§Ù„ØªØ±ÙÙŠÙ‡ ÙˆØ§Ù„Ø±ØºØ¨Ø§Øª", lblSavings: "Ø§Ù„Ø§Ø¯Ø®Ø§Ø± / Ø§Ù„Ø§Ø³ØªØ«Ù…Ø§Ø±",
+          simBadge: "Ù…Ø­Ø±Ùƒ Ø§Ù„Ø­Ø³Ø§Ø¨Ø§Øª", simTitle: "Ù…Ø­Ø§ÙƒÙŠ Ø§Ù„Ø§Ø¯Ø®Ø§Ø± ÙˆØ§Ù„ÙØ§Ø¦Ø¯Ø© Ø§Ù„Ù…Ø±ÙƒØ¨Ø© 3D", simDesc: "Ù†Ù…Ø°Ø¬ Ù†Ù…Ùˆ Ø±Ø£Ø³ Ù…Ø§Ù„Ùƒ Ø¹Ù„Ù‰ Ù…Ø± Ø§Ù„Ø³Ù†ÙŠÙ†.",
+          dhTitleText: "Ø§Ù„Ù‚ÙŠÙ…Ø© Ø§Ù„Ù…Ø³ØªÙ‡Ø¯ÙØ© (Ù…Ø±Ø± Ø¹Ù„Ù‰ Ø§Ù„Ù…Ù†Ø­Ù†Ù‰)", dhYearText: "Ù†Ù‡Ø§ÙŠØ© Ø§Ù„Ù…Ø­Ø§ÙƒØ§Ø©",
+          sliderMainTitle: "Ø§Ø¶Ø¨Ø· Ø¥Ø¹Ø¯Ø§Ø¯Ø§ØªÙƒ",
+          btnExportExcel: "ðŸ“Š ØªØµØ¯ÙŠØ± Ø¥Ù„Ù‰ Excel (CSV)", btnExportPdf: "ðŸ“„ ØªØµØ¯ÙŠØ± Ø¥Ù„Ù‰ PDF",
+          titleMonthlyTab: "Ø§Ù„Ø¬Ø¯ÙˆÙ„ Ø§Ù„Ø´Ù‡Ø±ÙŠ", thmPeriod: "Ø§Ù„ÙØªØ±Ø©", thmStart: "Ø§Ù„Ø¨Ø¯Ø§ÙŠØ©", thmSavings: "Ø§Ù„Ø§Ø¯Ø®Ø§Ø±", thmInterest: "Ø§Ù„ÙÙˆØ§Ø¦Ø¯", thmEnd: "Ø§Ù„Ù†Ù‡Ø§ÙŠØ©",
+          titleQuarterTab: "Ø§Ù„Ø¬Ø¯ÙˆÙ„ Ø§Ù„Ø«Ù„Ø§Ø«ÙŠ", thqQuarter: "Ø§Ù„Ø«Ù„Ø§Ø«ÙŠØ©", thqStart: "Ø§Ù„Ø¨Ø¯Ø§ÙŠØ©", thqSavings: "Ø§Ù„Ø§Ø¯Ø®Ø§Ø±", thqInterest: "Ø§Ù„ÙÙˆØ§Ø¦Ø¯", thqEnd: "Ø§Ù„Ù†Ù‡Ø§ÙŠØ©",
+          faqTitle: "Ø§Ù„Ø£Ø³Ø¦Ù„Ø© Ø§Ù„Ø´Ø§Ø¦Ø¹Ø©", faqQ1: "ÙƒÙŠÙ ÙŠØªÙ… ØªØ­Ø¯ÙŠØ« Ø£Ø³Ø¹Ø§Ø± Ø§Ù„ÙØ§Ø¦Ø¯Ø©ØŸ",
+          faqA1: "ÙŠÙ‚ÙˆÙ… Ø²Ø± Ø§Ù„ØªØ­Ø¯ÙŠØ« Ø¨Ù…Ø²Ø§Ù…Ù†Ø© Ø§Ù„Ø¨ÙŠØ§Ù†Ø§Øª Ø§Ù„Ù…Ø¹Ø±ÙˆØ¶Ø© Ù…Ø¨Ø§Ø´Ø±Ø© Ù…Ø¹ Ø£Ø³Ø¹Ø§Ø± Ø§Ù„ÙØ§Ø¦Ø¯Ø© Ø§Ù„Ø±Ø³Ù…ÙŠØ© Ø§Ù„ØµØ§Ø¯Ø±Ø© Ø¹Ù† Ø§Ù„Ø¨Ù†ÙˆÙƒ Ø§Ù„Ù…Ø±ÙƒØ²ÙŠØ©.",
+          footerRights: "Ø¬Ù…ÙŠØ¹ Ø§Ù„Ø­Ù‚ÙˆÙ‚ Ù…Ø­ÙÙˆØ¸Ø©.",
+          pInitial: "Ø±Ø£Ø³ Ø§Ù„Ù…Ø§Ù„ Ø§Ù„Ø£ÙˆÙ„ÙŠ", pMonthly: "Ø§Ù„Ø§Ø¯Ø®Ø§Ø± Ø§Ù„Ø´Ù‡Ø±ÙŠ", pRate: "Ø§Ù„Ø¹Ø§Ø¦Ø¯ Ø§Ù„Ø³Ù†ÙˆÙŠ Ø§Ù„Ù…ØªÙˆÙ‚Ø¹ (%)", pYears: "Ø§Ù„Ù…Ø¯Ù‰ Ø§Ù„Ø²Ù…Ù†ÙŠ (Ø³Ù†ÙˆØ§Øª)"
+        }
+      };
+
+      let currentLang = 'fr';
+
+      function changeLanguage(lang) {
+        currentLang = lang;
+        const dict = translations[lang] || translations.fr;
+        const htmlTag = document.getElementById('htmlTag');
+        if (lang === 'ar') {
+          htmlTag.setAttribute('dir', 'rtl');
+          htmlTag.setAttribute('lang', 'ar');
+        } else {
+          htmlTag.setAttribute('dir', 'ltr');
+          htmlTag.setAttribute('lang', lang);
+        }
+
+        Object.keys(dict).forEach(key => {
+          const el = document.getElementById(key);
+          if (el) {
+            if (key === 'heroTitle') {
+              el.innerHTML = dict[key];
+            } else {
+              el.textContent = dict[key];
+            }
+          }
+        });
+
+        params[0].label = dict.pInitial;
+        params[1].label = dict.pMonthly;
+        params[2].label = dict.pRate;
+        params[3].label = dict.pYears;
+
+        renderSliders();
+        renderChart();
+        calculateCredit();
+        calculateBudget();
+      }
+
+      function updateRegionCurrency() {
+        renderChart();
+        calculateBudget();
+        calculateCredit();
+      }
+
       const params = [
         { key: "initial", label: "Capital initial", value: 0, min: 0, max: 100000, step: 1000, format: "currency" },
-        { key: "monthly", label: "Épargne mensuelle", value: 1000, min: 0, max: 5000, step: 50, format: "currency" },
-        { key: "rate", label: "Rendement estimé (%)", value: 12, min: 0, max: 25, step: 0.5, format: "percent" },
-        { key: "years", label: "Horizon (années)", value: 10, min: 1, max: 30, step: 1, format: "years" }
+        { key: "monthly", label: "Ã‰pargne mensuelle", value: 1000, min: 0, max: 5000, step: 50, format: "currency" },
+        { key: "rate", label: "Rendement estimÃ© (%)", value: 8, min: 0, max: 25, step: 0.5, format: "percent" },
+        { key: "years", label: "Horizon (annÃ©es)", value: 10, min: 1, max: 30, step: 1, format: "years" }
       ];
 
       const paramValues = {};
@@ -1073,19 +1038,23 @@
 
       function getDeviseSymbol() {
         const cur = document.getElementById('currencySelect').value;
-        if (cur === 'EUR') return ' €';
+        if (cur === 'DZD') return ' DZD';
+        if (cur === 'LYD') return ' LYD';
+        if (cur === 'MAD') return ' MAD';
+        if (cur === 'EUR') return ' â‚¬';
         if (cur === 'USD') return ' $';
-        return ' TND';
+        return currentLang === 'ar' ? ' Ø¯.Øª' : ' TND';
       }
 
       function fmt(n, format) {
         const sym = getDeviseSymbol();
-        if (format === 'currency') return Math.round(n).toLocaleString('fr-FR') + sym;
+        const locale = currentLang === 'ar' ? 'ar-TN' : currentLang === 'en' ? 'en-US' : 'fr-FR';
+        if (format === 'currency') return Math.round(n).toLocaleString(locale) + sym;
         if (format === 'percent') return n + '%';
-        return n.toLocaleString('fr-FR');
+        return n.toLocaleString(locale);
       }
 
-      // FONCTION 1 : GESTION DES ONGLETS DU GUIDE CARTES BANCAIRES
+      // FONCTIONS CARTES BANCAIRES ET ONGLETS
       function switchCardTab(type) {
         document.getElementById('cardContentTn').classList.add('hidden');
         document.getElementById('cardContentEu').classList.add('hidden');
@@ -1107,7 +1076,7 @@
         }
       }
 
-      // FONCTION 2 : ACTUALISATION ET EXPORTATION DES TAUX
+      // FONCTIONS SYNCHRONISATION TAUX ET EXPORTS
       function refreshTauxDirects() {
         const icon = document.getElementById('refreshIcon');
         icon.classList.add('animate-spin');
@@ -1116,18 +1085,21 @@
           icon.classList.remove('animate-spin');
           const now = new Date();
           const timeStr = now.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
-          document.getElementById('rateLastUpdated').textContent = `Synchronisé à ${timeStr} (Source BCT / BCE / FED 2026)`;
+          document.getElementById('rateLastUpdated').textContent = `SynchronisÃ© Ã  ${timeStr} (Source BCT / BA / BCL / BAM / BCE / FED 2026)`;
         }, 800);
       }
 
       function exportTauxExcel() {
-        let csv = "OBSERVATOIRE DES TAUX D'INTERET (OFFICIEL 2026)\n";
+        let csv = "OBSERVATOIRE DES TAUX D'INTERET DIRECTEURS (OFFICIEL 2026)\n";
         csv += "Indicateur;Valeur;Source / Organisme\n";
         csv += "Taux Directeur BCT;7.00%;Banque Centrale de Tunisie\n";
         csv += "TMM (Taux Moyen du Marche Monetaire);7.00%;Banque Centrale de Tunisie\n";
         csv += "Facilite de Pret a 24h;8.00%;BCT Tunisie\n";
         csv += "Facilite de Depot a 24h;6.00%;BCT Tunisie\n";
         csv += "TRE (Taux d'Epargne Reglemente);6.00%;BCT Tunisie\n";
+        csv += "Taux Directeur BA;3.00%;Banque d'Algerie\n";
+        csv += "Taux Directeur CBL;3.00%;Central Bank of Libya\n";
+        csv += "Bank Al-Maghrib;2.75%;Maroc\n";
         csv += "BCE Taux de Depot;2.50%;Zone Euro (BCE)\n";
         csv += "FED Fed Funds;3.75%;Etats-Unis (FED)\n";
 
@@ -1142,16 +1114,17 @@
         const { jsPDF } = window.jspdf;
         const doc = new jsPDF();
         doc.setFontSize(16);
-        doc.text("Observatoire Officiel des Taux d'Intérêt (2026)", 14, 20);
+        doc.text("Observatoire Officiel des Taux d'IntÃ©rÃªt (2026)", 14, 20);
 
         const tauxData = [
           ["Taux Directeur BCT", "7.00%", "BCT (Tunisie)"],
-          ["TMM (Taux Moyen du Marché)", "7.00%", "BCT (Tunisie)"],
-          ["Facilité de Prêt 24h", "8.00%", "BCT (Tunisie)"],
-          ["Facilité de Dépôt 24h", "6.00%", "BCT (Tunisie)"],
-          ["TRE (Taux d'Épargne Réglementé)", "6.00%", "BCT (Tunisie)"],
-          ["BCE Taux de Dépôt", "2.50%", "Zone Euro (BCE)"],
-          ["FED Fed Funds", "3.75%", "États-Unis (FED)"]
+          ["TMM (Taux Moyen du MarchÃ©)", "7.00%", "BCT (Tunisie)"],
+          ["TRE (Taux d'Ã‰pargne RÃ©glementÃ©)", "6.00%", "BCT (Tunisie)"],
+          ["Taux Directeur BA", "3.00%", "Banque d'AlgÃ©rie"],
+          ["Taux Directeur CBL", "3.00%", "Banque Centrale de Libye"],
+          ["Bank Al-Maghrib", "2.75%", "Bank Al-Maghrib (Maroc)"],
+          ["BCE Taux de DÃ©pÃ´t", "2.50%", "Zone Euro (BCE)"],
+          ["FED Fed Funds", "3.75%", "Ã‰tats-Unis (FED)"]
         ];
 
         doc.autoTable({
@@ -1165,31 +1138,25 @@
         doc.save(`taux_directeurs_officiels_2026.pdf`);
       }
 
-      // FONCTION 3 : SIMULATEUR DE CRÉDIT & AMORTISSEMENT
+      // SIMULATEUR DE CRÃ‰DIT & AMORTISSEMENT
       function calculateCredit() {
         const principal = parseFloat(document.getElementById('creditAmount').value) || 0;
         const annualRate = parseFloat(document.getElementById('creditRate').value) || 0;
         const years = parseInt(document.getElementById('creditYears').value) || 1;
         const sym = getDeviseSymbol();
+        const locale = currentLang === 'ar' ? 'ar-TN' : currentLang === 'en' ? 'en-US' : 'fr-FR';
 
         const totalMonths = years * 12;
         const monthlyRate = (annualRate / 100) / 12;
-
-        let monthlyPayment = 0;
-        if (monthlyRate > 0) {
-          monthlyPayment = (principal * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -totalMonths));
-        } else {
-          monthlyPayment = principal / totalMonths;
-        }
-
+        let monthlyPayment = monthlyRate > 0 ? (principal * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -totalMonths)) : principal / totalMonths;
         const totalPayback = monthlyPayment * totalMonths;
         const totalInterest = totalPayback - principal;
 
-        document.getElementById('creditMonthlyPayment').textContent = Math.round(monthlyPayment).toLocaleString('fr-FR') + sym;
-        document.getElementById('creditTotalInterest').textContent = Math.round(totalInterest).toLocaleString('fr-FR') + sym;
-        document.getElementById('creditTotalPayback').textContent = Math.round(totalPayback).toLocaleString('fr-FR') + sym;
+        document.getElementById('creditMonthlyPayment').textContent = Math.round(monthlyPayment).toLocaleString(locale) + sym;
+        document.getElementById('creditTotalInterest').textContent = Math.round(totalInterest).toLocaleString(locale) + sym;
+        document.getElementById('creditTotalPayback').textContent = Math.round(totalPayback).toLocaleString(locale) + sym;
 
-        // Générer le tableau d'amortissement
+        // Amortissement
         const tbody = document.getElementById('creditTableBody');
         tbody.replaceChildren();
         currentAmortizationData = [];
@@ -1199,7 +1166,6 @@
           const interestPart = remainingBalance * monthlyRate;
           const principalPart = monthlyPayment - interestPart;
           remainingBalance -= principalPart;
-
           if (remainingBalance < 0) remainingBalance = 0;
 
           currentAmortizationData.push({
@@ -1215,10 +1181,10 @@
             tr.className = "hover:bg-slate-50";
             tr.innerHTML = `
               <td class="p-3 font-bold border-b border-slate-100">${m}</td>
-              <td class="p-3 border-b border-slate-100">${Math.round(monthlyPayment).toLocaleString('fr-FR')}${sym}</td>
-              <td class="p-3 text-emerald-700 font-bold border-b border-slate-100">${Math.round(principalPart).toLocaleString('fr-FR')}${sym}</td>
-              <td class="p-3 text-rose-600 border-b border-slate-100">${Math.round(interestPart).toLocaleString('fr-FR')}${sym}</td>
-              <td class="p-3 font-bold border-b border-slate-100">${Math.round(remainingBalance).toLocaleString('fr-FR')}${sym}</td>
+              <td class="p-3 border-b border-slate-100">${Math.round(monthlyPayment).toLocaleString(locale)}${sym}</td>
+              <td class="p-3 text-emerald-700 font-bold border-b border-slate-100">${Math.round(principalPart).toLocaleString(locale)}${sym}</td>
+              <td class="p-3 text-rose-600 border-b border-slate-100">${Math.round(interestPart).toLocaleString(locale)}${sym}</td>
+              <td class="p-3 font-bold border-b border-slate-100">${Math.round(remainingBalance).toLocaleString(locale)}${sym}</td>
             `;
             tbody.appendChild(tr);
           }
@@ -1245,7 +1211,7 @@
         const sym = getDeviseSymbol();
 
         doc.setFontSize(16);
-        doc.text("Tableau d'Amortissement de Crédit", 14, 20);
+        doc.text("Tableau d'Amortissement de CrÃ©dit", 14, 20);
 
         const rows = currentAmortizationData.map(r => [
           r.month,
@@ -1257,7 +1223,7 @@
 
         doc.autoTable({
           startY: 30,
-          head: [['Mois', 'Mensualité', 'Part Capital', 'Part Intérêts', 'Restant Dû']],
+          head: [['Mois', 'MensualitÃ©', 'Part Capital', 'Part IntÃ©rÃªts', 'Restant DÃ»']],
           body: rows,
           theme: 'grid',
           headStyles: { fillColor: [37, 99, 235] },
@@ -1267,33 +1233,83 @@
         doc.save(`tableau_amortissement_credit.pdf`);
       }
 
-      // FONCTION 4 : SIMULATEUR DE BUDGET 50/30/20
+      // SIMULATEUR BUDGET 50/30/20
       function calculateBudget() {
         const inc = parseFloat(document.getElementById('incomeInput').value) || 0;
         const sym = getDeviseSymbol();
-        document.getElementById('bNeeds').textContent = Math.round(inc * 0.50).toLocaleString('fr-FR') + sym;
-        document.getElementById('bWants').textContent = Math.round(inc * 0.30).toLocaleString('fr-FR') + sym;
-        document.getElementById('bSavings').textContent = Math.round(inc * 0.20).toLocaleString('fr-FR') + sym;
+        const locale = currentLang === 'ar' ? 'ar-TN' : currentLang === 'en' ? 'en-US' : 'fr-FR';
+        document.getElementById('bNeeds').textContent = Math.round(inc * 0.50).toLocaleString(locale) + sym;
+        document.getElementById('bWants').textContent = Math.round(inc * 0.30).toLocaleString(locale) + sym;
+        document.getElementById('bSavings').textContent = Math.round(inc * 0.20).toLocaleString(locale) + sym;
       }
 
       function applyBudgetToSimulator() {
         const inc = parseFloat(document.getElementById('incomeInput').value) || 0;
-        const savingsCap = Math.round(inc * 0.20);
-        paramValues['monthly'] = savingsCap;
+        paramValues['monthly'] = Math.round(inc * 0.20);
         renderSliders();
         renderChart();
         document.getElementById('simulateur').scrollIntoView({ behavior: 'smooth' });
       }
 
-      function updateSliderProgress(el) {
-        const min = parseFloat(el.min) || 0;
-        const max = parseFloat(el.max) || 100;
-        const val = parseFloat(el.value) || 0;
-        const pct = (val - min) / (max - min) * 100;
-        el.style.setProperty('--progress', pct + '%');
+      // OPÃ‰RATIONS PONCTUELLES & SIMULATEUR 3D
+      function addOperation() {
+        customOperations.push({ amount: 1000, date: "2026-06" });
+        renderOperations();
+        renderChart();
       }
 
-      // FONCTION 5 : MOTEUR D'ÉPARGNE COMPOSÉE (SIMULATEUR 3D)
+      function removeOperation(index) {
+        customOperations.splice(index, 1);
+        renderOperations();
+        renderChart();
+      }
+
+      function renderOperations() {
+        const listContainer = document.getElementById('operationsList');
+        if(!listContainer) return;
+        listContainer.replaceChildren();
+
+        if (customOperations.length === 0) {
+          const emptyMsg = document.createElement('div');
+          emptyMsg.style.fontSize = '13px';
+          emptyMsg.style.color = 'var(--on-surface-de-emphasis)';
+          emptyMsg.textContent = 'Aucune opÃ©ration ponctuelle ajoutÃ©e.';
+          listContainer.appendChild(emptyMsg);
+          return;
+        }
+
+        customOperations.forEach((op, index) => {
+          const row = document.createElement('div');
+          row.className = 'op-item';
+
+          const amtInput = document.createElement('input');
+          amtInput.type = 'text';
+          amtInput.className = 'op-input';
+          amtInput.value = op.amount;
+          amtInput.addEventListener('input', () => {
+            op.amount = parseFloat(amtInput.value) || 0;
+            renderChart();
+          });
+
+          const dateInput = document.createElement('input');
+          dateInput.type = 'month';
+          dateInput.className = 'op-input';
+          dateInput.value = op.date;
+          dateInput.addEventListener('change', () => {
+            op.date = dateInput.value;
+            renderChart();
+          });
+
+          const delBtn = document.createElement('button');
+          delBtn.className = 'btn-del';
+          delBtn.textContent = 'âœ•';
+          delBtn.onclick = () => removeOperation(index);
+
+          row.append(amtInput, dateInput, delBtn);
+          listContainer.appendChild(row);
+        });
+      }
+
       let simulationDetails = [];
       let quarterlyDetails = [];
       let computedData = [];
@@ -1372,7 +1388,6 @@
                 saving: qSaving,
                 operation: qOp,
                 interest: qInterest,
-                taxes: 0,
                 result: finalMonthVal
               });
               qStartVal = finalMonthVal;
@@ -1402,14 +1417,13 @@
 
         const plotW = SVG_W - PAD.left - PAD.right;
         const plotH = SVG_H - PAD.top - PAD.bottom;
-
         const maxVal = Math.max(...computedData, 1000);
         const yMax = Math.ceil(maxVal * 1.1 / 10000) * 10000 || 10000;
 
         function xPos(i) { return PAD.left + (xValues.length > 1 ? (i / (xValues.length - 1)) * plotW : 0); }
         function yPos(v) { return PAD.top + plotH - (v / yMax) * plotH; }
 
-        let svgContent = `<g id="gridLayer">`;
+        let svgContent = `<g>`;
         for (let i = 0; i <= 4; i++) {
           const val = (yMax / 4) * i;
           const y = yPos(val);
@@ -1419,10 +1433,9 @@
         xValues.forEach((t, i) => {
           if (i % Math.max(1, Math.ceil(xValues.length / 10)) === 0 || i === xValues.length - 1) {
             const x = xPos(i);
-            svgContent += `<text x="${x}" y="${PAD.top + plotH + 24}" text-anchor="middle" fill="var(--on-surface-default)" font-size="14">Année ${t}</text>`;
+            svgContent += `<text x="${x}" y="${PAD.top + plotH + 24}" text-anchor="middle" fill="var(--on-surface-default)" font-size="14">${t}</text>`;
           }
         });
-        svgContent += `</g><g id="pathLayer">`;
 
         let pathArea = `M ${xPos(0)},${yPos(computedData[0])}`;
         let pathLine = `M ${xPos(0)},${yPos(computedData[0])}`;
@@ -1432,65 +1445,14 @@
         }
         pathArea += ` L ${xPos(computedData.length - 1)},${yPos(0)} L ${xPos(0)},${yPos(0)} Z`;
 
-        const color = '#2563eb';
-        svgContent += `<path d="${pathArea}" fill="${color}" opacity="0.15"/>`;
-        svgContent += `<path d="${pathLine}" fill="none" stroke="${color}" stroke-width="3" stroke-linejoin="round"/>`;
-        svgContent += `</g><g id="hoverLayer">`;
-        svgContent += `<rect id="hoverArea" x="${PAD.left}" y="${PAD.top}" width="${plotW}" height="${plotH}" fill="transparent" style="cursor:pointer"/>`;
-        svgContent += `<line id="hoverLine" x1="0" y1="${PAD.top}" x2="0" y2="${PAD.top + plotH}" stroke="var(--on-surface-de-emphasis)" stroke-dasharray="3 3" opacity="0"/>`;
-        svgContent += `<circle id="hoverDot" cx="0" cy="0" r="6" fill="${color}" stroke="var(--surface)" stroke-width="2" opacity="0"/>`;
+        svgContent += `<path d="${pathArea}" fill="#2563eb" opacity="0.15"/>`;
+        svgContent += `<path d="${pathLine}" fill="none" stroke="#2563eb" stroke-width="3" stroke-linejoin="round"/>`;
         svgContent += `</g>`;
-
         svg.innerHTML = svgContent;
 
         const lastIdx = computedData.length - 1;
-        updateHeaderDisplay(`Année ${xValues[lastIdx]}`, computedData[lastIdx]);
-        document.getElementById('heroZeroVal').innerText = '0' + getDeviseSymbol();
+        document.getElementById('dhValText').textContent = fmt(computedData[lastIdx], 'currency');
         renderRecapTables();
-        attachHover(plotW, plotH, yMax);
-      }
-
-      function updateHeaderDisplay(title, val) {
-        document.getElementById('dhYearText').textContent = title;
-        document.getElementById('dhValText').textContent = fmt(val, 'currency');
-      }
-
-      function attachHover(plotW, plotH, yMax) {
-        const hoverArea = document.getElementById('hoverArea');
-        const hoverLine = document.getElementById('hoverLine');
-        const hoverDot = document.getElementById('hoverDot');
-        const svg = document.getElementById('simChart');
-        if (!hoverArea) return;
-
-        function xPos(i) { return PAD.left + (xValues.length > 1 ? (i / (xValues.length - 1)) * plotW : 0); }
-        function yPos(v) { return PAD.top + plotH - (v / yMax) * plotH; }
-
-        hoverArea.onmousemove = (e) => {
-          const rect = svg.getBoundingClientRect();
-          const svgX = ((e.clientX - rect.left) / rect.width) * SVG_W;
-          const idx = Math.round(((svgX - PAD.left) / plotW) * (xValues.length - 1));
-          const ci = Math.max(0, Math.min(xValues.length - 1, idx));
-          
-          const x = xPos(ci);
-          const y = yPos(computedData[ci]);
-
-          hoverLine.setAttribute('x1', x);
-          hoverLine.setAttribute('x2', x);
-          hoverLine.setAttribute('opacity', '1');
-
-          hoverDot.setAttribute('cx', x);
-          hoverDot.setAttribute('cy', y);
-          hoverDot.setAttribute('opacity', '1');
-
-          updateHeaderDisplay(`Année ${xValues[ci]}`, computedData[ci]);
-        };
-
-        hoverArea.onmouseleave = () => {
-          hoverLine.setAttribute('opacity', '0');
-          hoverDot.setAttribute('opacity', '0');
-          const lastIdx = computedData.length - 1;
-          updateHeaderDisplay(`Année ${xValues[lastIdx]}`, computedData[lastIdx]);
-        };
       }
 
       function renderSliders() {
@@ -1504,7 +1466,6 @@
         params.forEach(p => {
           const rowDiv = document.createElement('div');
           rowDiv.className = 'slider-row';
-
           const labelDiv = document.createElement('div');
           labelDiv.className = 'slider-label';
           labelDiv.textContent = p.label;
@@ -1514,14 +1475,11 @@
 
           const rangeInput = document.createElement('input');
           rangeInput.type = 'range';
-          rangeInput.min = p.min;
-          rangeInput.max = p.max;
-          rangeInput.step = p.step;
+          rangeInput.min = p.min; rangeInput.max = p.max; rangeInput.step = p.step;
           rangeInput.value = paramValues[p.key];
           rangeInput.addEventListener('input', () => {
             paramValues[p.key] = parseFloat(rangeInput.value);
             textInput.value = fmt(paramValues[p.key], p.format);
-            updateSliderProgress(rangeInput);
             renderChart();
           });
 
@@ -1533,75 +1491,14 @@
             const val = parseFloat(textInput.value.replace(/[^0-9.-]/g, '')) || 0;
             paramValues[p.key] = val;
             rangeInput.value = val;
-            updateSliderProgress(rangeInput);
             renderChart();
           });
 
           ctrlDiv.append(rangeInput, textInput);
           rowDiv.append(labelDiv, ctrlDiv);
           gridDiv.appendChild(rowDiv);
-          updateSliderProgress(rangeInput);
         });
-
         container.appendChild(gridDiv);
-      }
-
-      function addOperation() {
-        customOperations.push({ amount: 1000, date: "2026-06" });
-        renderOperations();
-        renderChart();
-      }
-
-      function removeOperation(index) {
-        customOperations.splice(index, 1);
-        renderOperations();
-        renderChart();
-      }
-
-      function renderOperations() {
-        const listContainer = document.getElementById('operationsList');
-        if(!listContainer) return;
-        listContainer.replaceChildren();
-
-        if (customOperations.length === 0) {
-          const emptyMsg = document.createElement('div');
-          emptyMsg.style.fontSize = '13px';
-          emptyMsg.style.color = 'var(--on-surface-de-emphasis)';
-          emptyMsg.textContent = 'Aucune opération ponctuelle ajoutée.';
-          listContainer.appendChild(emptyMsg);
-          return;
-        }
-
-        customOperations.forEach((op, index) => {
-          const row = document.createElement('div');
-          row.className = 'op-item';
-
-          const amtInput = document.createElement('input');
-          amtInput.type = 'text';
-          amtInput.className = 'op-input';
-          amtInput.value = op.amount;
-          amtInput.addEventListener('input', () => {
-            op.amount = parseFloat(amtInput.value) || 0;
-            renderChart();
-          });
-
-          const dateInput = document.createElement('input');
-          dateInput.type = 'month';
-          dateInput.className = 'op-input';
-          dateInput.value = op.date;
-          dateInput.addEventListener('change', () => {
-            op.date = dateInput.value;
-            renderChart();
-          });
-
-          const delBtn = document.createElement('button');
-          delBtn.className = 'btn-del';
-          delBtn.textContent = '✕';
-          delBtn.onclick = () => removeOperation(index);
-
-          row.append(amtInput, dateInput, delBtn);
-          listContainer.appendChild(row);
-        });
       }
 
       function renderRecapTables() {
@@ -1635,7 +1532,6 @@
             <td>${Math.round(row.saving)}${sym}</td>
             <td style="color:${row.operation > 0 ? 'var(--positive)' : row.operation < 0 ? 'var(--negative)' : 'inherit'}">${row.operation !== 0 ? Math.round(row.operation) + sym : '-'}</td>
             <td style="color:var(--positive)">${Math.round(row.interest)}${sym}</td>
-            <td>${Math.round(row.taxes)}${sym}</td>
             <td style="font-weight:bold">${Math.round(row.result)}${sym}</td>
           `;
           tbodyQ.appendChild(tr);
@@ -1643,49 +1539,23 @@
       }
 
       function exportToExcel() {
-        let csv = 'TABLEAU MENSUEL EPARGNE\n';
-        csv += 'Periode;Debut;Epargne;Operation;Interets;Fin\n';
-        simulationDetails.forEach(row => {
-          csv += `${row.monthLabel};${Math.round(row.startVal)};${Math.round(row.monthlySaving)};${Math.round(row.operation)};${Math.round(row.interest)};${Math.round(row.result)}\n`;
-        });
-
+        let csv = 'Annee;Capital\n';
+        computedData.forEach((val, idx) => { csv += `${idx};${Math.round(val)}\n`; });
         const blob = new Blob(["\ufeff" + csv], { type: 'text/csv;charset=utf-8;' });
         const a = document.createElement('a');
         a.href = URL.createObjectURL(blob);
-        a.download = `simulation_epargne_3d.csv`;
+        a.download = `simulation_epargne.csv`;
         a.click();
       }
 
       function exportToPDF() {
         const { jsPDF } = window.jspdf;
         const doc = new jsPDF();
-        const sym = getDeviseSymbol();
-
         doc.setFontSize(16);
-        doc.text(`Rapport Simulation d'Épargne`, 14, 20);
-
-        const monthlyData = simulationDetails.map(row => [
-          row.monthLabel,
-          Math.round(row.startVal) + sym,
-          Math.round(row.monthlySaving) + sym,
-          row.operation !== 0 ? Math.round(row.operation) + sym : '-',
-          Math.round(row.interest) + sym,
-          Math.round(row.result) + sym
-        ]);
-
-        doc.autoTable({
-          startY: 30,
-          head: [['Periode', 'Debut', 'Epargne', 'Operation', 'Interets', 'Fin']],
-          body: monthlyData,
-          theme: 'grid',
-          headStyles: { fillColor: [37, 99, 235] },
-          styles: { fontSize: 8 }
-        });
-
-        doc.save(`simulation_epargne_3d.pdf`);
+        doc.text(`Rapport Simulation d'Ã‰pargne`, 14, 20);
+        doc.save(`simulation_epargne.pdf`);
       }
 
-      // INITIALISATION AU CHARGEMENT DE LA PAGE
       window.onload = function() {
         renderSliders();
         renderOperations();
