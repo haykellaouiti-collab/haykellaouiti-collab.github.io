@@ -1,0 +1,47 @@
+# Épargne & Investissement Pro
+
+Portail éducatif de finance personnelle — simulateurs crédit, épargne composée, budget 50/30/20 et observatoire des taux directeurs.
+
+## Structure
+
+- `index.html` — page d'accueil (simulateurs + taux + FAQ)
+- `about.html`, `contact.html`, `privacy.html`, `cookie-policy.html`, `terms.html`, `404.html` — pages statiques
+- `ads.txt` — autorisation Google AdSense (à la racine)
+- `robots.txt`, `sitemap.xml`, `manifest.json`, `.nojekyll`
+- `netlify.toml` — configuration Netlify (fonctions + redirections + headers)
+- `netlify/functions/get-rates.mjs` — fonction synchrone appelée par le bouton « Actualiser les taux »
+- `netlify/functions/refresh-rates.mjs` — fonction planifiée mensuelle (@monthly)
+
+## Déploiement GitHub Pages
+
+1. Pousser tous les fichiers à la racine du dépôt.
+2. Vérifier que `.nojekyll` est présent (sinon `ads.txt` peut ne pas être servi).
+3. Vérifier `https://haykellaouiti-collab.github.io/ads.txt` → 200.
+4. Vérifier GSC → revalidation des deux balises `google-site-verification`.
+
+## Déploiement Netlify
+
+1. Connecter le dépôt GitHub à Netlify.
+2. Netlify détecte `netlify.toml` automatiquement.
+3. Configurer les variables d'environnement :
+   - `ALLRATES_API_KEY` (clé AllRatesToday — optionnelle, fallback statique sinon)
+   - `NETLIFY_BUILD_HOOK_URL` (URL du Build Hook — optionnelle)
+4. Tester `netlify dev` en local pour vérifier `/api/rates`.
+5. Vérifier que `refresh-rates` apparaît avec le badge « Scheduled » dans l'UI Netlify.
+
+## Taux de référence (novembre 2026)
+
+| Banque centrale | Taux | Date |
+|---|---|---|
+| BCT Tunisie | 7,00 % | 7 oct. 2026 |
+| BAM Maroc | 2,25 % | 22 sept. 2026 |
+| BCE (MRO) | 2,65 % | 29 oct. 2026 |
+| FED USA | 3,50–3,75 % | juin 2026 |
+| BA Algérie | 2,50 % | oct. 2026 |
+| CBL Libye | 3,00 % | sept. 2026 |
+
+## À fournir
+
+- `favicon.ico`
+- `og-image.jpg` (1200×630)
+- `logo.png`
