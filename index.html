@@ -1,505 +1,149 @@
 <!DOCTYPE html>
-<html lang="fr" id="htmlTag" class="scroll-smooth">
+<html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="docTitle">Épargne & Investissement Pro — Simulateurs Crédit, Épargne & Taux Directeurs 2026</title>
-    <meta name="description" content="Portail éducatif de finance personnelle : taux directeurs BCT, BA, CBL, BAM, BCE, FED. Simulateurs gratuits de crédit immobilier, épargne composée et budget 50/30/20.">
-    <link rel="canonical" id="canonicalLink" href="https://haykellaouiti-collab.github.io/">
-    <meta name="robots" content="index, follow, max-image-preview:large">
-
-    <meta name="google-site-verification" content="HUnEyJRyYf0WJwbXhtIYoLnZprXHcPb2ltZisy7ilcA" />
-    <meta name="google-site-verification" content="pL6d6d0u4AJGMRSTwTJI539YIrtq3iVCi08YZ9IAChI" />
-
-    <link rel="alternate" hreflang="fr" href="https://haykellaouiti-collab.github.io/?lang=fr">
-    <link rel="alternate" hreflang="en" href="https://haykellaouiti-collab.github.io/?lang=en">
-    <link rel="alternate" hreflang="ar" href="https://haykellaouiti-collab.github.io/?lang=ar">
-    <link rel="alternate" hreflang="x-default" href="https://haykellaouiti-collab.github.io/">
-
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Épargne & Investissement Pro">
-    <meta property="og:title" content="Simulateurs Financiers & Observatoire des Taux 2026">
-    <meta property="og:description" content="Simulateur de crédit, épargne composée, budget 50/30/20 et observatoire BCT/BCE/FED.">
-    <meta property="og:url" content="https://haykellaouiti-collab.github.io/">
-    <meta property="og:image" content="https://haykellaouiti-collab.github.io/og-image.jpg">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:locale" content="fr_FR">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Simulateurs Financiers & Observatoire des Taux 2026">
-    <meta name="twitter:description" content="Crédit, épargne composée, budget — 100% gratuit.">
-    <meta name="twitter:image" content="https://haykellaouiti-collab.github.io/og-image.jpg">
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@graph": [
-        {"@type":"WebSite","@id":"https://haykellaouiti-collab.github.io/#website","url":"https://haykellaouiti-collab.github.io/","name":"Épargne & Investissement Pro","inLanguage":["fr","en","ar"],"publisher":{"@id":"https://haykellaouiti-collab.github.io/#org"}},
-        {"@type":"Organization","@id":"https://haykellaouiti-collab.github.io/#org","name":"Épargne & Investissement Pro","url":"https://haykellaouiti-collab.github.io/","logo":"https://haykellaouiti-collab.github.io/logo.png","founder":{"@type":"Person","name":"Haykel Laouiti"},"email":"haykellaouiti@gmail.com"}
-      ]
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Épargne &amp; Investissement Pro — Références Officielles &amp; BCT</title>
+  <meta name="description" content="Portail minimaliste d'accès direct aux publications officielles de la Banque Centrale de Tunisie (BCT) et des institutions financières.">
+  <link rel="icon" href="logo.svg" type="image/svg+xml">
+  <link rel="manifest" href="manifest.json">
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --text: #0f172a;
+      --muted: #475569;
+      --accent: #1d4ed8;
+      --accent-soft: #eff6ff;
+      --border: #e2e8f0;
     }
-    </script>
-
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('consent', 'default', {
-        'ad_storage': 'denied','ad_user_data': 'denied',
-        'ad_personalization': 'denied','analytics_storage': 'denied'
-      });
-    </script>
-
-    <!-- Tailwind CDN puis config (ordre correct) -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        darkMode: 'class',
-        theme: { extend: { colors: { brand: {
-          50:'#eff6ff',100:'#dbeafe',500:'#3b82f6',600:'#2563eb',700:'#1d4ed8'
-        }}}}
-      };
-    </script>
-
-    <link rel="preconnect" href="https://pagead2.googlesyndication.com">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Google+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/lucide@latest" defer></script>
-    <link rel="manifest" href="manifest.json">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://pagead2.googlesyndication.com https://unpkg.com https://cdnjs.cloudflare.com https://www.googletagservices.com https://adservice.google.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://*.google.com https://*.googlesyndication.com; connect-src 'self' https://pagead2.googlesyndication.com; frame-src https://googleads.g.doubleclick.net https://tpc.googlesyndication.com;">
-
-    <style>
-      :root { --primary:#2563eb; --surface:#f8fafc; --surface-bright:#fff; --surface-container:#f1f5f9; --stroke-default:#e2e8f0; }
-      body { font-family:'Google Sans','Open Sans',sans-serif; background:var(--surface); color:#0f172a; line-height:1.6; }
-      .skip-link { position:absolute; left:-9999px; top:0; background:#2563eb; color:#fff; padding:10px 20px; z-index:9999; font-weight:700; }
-      .skip-link:focus { left:0; }
-      *:focus-visible { outline:3px solid #2563eb; outline-offset:2px; border-radius:4px; }
-      .nav-3d-link { display:inline-flex; padding:8px 14px; border-radius:12px; font-size:13px; font-weight:700; color:#475569; background:linear-gradient(145deg,#fff,#f1f5f9); border:1px solid rgba(203,213,225,.7); box-shadow:2px 3px 6px rgba(0,0,0,.06); transition:all .2s; text-decoration:none; }
-      .nav-3d-link:hover { color:#2563eb; transform:translateY(-2px); }
-      #cookieConsent { position:fixed; bottom:0; left:0; right:0; z-index:9999; background:rgba(15,23,42,.98); color:#fff; padding:20px; border-top:3px solid #2563eb; display:none; }
-      #cookieConsent.show { display:block; }
-      .cc-inner { max-width:1200px; margin:0 auto; display:flex; flex-wrap:wrap; gap:16px; align-items:center; justify-content:space-between; }
-      #cookieConsent button { padding:10px 20px; border-radius:10px; font-weight:700; font-size:13px; cursor:pointer; border:none; }
-      #cookieConsent .cc-accept { background:#2563eb; color:#fff; }
-      #cookieConsent .cc-reject { background:transparent; color:#fff; border:1px solid #64748b; }
-      .ads-slot { margin:24px auto; padding:12px; background:#f8fafc; border:1px dashed #cbd5e1; border-radius:12px; text-align:center; min-height:100px; max-width:970px; overflow:hidden; }
-      .ads-slot::before { content:'Publicité'; display:block; font-size:10px; color:#94a3b8; text-transform:uppercase; letter-spacing:1px; margin-bottom:8px; }
-      .rate-refresh-bar { display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin:16px 0; padding:14px 18px; background:#fff; border:1px solid #e2e8f0; border-radius:12px; }
-      .btn-refresh { background:#2563eb; color:#fff; border:none; padding:10px 18px; border-radius:10px; font-weight:700; font-size:13px; cursor:pointer; }
-      .btn-refresh:disabled { opacity:.6; cursor:wait; }
-      .rate-status { font-size:13px; font-weight:600; }
-      .rate-status.loading { color:#64748b; }
-      .rate-status.success { color:#059669; }
-      .rate-status.error { color:#dc2626; }
-      .rate-date { font-size:12px; color:#64748b; margin-left:auto; }
-      .sim-input { width:100%; padding:10px 14px; border-radius:10px; border:1px solid #e2e8f0; background:#f8fafc; font-size:14px; font-weight:600; }
-      .sim-label { display:block; font-size:13px; font-weight:700; color:#475569; margin-bottom:6px; margin-top:14px; }
-      .sim-btn { width:100%; padding:12px; background:#2563eb; color:#fff; border:none; border-radius:10px; font-weight:700; cursor:pointer; font-size:14px; margin-top:16px; }
-      .sim-btn:hover { background:#1d4ed8; }
-      .result-box { margin-top:18px; padding:16px; background:#eff6ff; border-radius:12px; border:1px solid #bfdbfe; }
-      .result-row { display:flex; justify-content:space-between; padding:6px 0; font-size:14px; }
-      .result-row strong { font-size:16px; color:#1d4ed8; }
-      .rate-card { background:#fff; border:1px solid #e2e8f0; border-radius:14px; padding:18px; transition:all .2s; }
-      .rate-card:hover { transform:translateY(-2px); box-shadow:0 8px 20px rgba(0,0,0,.06); }
-      .rate-value { font-size:28px; font-weight:800; color:#2563eb; font-variant-numeric:tabular-nums; }
-    </style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 1.5rem;
+    }
+    .container { max-width: 760px; margin: 0 auto; }
+    header {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.25rem;
+    }
+    .brand { display: inline-flex; align-items: center; text-decoration: none; }
+    .brand svg { height: 48px; width: auto; }
+    p.subtitle { color: var(--muted); font-size: 0.95rem; }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1.25rem;
+      box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+    }
+    .card h1 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    ul { list-style: none; display: flex; flex-direction: column; gap: 0.9rem; }
+    li {
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      transition: border-color 0.15s ease, background-color 0.15s ease;
+    }
+    li:hover { border-color: var(--accent); background: var(--accent-soft); }
+    a.official-link {
+      display: inline-flex;
+      align-items: center;
+      font-weight: 600;
+      color: var(--text);
+      text-decoration: none;
+    }
+    li:hover a.official-link { color: var(--accent); }
+    .desc { display: block; font-size: 0.875rem; color: var(--muted); margin-top: 0.2rem; }
+    footer {
+      margin-top: 2.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.85rem;
+      color: var(--muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+    }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--accent); text-decoration: underline; }
+  </style>
 </head>
-<body class="bg-slate-50 text-slate-800 antialiased">
-    <a href="#main" class="skip-link">Aller au contenu principal</a>
-
-    <!-- ============ NAVBAR ============ -->
-    <header class="sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-slate-200 shadow-sm">
-      <nav class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between flex-wrap gap-2">
-        <a href="index.html" class="text-lg font-extrabold text-brand-600">Épargne & Investissement Pro</a>
-        <div class="flex gap-2 flex-wrap">
-          <a href="#taux" class="nav-3d-link">Taux</a>
-          <a href="#credit" class="nav-3d-link">Crédit</a>
-          <a href="#epargne" class="nav-3d-link">Épargne</a>
-          <a href="#budget" class="nav-3d-link">Budget</a>
-          <a href="#faq" class="nav-3d-link">FAQ</a>
-          <a href="contact.html" class="nav-3d-link">Contact</a>
-        </div>
-      </nav>
+<body>
+  <div class="container">
+    <header>
+      <a class="brand" href="index.html" aria-label="Accueil Épargne &amp; Investissement Pro">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 56" fill="none" role="img" aria-label="Logo Épargne &amp; Investissement Pro">
+          <defs>
+            <linearGradient id="brandGrad" x1="0" y1="0" x2="56" y2="56" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#0f172a"/>
+              <stop offset="100%" stop-color="#1d4ed8"/>
+            </linearGradient>
+            <linearGradient id="accentGrad" x1="16" y1="16" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#38bdf8"/>
+              <stop offset="100%" stop-color="#818cf8"/>
+            </linearGradient>
+          </defs>
+          <rect x="4" y="4" width="48" height="48" rx="14" fill="url(#brandGrad)"/>
+          <rect x="15" y="29" width="5" height="12" rx="2.5" fill="#94a3b8"/>
+          <rect x="23.5" y="22" width="5" height="19" rx="2.5" fill="#e2e8f0"/>
+          <rect x="32" y="15" width="5" height="26" rx="2.5" fill="url(#accentGrad)"/>
+          <circle cx="34.5" cy="11.5" r="2" fill="#38bdf8"/>
+          <text x="64" y="28" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="18" font-weight="700" letter-spacing="-0.02em" fill="#0f172a">Épargne <tspan fill="#1d4ed8">&amp;</tspan> Investissement <tspan fill="#1d4ed8">Pro</tspan></text>
+          <text x="64" y="44" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="500" letter-spacing="0.06em" fill="#64748b">RÉFÉRENCES OFFICIELLES</text>
+        </svg>
+      </a>
+      <p class="subtitle">Accès direct et sans intermédiaire aux portails officiels des autorités monétaires en Tunisie.</p>
     </header>
 
-    <!-- ============ HERO ============ -->
-    <section class="max-w-6xl mx-auto px-4 py-16 text-center">
-      <h1 class="text-4xl md:text-5xl font-extrabold mb-4 leading-tight">Simulateurs financiers <span class="text-brand-600">gratuits</span> 2026</h1>
-      <p class="text-lg text-slate-600 mb-8 max-w-2xl mx-auto">Crédit immobilier, épargne composée, budget 50/30/20 et observatoire des taux directeurs BCT, BCE, FED. 100 % gratuit, sans inscription, données locales.</p>
-      <div class="flex gap-3 justify-center flex-wrap">
-        <a href="#credit" class="px-6 py-3 bg-brand-600 text-white font-bold rounded-xl hover:bg-brand-700">Simulateur de crédit</a>
-        <a href="#epargne" class="px-6 py-3 bg-white border border-slate-300 font-bold rounded-xl hover:bg-slate-100">Simulateur d'épargne</a>
-      </div>
-    </section>
-
-    <!-- ============ ADS SLOT TOP ============ -->
-    <div class="ads-slot">
-      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-3266873353292561" data-ad-slot="1234567890" data-ad-format="auto" data-full-width-responsive="true"></ins>
-    </div>
-
-    <main id="main" class="max-w-6xl mx-auto px-4">
-
-      <!-- ============ SECTION TAUX ============ -->
-      <section id="taux" class="py-12">
-        <h2 class="text-3xl font-extrabold mb-2">Observatoire des taux directeurs</h2>
-        <p class="text-slate-600 mb-4">Taux officiels des banques centrales — BCT, BAM, BCE, FED, BA, CBL. Sources : publications officielles (novembre 2026).</p>
-
-        <div class="rate-refresh-bar">
-          <button id="btnRefreshRates" class="btn-refresh" type="button">🔄 Actualiser les taux</button>
-          <span id="rateStatus" class="rate-status" aria-live="polite"></span>
-          <span id="rateDate" class="rate-date"></span>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
-          <div class="rate-card">
-            <div class="text-sm font-bold text-slate-500 mb-1">BCT — Tunisie</div>
-            <div class="rate-value" data-rate="bct">7,00 %</div>
-            <div class="text-xs text-slate-500 mt-1">Taux directeur (7 oct. 2026)</div>
-          </div>
-          <div class="rate-card">
-            <div class="text-sm font-bold text-slate-500 mb-1">BAM — Maroc</div>
-            <div class="rate-value" data-rate="bam">2,25 %</div>
-            <div class="text-xs text-slate-500 mt-1">Taux directeur (22 sept. 2026)</div>
-          </div>
-          <div class="rate-card">
-            <div class="text-sm font-bold text-slate-500 mb-1">BCE — Zone euro</div>
-            <div class="rate-value" data-rate="bce">2,65 %</div>
-            <div class="text-xs text-slate-500 mt-1">MRO (29 oct. 2026)</div>
-          </div>
-          <div class="rate-card">
-            <div class="text-sm font-bold text-slate-500 mb-1">FED — USA</div>
-            <div class="rate-value" data-rate="fed">3,50–3,75 %</div>
-            <div class="text-xs text-slate-500 mt-1">Fed Funds (juin 2026)</div>
-          </div>
-          <div class="rate-card">
-            <div class="text-sm font-bold text-slate-500 mb-1">BA — Algérie</div>
-            <div class="rate-value" data-rate="ba">2,50 %</div>
-            <div class="text-xs text-slate-500 mt-1">Taux directeur (oct. 2026)</div>
-          </div>
-          <div class="rate-card">
-            <div class="text-sm font-bold text-slate-500 mb-1">CBL — Libye</div>
-            <div class="rate-value" data-rate="cbl">3,00 %</div>
-            <div class="text-xs text-slate-500 mt-1">Taux directeur (sept. 2026)</div>
-          </div>
-        </div>
+    <main>
+      <section class="card">
+        <h1>Tunisie — Portails Officiels de Référence</h1>
+        <ul>
+          <li>
+            <a class="official-link" href="https://www.bct.gov.tn" target="_blank" rel="noopener noreferrer">Banque Centrale de Tunisie (BCT) — Portail Officiel ↗</a>
+            <span class="desc">Site institutionnel principal : politique monétaire, communiqués et statistiques officielles.</span>
+          </li>
+          <li>
+            <a class="official-link" href="https://www.bct.gov.tn/bct/siteprod/tableau_statistique_a.jsp?params=PL203105" target="_blank" rel="noopener noreferrer">BCT — Taux du Marché Monétaire (TMM) &amp; Taux Directeurs ↗</a>
+            <span class="desc">Consultation directe des indicateurs monétaires et taux de référence publiés par la BCT.</span>
+          </li>
+          <li>
+            <a class="official-link" href="https://www.bct.gov.tn/bct/siteprod/cours.jsp" target="_blank" rel="noopener noreferrer">BCT — Cours Moyens des Devises ↗</a>
+            <span class="desc">Taux de change officiels du Dinar Tunisien (TND) mis à jour quotidiennement par la BCT.</span>
+          </li>
+          <li>
+            <a class="official-link" href="https://www.finances.gov.tn" target="_blank" rel="noopener noreferrer">Ministère des Finances — République Tunisienne ↗</a>
+            <span class="desc">Textes réglementaires et fiscalité applicable à l'épargne et aux placements financiers.</span>
+          </li>
+        </ul>
       </section>
-
-      <!-- ============ ADS SLOT MID ============ -->
-      <div class="ads-slot">
-        <ins class="adsbygoogle" style="display:block;text-align:center" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-3266873353292561" data-ad-slot="1234567891"></ins>
-      </div>
-
-      <!-- ============ SIMULATEUR CRÉDIT ============ -->
-      <section id="credit" class="py-12">
-        <h2 class="text-3xl font-extrabold mb-2">Simulateur de crédit</h2>
-        <p class="text-slate-600 mb-6">Calculez votre mensualité, le coût total et le tableau d'amortissement.</p>
-        <div class="bg-white rounded-2xl p-6 border border-slate-200 max-w-2xl">
-          <label class="sim-label" for="creditAmount">Montant emprunté (TND)</label>
-          <input type="number" id="creditAmount" class="sim-input" value="100000" min="1000" step="1000">
-
-          <label class="sim-label" for="creditRate">Taux annuel (%)</label>
-          <input type="number" id="creditRate" class="sim-input" value="7" min="0" step="0.1">
-
-          <label class="sim-label" for="creditMonths">Durée (mois)</label>
-          <input type="number" id="creditMonths" class="sim-input" value="240" min="12" step="12">
-
-          <button class="sim-btn" onclick="calcCredit()">Calculer</button>
-
-          <div id="creditResult" class="result-box" style="display:none" aria-live="polite"></div>
-        </div>
-      </section>
-
-      <!-- ============ SIMULATEUR ÉPARGNE ============ -->
-      <section id="epargne" class="py-12">
-        <h2 class="text-3xl font-extrabold mb-2">Simulateur d'épargne composée</h2>
-        <p class="text-slate-600 mb-6">Projetez la valeur future de votre épargne avec intérêts composés mensuels.</p>
-        <div class="bg-white rounded-2xl p-6 border border-slate-200 max-w-2xl">
-          <label class="sim-label" for="epargneInitial">Capital initial (TND)</label>
-          <input type="number" id="epargneInitial" class="sim-input" value="10000" min="0" step="100">
-
-          <label class="sim-label" for="epargneMonthly">Versement mensuel (TND)</label>
-          <input type="number" id="epargneMonthly" class="sim-input" value="200" min="0" step="10">
-
-          <label class="sim-label" for="epargneRate">Taux annuel (%)</label>
-          <input type="number" id="epargneRate" class="sim-input" value="5" min="0" step="0.1">
-
-          <label class="sim-label" for="epargneYears">Durée (années)</label>
-          <input type="number" id="epargneYears" class="sim-input" value="10" min="1" step="1">
-
-          <button class="sim-btn" onclick="calcEpargne()">Calculer</button>
-
-          <div id="epargneResult" class="result-box" style="display:none" aria-live="polite"></div>
-        </div>
-      </section>
-
-      <!-- ============ SIMULATEUR BUDGET ============ -->
-      <section id="budget" class="py-12">
-        <h2 class="text-3xl font-extrabold mb-2">Budget 50/30/20</h2>
-        <p class="text-slate-600 mb-6">Répartissez votre revenu net selon la règle 50 % besoins, 30 % envies, 20 % épargne.</p>
-        <div class="bg-white rounded-2xl p-6 border border-slate-200 max-w-2xl">
-          <label class="sim-label" for="budgetIncome">Revenu net mensuel (TND)</label>
-          <input type="number" id="budgetIncome" class="sim-input" value="3000" min="0" step="100">
-
-          <button class="sim-btn" onclick="calcBudget()">Répartir</button>
-
-          <div id="budgetResult" class="result-box" style="display:none" aria-live="polite"></div>
-        </div>
-      </section>
-
-      <!-- ============ FAQ ============ -->
-      <section id="faq" class="py-12">
-        <h2 class="text-3xl font-extrabold mb-6">Questions fréquentes</h2>
-        <div class="space-y-3 max-w-3xl">
-          <details class="bg-white border border-slate-200 rounded-xl p-4">
-            <summary class="font-bold cursor-pointer">D'où proviennent les taux directeurs affichés ?</summary>
-            <p class="mt-2 text-slate-600 text-sm">Les taux sont sourcés depuis les publications officielles des banques centrales : BCT, BA, CBL, BAM, BCE et FED. Les dates de dernière décision sont indiquées sous chaque taux.</p>
-          </details>
-          <details class="bg-white border border-slate-200 rounded-xl p-4">
-            <summary class="font-bold cursor-pointer">Les simulations sont-elles gratuites ?</summary>
-            <p class="mt-2 text-slate-600 text-sm">Oui, tous les simulateurs sont 100 % gratuits et fonctionnent sans inscription.</p>
-          </details>
-          <details class="bg-white border border-slate-200 rounded-xl p-4">
-            <summary class="font-bold cursor-pointer">Mes données sont-elles enregistrées ?</summary>
-            <p class="mt-2 text-slate-600 text-sm">Non. Tous les calculs s'exécutent localement dans votre navigateur. Aucune donnée financière n'est transmise à un serveur.</p>
-          </details>
-          <details class="bg-white border border-slate-200 rounded-xl p-4">
-            <summary class="font-bold cursor-pointer">Comment actualiser les taux ?</summary>
-            <p class="mt-2 text-slate-600 text-sm">Cliquez sur le bouton « Actualiser les taux » dans la section Observatoire. Si l'API n'est pas disponible (site statique), les taux de référence de novembre 2026 sont affichés.</p>
-          </details>
-        </div>
-      </section>
-
     </main>
 
-    <!-- ============ ADS SLOT BOTTOM ============ -->
-    <div class="ads-slot">
-      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-3266873353292561" data-ad-slot="1234567892" data-ad-format="auto" data-full-width-responsive="true"></ins>
-    </div>
-
-    <!-- ============ FOOTER ============ -->
-    <footer class="bg-white border-t border-slate-200 mt-12">
-      <div class="max-w-6xl mx-auto px-4 py-10 grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div>
-          <div class="text-lg font-extrabold text-brand-600 mb-2">Épargne & Investissement Pro</div>
-          <p class="text-sm text-slate-600">Portail éducatif indépendant de finance personnelle. Aucun conseil personnalisé.</p>
-        </div>
-        <div>
-          <div class="font-bold mb-2 text-sm">Navigation</div>
-          <ul class="space-y-1 text-sm">
-            <li><a href="index.html" class="text-slate-600 hover:text-brand-600">Accueil</a></li>
-            <li><a href="about.html" class="text-slate-600 hover:text-brand-600">À propos</a></li>
-            <li><a href="contact.html" class="text-slate-600 hover:text-brand-600">Contact</a></li>
-          </ul>
-        </div>
-        <div>
-          <div class="font-bold mb-2 text-sm">Légal</div>
-          <ul class="space-y-1 text-sm">
-            <li><a href="privacy.html" class="text-slate-600 hover:text-brand-600">Confidentialité</a></li>
-            <li><a href="cookie-policy.html" class="text-slate-600 hover:text-brand-600">Cookies</a></li>
-            <li><a href="terms.html" class="text-slate-600 hover:text-brand-600">Conditions</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="border-t border-slate-200 py-4 text-center text-xs text-slate-500">
-        © 2026 Épargne & Investissement Pro — Éditeur : Haykel Laouiti, La Marsa, Tunis.
-      </div>
+    <footer>
+      <a href="about.html">À propos</a>
+      <a href="contact.html">Contact</a>
+      <a href="privacy.html">Confidentialité</a>
+      <a href="cookie-policy.html">Cookies</a>
+      <a href="terms.html">Conditions d'utilisation</a>
     </footer>
-
-    <!-- ============ BANNIÈRE COOKIES ============ -->
-    <div id="cookieConsent" role="dialog" aria-modal="true" aria-labelledby="ccTitle">
-      <div class="cc-inner">
-        <p>
-          <strong id="ccTitle">🍪 Respect de votre vie privée</strong><br>
-          Nous utilisons des cookies pour personnaliser la publicité (Google AdSense) et mesurer l'audience. Conformément au RGPD et au CCPA, vous pouvez accepter ou refuser. <a href="cookie-policy.html" class="underline text-blue-300">En savoir plus</a>.
-        </p>
-        <div style="display:flex;gap:8px;flex-wrap:wrap">
-          <button class="cc-reject" onclick="setConsent('reject')">Refuser</button>
-          <button class="cc-accept" onclick="setConsent('accept')">Tout accepter</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- ============ SCRIPTS ============ -->
-    <script>
-      const CONSENT_KEY = 'cookie_consent';
-      const safeGet = k => { try { return localStorage.getItem(k); } catch(e){ return null; } };
-      const safeSet = (k,v) => { try { localStorage.setItem(k,v); } catch(e){} };
-
-      function loadAdSense() {
-        if (document.querySelector('script[src*="adsbygoogle.js"]')) return;
-        const s = document.createElement('script');
-        s.async = true;
-        s.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3266873353292561';
-        s.crossOrigin = 'anonymous';
-        document.head.appendChild(s);
-        // Push les 3 slots AdSense
-        setTimeout(() => {
-          document.querySelectorAll('.adsbygoogle').forEach(() => {
-            try { (window.adsbygoogle = window.adsbygoogle || []).push({}); } catch(e){}
-          });
-        }, 500);
-      }
-
-      function grantConsent(){
-        if (typeof gtag === 'function'){
-          gtag('consent','update',{
-            'ad_storage':'granted','ad_user_data':'granted',
-            'ad_personalization':'granted','analytics_storage':'granted'
-          });
-        }
-        loadAdSense();
-      }
-      function denyConsent(){
-        if (typeof gtag === 'function'){
-          gtag('consent','update',{
-            'ad_storage':'denied','ad_user_data':'denied',
-            'ad_personalization':'denied','analytics_storage':'denied'
-          });
-        }
-      }
-
-      function setConsent(value){
-        safeSet(CONSENT_KEY, value);
-        safeSet(CONSENT_KEY + '_date', new Date().toISOString());
-        document.getElementById('cookieConsent').classList.remove('show');
-        if (value === 'accept') grantConsent(); else denyConsent();
-      }
-      window.openCookieSettings = () => document.getElementById('cookieConsent').classList.add('show');
-
-      (function initConsent(){
-        const stored = safeGet(CONSENT_KEY);
-        if (!stored) {
-          setTimeout(() => document.getElementById('cookieConsent')?.classList.add('show'), 800);
-        } else if (stored === 'accept') {
-          grantConsent();
-        }
-      })();
-    </script>
-
-    <script>
-      const RATE_ENDPOINT = '/api/rates';
-
-      async function refreshRates(){
-        const btn = document.getElementById('btnRefreshRates');
-        const status = document.getElementById('rateStatus');
-        const dateEl = document.getElementById('rateDate');
-        btn.disabled = true;
-        status.textContent = 'Récupération en cours…';
-        status.className = 'rate-status loading';
-        try {
-          const res = await fetch(RATE_ENDPOINT, { method:'GET' });
-          if (!res.ok) throw new Error('HTTP ' + res.status);
-          const data = await res.json();
-          if (data.rates && Array.isArray(data.rates)){
-            data.rates.forEach(r => {
-              document.querySelectorAll(`[data-rate="${r.id}"]`).forEach(el => {
-                el.textContent = r.value;
-              });
-            });
-          }
-          dateEl.textContent = data.updated_at ? `Dernière MAJ : ${new Date(data.updated_at).toLocaleString('fr-FR')}` : '';
-          status.textContent = '✅ Taux mis à jour';
-          status.className = 'rate-status success';
-          safeSet('rates_cache', JSON.stringify(data));
-        } catch(err){
-          status.textContent = '❌ Échec : ' + err.message + ' (taux de référence affichés)';
-          status.className = 'rate-status error';
-        } finally {
-          btn.disabled = false;
-        }
-      }
-      document.getElementById('btnRefreshRates')?.addEventListener('click', refreshRates);
-    </script>
-
-    <script>
-      window.addEventListener('load', () => { if (window.lucide) lucide.createIcons(); });
-
-      function fmt(n) {
-        return new Intl.NumberFormat('fr-FR', { style:'decimal', maximumFractionDigits:2 }).format(n);
-      }
-
-      // ---------- SIMULATEUR CRÉDIT ----------
-      function calcCredit() {
-        const P = parseFloat(document.getElementById('creditAmount').value);
-        const annualRate = parseFloat(document.getElementById('creditRate').value) / 100;
-        const n = parseInt(document.getElementById('creditMonths').value);
-        const r = annualRate / 12;
-
-        if (!P || P <= 0 || !n || n <= 0) {
-          alert('Veuillez saisir des valeurs valides.');
-          return;
-        }
-
-        let monthly;
-        if (r === 0) {
-          monthly = P / n;
-        } else {
-          monthly = P * r * Math.pow(1+r, n) / (Math.pow(1+r, n) - 1);
-        }
-        const total = monthly * n;
-        const interest = total - P;
-
-        const box = document.getElementById('creditResult');
-        box.style.display = 'block';
-        box.innerHTML = `
-          <div class="result-row"><span>Mensualité</span><strong>${fmt(monthly)} TND</strong></div>
-          <div class="result-row"><span>Coût total du crédit</span><strong>${fmt(total)} TND</strong></div>
-          <div class="result-row"><span>Intérêts totaux</span><strong>${fmt(interest)} TND</strong></div>
-          <div class="result-row"><span>Capital emprunté</span><strong>${fmt(P)} TND</strong></div>
-        `;
-      }
-
-      // ---------- SIMULATEUR ÉPARGNE ----------
-      function calcEpargne() {
-        const P = parseFloat(document.getElementById('epargneInitial').value) || 0;
-        const PMT = parseFloat(document.getElementById('epargneMonthly').value) || 0;
-        const annualRate = parseFloat(document.getElementById('epargneRate').value) / 100;
-        const years = parseInt(document.getElementById('epargneYears').value);
-
-        if (!years || years <= 0) {
-          alert('Durée invalide.');
-          return;
-        }
-
-        const r = annualRate / 12;
-        const n = years * 12;
-
-        const futureP = P * Math.pow(1+r, n);
-        const futurePMT = r === 0 ? PMT * n : PMT * (Math.pow(1+r, n) - 1) / r;
-        const futureValue = futureP + futurePMT;
-        const invested = P + PMT * n;
-        const gains = futureValue - invested;
-
-        const box = document.getElementById('epargneResult');
-        box.style.display = 'block';
-        box.innerHTML = `
-          <div class="result-row"><span>Valeur future</span><strong>${fmt(futureValue)} TND</strong></div>
-          <div class="result-row"><span>Total investi</span><strong>${fmt(invested)} TND</strong></div>
-          <div class="result-row"><span>Intérêts composés</span><strong>${fmt(gains)} TND</strong></div>
-        `;
-      }
-
-      // ---------- SIMULATEUR BUDGET ----------
-      function calcBudget() {
-        const income = parseFloat(document.getElementById('budgetIncome').value);
-        if (!income || income <= 0) {
-          alert('Revenu invalide.');
-          return;
-        }
-        const needs = income * 0.5;
-        const wants = income * 0.3;
-        const savings = income * 0.2;
-
-        const box = document.getElementById('budgetResult');
-        box.style.display = 'block';
-        box.innerHTML = `
-          <div class="result-row"><span>Besoins (50 %)</span><strong>${fmt(needs)} TND</strong></div>
-          <div class="result-row"><span>Envies (30 %)</span><strong>${fmt(wants)} TND</strong></div>
-          <div class="result-row"><span>Épargne (20 %)</span><strong>${fmt(savings)} TND</strong></div>
-        `;
-      }
-    </script>
+  </div>
 </body>
 </html>
