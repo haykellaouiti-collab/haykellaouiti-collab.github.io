@@ -1,5 +1,11 @@
-﻿
 User-agent: *
 Allow: /
+Disallow: /404.html
+
+User-agent: GPTBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
 
 Sitemap: https://haykellaouiti-collab.github.io/sitemap.xml
