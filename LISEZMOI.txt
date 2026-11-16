@@ -1,0 +1,29 @@
+EPARGNE & INVESTISSEMENT PRO - site trilingue (FR / EN / AR)
+=============================================================
+
+DEPLOIEMENT (GitHub Pages, depot "haykellaouiti-collab.github.io")
+1. Decompressez le ZIP.
+2. Envoyez TOUT le contenu a la RACINE du depot (y compris le dossier assets/,
+   les dossiers en/ et ar/, et le fichier .nojekyll). Remplacez les anciens fichiers.
+3. Attendez 1 a 2 minutes, puis testez :
+   /  (francais)   /en/  (anglais)   /ar/  (arabe)   /ads.txt   /sitemap.xml
+4. Search Console : soumettez https://haykellaouiti-collab.github.io/sitemap.xml
+   (vos 2 balises de verification google-site-verification sont conservees).
+
+CE QUI A CHANGE
+- 3 langues avec hreflang (sans redirection automatique), arabe en RTL.
+- 9 simulateurs : credit + TAEG + remboursement anticipe, epargne, objectif,
+  rendement reel, budget 50/30/20, retraite, acheter ou louer, TVM, VAN/TRI.
+- 12 devises, mode sombre, export CSV, impression, usage hors ligne (sw.js).
+- Taux directeurs dates et sources (assets/rates.json) + 30 banques centrales.
+- Conformite : AdSense charge UNIQUEMENT apres consentement (bandeau),
+  pages confidentialite / cookies / conditions / a propos / contact en 3 langues.
+- SEO : canonical, Open Graph, JSON-LD (WebApplication + FAQ), sitemap multilingue.
+- Aucune dependance externe : CSS, JS et icones sont locaux.
+
+A FAIRE PAR VOUS
+- Reconfirmer le taux de Banque d'Algerie (2,75 %, marque "a reconfirmer").
+- Faire relire les textes arabes par un locuteur natif.
+- Mettre a jour assets/rates.json apres chaque reunion de banque centrale
+  (changer "value", "asOf" et "updated", puis incrementer VERSION dans sw.js).
+- Les ads.txt / robots.txt / sitemap.xml fournis remplacent les anciens.

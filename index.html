@@ -1,835 +1,119 @@
 <!DOCTYPE html>
-<html lang="fr" id="htmlTag" class="scroll-smooth">
+<html lang="fr" dir="ltr" data-root="" data-cur="TND">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="docTitle">Epargne & Investissement Pro - Portail des Banques Centrales & Simulateurs</title>
-    <meta name="description" content="Portail officiel des banques centrales (Afrique, Europe, Amériques, Asie). Simulateurs financiers avancés : crédit, TVM, retraite et comparateur achat/location.">
-    
-    <meta name="google-site-verification" content="HUnEyJRyYf0WJwbXhtIYoLnZprXHcPb2ltZisy7ilcA" />
-    <meta name="google-site-verification" content="pL6d6d0u4AJGMRSTwTJI539YIrtq3iVCi08YZ9IAChI" />
-
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3266873353292561" crossorigin="anonymous"></script>
-
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        brand: { 50: '#eff6ff', 100: '#dbeafe', 500: '#3b82f6', 600: '#2563eb', 700: '#1d4ed8' }
-                    }
-                }
-            }
-        }
-    </script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
-
-    <style>
-      @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Google+Sans:wght@400;500;700;800&display=swap');
-
-      :root {
-        --ff-sans: 'Google Sans', 'Open Sans', sans-serif;
-        --primary: #2563eb;
-        --on-surface-default: #0f172a;
-        --on-surface-de-emphasis: #475569;
-        --surface: #f8fafc;
-        --surface-bright: #ffffff;
-        --surface-container: #f1f5f9;
-        --stroke-default: #e2e8f0;
-        --positive: #059669;
-        --negative: #dc2626;
-      }
-
-      body[dir="rtl"] { font-family: 'Cairo', sans-serif; }
-      * { box-sizing: border-box; }
-      body { font-family: var(--ff-sans); background: var(--surface); color: var(--on-surface-default); line-height: 1.6; -webkit-font-smoothing: antialiased; }
-
-      .nav-3d-container { background: rgba(255, 255, 255, 0.90); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(226, 232, 240, 0.8); box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.04); }
-      .nav-3d-link { display: inline-flex; align-items: center; padding: 8px 16px; border-radius: 12px; font-size: 13px; font-weight: 700; color: #475569; background: linear-gradient(145deg, #ffffff, #f1f5f9); border: 1px solid rgba(203, 213, 225, 0.7); box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.06); transition: all 0.2s; text-decoration: none; white-space: nowrap; }
-      .nav-3d-link:hover { color: #2563eb; transform: translateY(-2px); box-shadow: 4px 6px 12px rgba(37, 99, 235, 0.15); border-color: #93c5fd; }
-
-      .sim-input { width: 100%; padding: 10px 14px; border-radius: 10px; border: 1px solid var(--stroke-default); background: var(--surface-container); font-size: 14px; font-weight: 600; outline: none; }
-      .sim-input:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1); }
-      .sim-label { display: block; font-size: 13px; font-weight: 700; color: #475569; margin-bottom: 6px; margin-top: 14px; }
-      .sim-btn { width: 100%; padding: 12px; background: var(--primary); color: #fff; border: none; border-radius: 10px; font-weight: 700; cursor: pointer; font-size: 14px; margin-top: 16px; transition: background 0.2s; }
-      .sim-btn:hover { background: #1d4ed8; }
-
-      .result-box { margin-top: 18px; padding: 16px; background: #eff6ff; border-radius: 12px; border: 1px solid #bfdbfe; }
-      .result-row { display: flex; justify-content: space-between; padding: 6px 0; font-size: 14px; border-bottom: 1px dashed #bfdbfe; }
-      .result-row:last-child { border-bottom: none; }
-      .result-row strong { font-size: 16px; color: #1d4ed8; }
-
-      .bank-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px; transition: all 0.2s; display: flex; flex-direction: column; justify-content: space-between; height: 100%; }
-      .bank-card:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(0,0,0,0.08); border-color: #93c5fd; }
-      .bank-title { font-weight: 800; color: #0f172a; font-size: 15px; margin-bottom: 4px; }
-      .bank-country { font-size: 12px; color: #475569; font-weight: 600; margin-bottom: 12px; }
-      .bank-link { font-size: 13px; color: #2563eb; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 4px; }
-      .bank-link:hover { text-decoration: underline; }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>&#201;pargne &amp; Investissement Pro &#8212; Simulateurs de cr&#233;dit, &#233;pargne et retraite</title>
+<meta name="description" content="Simulateurs gratuits : cr&#233;dit avec TAEG, int&#233;r&#234;ts compos&#233;s, objectif d&#x27;&#233;pargne, retraite, achat vs location, TVM, VAN/TRI. Taux directeurs et liens vers les banques centrales.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://haykellaouiti-collab.github.io/">
+<link rel="alternate" hreflang="fr" href="https://haykellaouiti-collab.github.io/">
+<link rel="alternate" hreflang="en" href="https://haykellaouiti-collab.github.io/en/">
+<link rel="alternate" hreflang="ar" href="https://haykellaouiti-collab.github.io/ar/">
+<link rel="alternate" hreflang="x-default" href="https://haykellaouiti-collab.github.io/en/">
+<meta name="theme-color" content="#2563eb">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="192x192" href="assets/icon-192.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="&#201;pargne &amp; Investissement Pro">
+<meta property="og:title" content="&#201;pargne &amp; Investissement Pro &#8212; Simulateurs de cr&#233;dit, &#233;pargne et retraite">
+<meta property="og:description" content="Simulateurs gratuits : cr&#233;dit avec TAEG, int&#233;r&#234;ts compos&#233;s, objectif d&#x27;&#233;pargne, retraite, achat vs location, TVM, VAN/TRI. Taux directeurs et liens vers les banques centrales.">
+<meta property="og:url" content="https://haykellaouiti-collab.github.io/">
+<meta property="og:image" content="https://haykellaouiti-collab.github.io/assets/og-image.png">
+<meta property="og:locale" content="fr_FR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="google-site-verification" content="HUnEyJRyYf0WJwbXhtIYoLnZprXHcPb2ltZisy7ilcA">
+<meta name="google-site-verification" content="pL6d6d0u4AJGMRSTwTJI539YIrtq3iVCi08YZ9IAChI">
+<script>try{var t=localStorage.getItem('ep_theme');if(t==='dark'||(!t&&matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.classList.add('dark')}catch(e){}</script>
+<link rel="stylesheet" href="assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","name":"\u00c9pargne & Investissement Pro","url":"https://haykellaouiti-collab.github.io/","inLanguage":"fr"},{"@type":"WebApplication","name":"\u00c9pargne & Investissement Pro","applicationCategory":"FinanceApplication","operatingSystem":"Any","url":"https://haykellaouiti-collab.github.io/","inLanguage":"fr","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Simulateurs gratuits : cr\u00e9dit avec TAEG, int\u00e9r\u00eats compos\u00e9s, objectif d'\u00e9pargne, retraite, achat vs location, TVM, VAN/TRI. Taux directeurs et liens vers les banques centrales."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Mes donn\u00e9es sont-elles envoy\u00e9es quelque part ?","acceptedAnswer":{"@type":"Answer","text":"Non. Tous les calculs s'ex\u00e9cutent localement dans votre navigateur. Seules vos pr\u00e9f\u00e9rences (devise, th\u00e8me, choix de cookies) sont m\u00e9moris\u00e9es sur votre appareil."}},{"@type":"Question","name":"Les r\u00e9sultats sont-ils des conseils financiers ?","acceptedAnswer":{"@type":"Answer","text":"Non. Ce sont des estimations p\u00e9dagogiques fond\u00e9es sur les hypoth\u00e8ses que vous saisissez. Pour une d\u00e9cision, consultez votre banque ou un conseiller agr\u00e9\u00e9."}},{"@type":"Question","name":"D'o\u00f9 viennent les taux directeurs affich\u00e9s ?","acceptedAnswer":{"@type":"Answer","text":"Des sites officiels des banques centrales, avec la date de v\u00e9rification. Ils \u00e9voluent \u00e0 chaque r\u00e9union de politique mon\u00e9taire : consultez la source officielle avant toute d\u00e9cision."}},{"@type":"Question","name":"Quelle diff\u00e9rence entre taux nominal et TAEG ?","acceptedAnswer":{"@type":"Answer","text":"Le taux nominal est celui du contrat ; le TAEG ajoute frais et assurance et exprime le co\u00fbt annuel effectif total du cr\u00e9dit."}},{"@type":"Question","name":"Le simulateur g\u00e8re-t-il le remboursement anticip\u00e9 ?","acceptedAnswer":{"@type":"Answer","text":"Oui. Indiquez un versement suppl\u00e9mentaire mensuel et le mois de d\u00e9part : le simulateur affiche les int\u00e9r\u00eats \u00e9conomis\u00e9s et les mois gagn\u00e9s."}}]}]}</script>
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans antialiased">
+<body>
+<a class="skip" href="#main">Aller au contenu</a>
+<header class="top no-print"><div class="wrap bar">
+<a class="brand" href="./"><img src="assets/icon-192.png" width="34" height="34" alt=""><span>&#201;pargne &amp; Investissement Pro</span></a>
+<nav class="main" aria-label="Main"><a href="#rates">Taux</a><a href="#loan">Cr&#233;dit</a><a href="#savings">&#201;pargne</a><a href="#tools">Autres outils</a><a href="#banks">Banques centrales</a><a href="#guides">Guides</a><a href="#faq">FAQ</a></nav>
+<div class="ctrl"><span class="langs" role="group" aria-label="Langue"><a class="lang on" href="./" hreflang="fr" lang="fr" aria-current="true">FR</a><a class="lang" href="en/" hreflang="en" lang="en">EN</a><a class="lang" href="ar/" hreflang="ar" lang="ar">AR</a></span>
+<select id="currencySelect" aria-label="Devise"><option value="TND">TND</option><option value="DZD">DZD</option><option value="MAD">MAD</option><option value="LYD">LYD</option><option value="EGP">EGP</option><option value="SAR">SAR</option><option value="AED">AED</option><option value="EUR">EUR</option><option value="USD">USD</option><option value="GBP">GBP</option><option value="CAD">CAD</option><option value="CHF">CHF</option></select>
+<button type="button" id="themeBtn" aria-pressed="false" title="Mode sombre" aria-label="Mode sombre">&#9790;</button></div>
+</div></header>
+<main id="main">
+<section class="hero" id="top"><div class="wrap"><span class="badge">Gratuit &#183; Sans inscription &#183; Calculs dans votre navigateur</span>
+<h1>Simulez vos <em>cr&#233;dits</em>, votre &#233;pargne et votre retraite</h1><p>Neuf simulateurs rigoureux, des taux directeurs dat&#233;s et sourc&#233;s, et les liens officiels des banques centrales. Vos chiffres ne quittent jamais votre appareil.</p>
+<div class="cta"><a class="btn primary" href="#loan">Simuler un cr&#233;dit</a><a class="btn" href="#rates">Voir les taux directeurs</a></div></div></section>
+<noscript><div class="wrap"><p class="warn">JavaScript is required for the calculators.</p></div></noscript>
+<section class="blk" id="rates"><div class="wrap"><span class="sub">Taux directeurs</span><h2>Taux directeurs de r&#233;f&#233;rence</h2><p class="lead">Valeurs relev&#233;es sur les sites officiels. Les taux changent &#224; chaque r&#233;union : v&#233;rifiez toujours la source avant de d&#233;cider.</p>
+<div class="tw"><table><thead><tr><th>Banque / pays</th><th>Taux</th><th>V&#233;rifi&#233; le</th><th>Source</th></tr></thead><tbody id="ratesBody"><tr><td>BCT (Tunisie)</td><td><strong>7,00 %</strong></td><td>2026-11-15</td><td><a href="https://www.bct.gov.tn" target="_blank" rel="noopener nofollow">bct.gov.tn</a></td></tr><tr><td>Banque d&#x27;Alg&#233;rie</td><td><strong>2,75 %</strong> <span class="chip">&#224; reconfirmer</span></td><td>2026-11-15</td><td><a href="https://www.bank-of-algeria.dz" target="_blank" rel="noopener nofollow">bank-of-algeria.dz</a></td></tr><tr><td>Banque centrale de Libye</td><td><strong>3,00 %</strong></td><td>2026-11-15</td><td><a href="https://cbl.gov.ly" target="_blank" rel="noopener nofollow">cbl.gov.ly</a></td></tr><tr><td>Bank Al-Maghrib (Maroc)</td><td><strong>2,25 %</strong></td><td>2026-11-15</td><td><a href="https://www.bkam.ma" target="_blank" rel="noopener nofollow">bkam.ma</a></td></tr><tr><td>BCE &#8212; taux de d&#233;p&#244;t</td><td><strong>2,50 %</strong></td><td>2026-11-16</td><td><a href="https://www.ecb.europa.eu/stats/policy_and_exchange_rates/key_ecb_interest_rates/html/index.en.html" target="_blank" rel="noopener nofollow">ecb.europa.eu</a></td></tr><tr><td>Fed &#8212; fourchette fed funds</td><td><strong>3.75 - 4.00 %</strong></td><td>2026-11-15</td><td><a href="https://www.federalreserve.gov/monetarypolicy.htm" target="_blank" rel="noopener nofollow">federalreserve.gov</a></td></tr><tr><td>France &#8212; Livret A (taux r&#233;glement&#233;)</td><td><strong>1,70 %</strong></td><td>2026-11-15</td><td><a href="https://www.banque-france.fr" target="_blank" rel="noopener nofollow">banque-france.fr</a></td></tr></tbody></table></div>
+<p class="note">Derni&#232;re mise &#224; jour : <time id="ratesUpdated" datetime="2026-11-16">2026-11-16</time></p></div></section>
+<section class="blk" id="loan"><div class="wrap"><span class="sub">Simulateurs</span><h2>Bo&#238;te &#224; outils financi&#232;re</h2><p class="lead">Tous les r&#233;sultats se mettent &#224; jour pendant la saisie. Choisissez votre devise en haut de page.</p>
+<article class="card wide" id="t-loan" data-tool="loan">
+<h3>Cr&#233;dit, TAEG et amortissement</h3><p class="d">Mensualit&#233;, co&#251;t total, TAEG (frais et assurance inclus) et effet d&#x27;un remboursement anticip&#233;.</p>
+<div class="fields"><div><label for="l_amount">Montant emprunt&#233;</label><input id="l_amount" type="number" inputmode="decimal" step="any" value="100000"></div><div><label for="l_rate">Taux annuel nominal (%)</label><input id="l_rate" type="number" inputmode="decimal" step="any" value="7"></div><div><label for="l_years">Dur&#233;e (ann&#233;es)</label><input id="l_years" type="number" inputmode="decimal" step="any" value="15"></div><div><label for="l_fees">Frais de dossier</label><input id="l_fees" type="number" inputmode="decimal" step="any" value="1000"></div><div><label for="l_ins">Assurance annuelle (% du capital)</label><input id="l_ins" type="number" inputmode="decimal" step="any" value="0.3"></div><div><label for="l_extra">Remboursement anticip&#233; mensuel</label><input id="l_extra" type="number" inputmode="decimal" step="any" value="0"></div><div><label for="l_start">&#192; partir du mois n&#176;</label><input id="l_start" type="number" inputmode="decimal" step="any" value="13"></div></div>
+<div class="out" id="l_res" aria-live="polite"></div><div class="chart" id="l_chart"></div>
+<div class="actions no-print"><button type="button" class="btn" id="l_csv">Exporter en CSV</button><button type="button" class="btn" id="l_print">Imprimer / PDF</button></div>
+<details open><summary>R&#233;capitulatif par ann&#233;e</summary><div class="tw"><table><thead><tr><th>Ann&#233;e</th><th>Mensualit&#233;</th><th>Capital</th><th>Int&#233;r&#234;ts</th><th>Restant d&#251;</th></tr></thead><tbody id="l_year"></tbody></table></div></details>
+<details><summary>D&#233;tail mensuel complet</summary><div class="tw"><table><thead><tr><th>Mois</th><th>Mensualit&#233;</th><th>Capital</th><th>Int&#233;r&#234;ts</th><th>Restant d&#251;</th></tr></thead><tbody id="l_month"></tbody></table></div></details>
+</article>
+</div></section>
+<section class="blk" id="savings"><div class="wrap"><h2>&#201;pargne</h2><div class="grid two">
+<article class="card wide" id="t-savings" data-tool="savings">
+<h3>&#201;pargne et int&#233;r&#234;ts compos&#233;s</h3><p class="d">Projetez votre capital avec versements mensuels et hausse annuelle des versements.</p>
+<div class="fields"><div><label for="s_init">Capital initial</label><input id="s_init" type="number" inputmode="decimal" step="any" value="5000"></div><div><label for="s_month">Versement mensuel</label><input id="s_month" type="number" inputmode="decimal" step="any" value="300"></div><div><label for="s_rate">Rendement annuel (%)</label><input id="s_rate" type="number" inputmode="decimal" step="any" value="6"></div><div><label for="s_years">Dur&#233;e (ann&#233;es)</label><input id="s_years" type="number" inputmode="decimal" step="any" value="20"></div><div><label for="s_idx">Hausse annuelle des versements (%)</label><input id="s_idx" type="number" inputmode="decimal" step="any" value="0"></div></div>
+<div class="out" id="s_res" aria-live="polite"></div><div class="chart" id="s_chart"></div>
+</article>
+<article class="card" id="t-goal" data-tool="goal">
+<h3>Objectif d&#x27;&#233;pargne</h3><p class="d">Quel versement mensuel pour atteindre un montant cible &#224; une date donn&#233;e ?</p>
+<div class="fields"><div><label for="g_target">Objectif &#224; atteindre</label><input id="g_target" type="number" inputmode="decimal" step="any" value="50000"></div><div><label for="g_init">&#201;pargne actuelle</label><input id="g_init" type="number" inputmode="decimal" step="any" value="0"></div><div><label for="g_rate">Rendement annuel (%)</label><input id="g_rate" type="number" inputmode="decimal" step="any" value="5"></div><div><label for="g_years">D&#233;lai (ann&#233;es)</label><input id="g_years" type="number" inputmode="decimal" step="any" value="10"></div></div>
+<div class="out" id="g_res" aria-live="polite"></div>
+</article>
+<article class="card" id="t-real" data-tool="real">
+<h3>Rendement r&#233;el</h3><p class="d">Rendement net d&#x27;inflation et de taxe : ce que votre argent vaut vraiment demain.</p>
+<div class="fields"><div><label for="r_amount">Montant</label><input id="r_amount" type="number" inputmode="decimal" step="any" value="10000"></div><div><label for="r_nom">Rendement nominal (%)</label><input id="r_nom" type="number" inputmode="decimal" step="any" value="7"></div><div><label for="r_inf">Inflation annuelle (%)</label><input id="r_inf" type="number" inputmode="decimal" step="any" value="3"></div><div><label for="r_tax">Taxe sur les gains (%)</label><input id="r_tax" type="number" inputmode="decimal" step="any" value="0"></div><div><label for="r_years">Dur&#233;e (ann&#233;es)</label><input id="r_years" type="number" inputmode="decimal" step="any" value="10"></div></div>
+<div class="out" id="r_res" aria-live="polite"></div>
+</article>
 
-    <!-- NAVBAR -->
-    <nav class="sticky top-0 z-50 nav-3d-container">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
-                <div class="flex items-center space-x-3 rtl:space-x-reverse">
-                    <div class="p-2.5 bg-gradient-to-tr from-brand-700 to-brand-500 text-white rounded-2xl shadow-lg">
-                        <i data-lucide="trending-up" class="w-6 h-6"></i>
-                    </div>
-                    <span class="text-xl font-extrabold text-slate-900 tracking-tight">
-                        <span id="brandName">Epargne & Investissement</span> <span class="text-brand-600">Pro</span>
-                    </span>
-                </div>
+</div></div></section>
+<section class="blk" id="tools"><div class="wrap"><h2>Autres outils</h2><div class="grid two">
+<article class="card" id="t-budget" data-tool="budget">
+<h3>Budget 50/30/20</h3><p class="d">R&#233;partissez votre revenu entre besoins, envies et &#233;pargne (pourcentages modifiables).</p>
+<div class="fields"><div><label for="b_income">Revenu mensuel net</label><input id="b_income" type="number" inputmode="decimal" step="any" value="3000"></div><div><label for="b_needs">Besoins (%)</label><input id="b_needs" type="number" inputmode="decimal" step="any" value="50"></div><div><label for="b_wants">Envies (%)</label><input id="b_wants" type="number" inputmode="decimal" step="any" value="30"></div><div><label for="b_save">&#201;pargne (%)</label><input id="b_save" type="number" inputmode="decimal" step="any" value="20"></div></div>
+<div class="out" id="b_res" aria-live="polite"></div>
+</article>
+<article class="card" id="t-retire" data-tool="retire">
+<h3>Planification retraite</h3><p class="d">Capital n&#233;cessaire et &#233;pargne mensuelle, avec inflation, pension et esp&#233;rance de vie.</p>
+<div class="fields"><div><label for="t_age">&#194;ge actuel</label><input id="t_age" type="number" inputmode="decimal" step="any" value="30"></div><div><label for="t_ret">&#194;ge de d&#233;part &#224; la retraite</label><input id="t_ret" type="number" inputmode="decimal" step="any" value="65"></div><div><label for="t_life">Esp&#233;rance de vie retenue</label><input id="t_life" type="number" inputmode="decimal" step="any" value="90"></div><div><label for="t_income">Revenu mensuel souhait&#233; (valeur d&#x27;aujourd&#x27;hui)</label><input id="t_income" type="number" inputmode="decimal" step="any" value="2000"></div><div><label for="t_pension">Pension d&#233;j&#224; pr&#233;vue (valeur d&#x27;aujourd&#x27;hui)</label><input id="t_pension" type="number" inputmode="decimal" step="any" value="0"></div><div><label for="t_inf">Inflation (%)</label><input id="t_inf" type="number" inputmode="decimal" step="any" value="2.5"></div><div><label for="t_pre">Rendement avant retraite (%)</label><input id="t_pre" type="number" inputmode="decimal" step="any" value="5"></div><div><label for="t_post">Rendement apr&#232;s retraite (%)</label><input id="t_post" type="number" inputmode="decimal" step="any" value="3"></div><div><label for="t_sav">&#201;pargne d&#233;j&#224; constitu&#233;e</label><input id="t_sav" type="number" inputmode="decimal" step="any" value="0"></div></div>
+<div class="out" id="t_res" aria-live="polite"></div>
+</article>
+<article class="card wide" id="t-buyrent" data-tool="buyrent">
+<h3>Acheter ou louer ?</h3><p class="d">Patrimoine net compar&#233; mois par mois, frais d&#x27;achat, charges, hausse du bien et du loyer.</p>
+<div class="fields"><div><label for="x_price">Prix du bien</label><input id="x_price" type="number" inputmode="decimal" step="any" value="150000"></div><div><label for="x_down">Apport</label><input id="x_down" type="number" inputmode="decimal" step="any" value="30000"></div><div><label for="x_rate">Taux du cr&#233;dit (%)</label><input id="x_rate" type="number" inputmode="decimal" step="any" value="7"></div><div><label for="x_years">Dur&#233;e du cr&#233;dit (ann&#233;es)</label><input id="x_years" type="number" inputmode="decimal" step="any" value="20"></div><div><label for="x_rent">Loyer mensuel</label><input id="x_rent" type="number" inputmode="decimal" step="any" value="700"></div><div><label for="x_hor">Horizon (ann&#233;es)</label><input id="x_hor" type="number" inputmode="decimal" step="any" value="20"></div><div><label for="x_appr">Hausse annuelle du bien (%)</label><input id="x_appr" type="number" inputmode="decimal" step="any" value="3"></div><div><label for="x_rinc">Hausse annuelle du loyer (%)</label><input id="x_rinc" type="number" inputmode="decimal" step="any" value="2"></div><div><label for="x_inv">Rendement de l&#x27;&#233;pargne (%)</label><input id="x_inv" type="number" inputmode="decimal" step="any" value="5"></div><div><label for="x_fees">Frais d&#x27;achat (% du prix)</label><input id="x_fees" type="number" inputmode="decimal" step="any" value="5"></div><div><label for="x_own">Charges annuelles du propri&#233;taire (% du prix)</label><input id="x_own" type="number" inputmode="decimal" step="any" value="1"></div><div><label for="x_sell">Frais de revente (%)</label><input id="x_sell" type="number" inputmode="decimal" step="any" value="3"></div></div>
+<div class="out" id="x_res" aria-live="polite"></div>
+</article>
+<article class="card" id="t-tvm" data-tool="tvm">
+<h3>Calculateur TVM</h3><p class="d">R&#233;solvez N, taux, PV, PMT ou FV, versements en d&#233;but ou fin de p&#233;riode.</p>
+<div class="fields"><div><label for="v_n">N (nombre de p&#233;riodes)</label><input id="v_n" type="number" inputmode="decimal" step="any" value="120"></div><div><label for="v_iy">Taux annuel (%)</label><input id="v_iy" type="number" inputmode="decimal" step="any" value="6"></div><div><label for="v_py">P&#233;riodes par an</label><input id="v_py" type="number" inputmode="decimal" step="any" value="12"></div><div><label for="v_pv">PV (valeur actuelle)</label><input id="v_pv" type="number" inputmode="decimal" step="any" value="-10000"></div><div><label for="v_pmt">PMT (versement par p&#233;riode)</label><input id="v_pmt" type="number" inputmode="decimal" step="any" value="-200"></div><div><label for="v_fv">FV (valeur future)</label><input id="v_fv" type="number" inputmode="decimal" step="any" value="0"></div><div><label for="v_solve">Inconnue &#224; calculer</label><select id="v_solve"><option value="FV">FV (valeur future)</option><option value="PMT">PMT (versement)</option><option value="PV">PV (valeur actuelle)</option><option value="N">N (p&#233;riodes)</option><option value="IY">Taux annuel</option></select></div><div><label class="chk"><input type="checkbox" id="v_begin"> Versements en d&#233;but de p&#233;riode</label></div></div>
+<div class="out" id="v_res" aria-live="polite"></div>
+</article>
+<article class="card" id="t-npv" data-tool="npv">
+<h3>VAN, TRI et d&#233;lai de r&#233;cup&#233;ration</h3><p class="d">&#201;valuez un projet d&#x27;investissement &#224; partir de ses flux de tr&#233;sorerie.</p>
+<div class="fields"><div style="grid-column:1/-1"><label for="n_flows">Flux de tr&#233;sorerie (le premier, n&#233;gatif, = investissement), s&#233;par&#233;s par une virgule</label><textarea id="n_flows" rows="2">-10000, 3000, 4000, 4500, 3000</textarea></div><div><label for="n_disc">Taux d&#x27;actualisation (%)</label><input id="n_disc" type="number" inputmode="decimal" step="any" value="8"></div></div>
+<div class="out" id="n_res" aria-live="polite"></div>
+</article>
 
-                <div class="hidden lg:flex items-center space-x-2 rtl:space-x-reverse p-1.5 bg-slate-100/80 rounded-2xl border border-slate-200/80 shadow-inner">
-                    <a href="#accueil" class="nav-3d-link" id="navHome">Accueil</a>
-                    <a href="#central-banks" class="nav-3d-link" id="navCentralBanks">Banques Centrales</a>
-                    <a href="#credit" class="nav-3d-link" id="navCredit">Crédit</a>
-                    <a href="#outils" class="nav-3d-link" id="navTools">Outils Avancés</a>
-                    <a href="#faq" class="nav-3d-link" id="navFaq">FAQ</a>
-                </div>
-
-                <div class="flex items-center space-x-2 sm:space-x-3 rtl:space-x-reverse">
-                    <select id="langSelect" onchange="changeLanguage(this.value)" class="px-2.5 py-2 text-xs font-extrabold bg-slate-100 border border-slate-300 rounded-xl text-brand-700 shadow-sm outline-none cursor-pointer">
-                        <option value="fr">FR</option>
-                        <option value="en">ENG</option>
-                        <option value="ar">Arabe</option>
-                    </select>
-                    <select id="currencySelect" onchange="updateRegionCurrency();" class="px-2.5 py-2 text-xs font-extrabold bg-white border border-slate-300 rounded-xl text-slate-700 shadow-sm outline-none cursor-pointer">
-                        <option value="TND">TND (Tunisie)</option>
-                        <option value="DZD">DZD (Algerie)</option>
-                        <option value="LYD">LYD (Libye)</option>
-                        <option value="MAD">MAD (Maroc)</option>
-                        <option value="EUR">EUR (€)</option>
-                        <option value="USD">USD ($)</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-    </nav>
-
-    <!-- HERO SECTION -->
-    <section id="accueil" class="py-16 lg:py-20 bg-gradient-to-b from-blue-50/60 to-transparent text-center border-b border-slate-200">
-        <div class="max-w-4xl mx-auto px-4">
-            <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-emerald-800 bg-emerald-100/90 rounded-full mb-6 border border-emerald-200" id="heroBadge">
-                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> Portail Mondial des Banques Centrales
-            </span>
-            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight mb-6 leading-tight" id="heroTitle">
-                Accédez aux <span class="text-brand-600">sources officielles</span> et simulez vos projets
-            </h1>
-            <p class="text-lg text-slate-600 max-w-2xl mx-auto mb-8 font-medium" id="heroDesc">
-                Retrouvez les liens directs vers les banques centrales d'Afrique, d'Europe, des Amériques et d'Asie. Utilisez nos simulateurs avancés pour vos crédits, votre retraite et vos investissements.
-            </p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4 mb-12">
-                <a href="#central-banks" id="btnHeroBanks" class="inline-flex items-center justify-center px-6 py-3.5 text-base font-bold text-white bg-brand-600 hover:bg-brand-700 rounded-xl shadow-lg transition">
-                    Voir les Banques Centrales <i data-lucide="landmark" class="w-5 h-5 ml-2 rtl:mr-2 rtl:ml-0"></i>
-                </a>
-                <a href="#outils" id="btnHeroTools" class="inline-flex items-center justify-center px-6 py-3.5 text-base font-bold text-slate-700 bg-white hover:bg-slate-100 border border-slate-300 rounded-xl transition shadow-sm">
-                    Lancer un Simulateur <i data-lucide="calculator" class="w-5 h-5 ml-2 rtl:mr-2 rtl:ml-0"></i>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION : PORTAIL DES BANQUES CENTRALES (Remplace l'ancienne section Taux) -->
-    <section id="central-banks" class="py-16 bg-white border-b border-slate-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-12">
-                <span class="text-brand-600 font-bold text-xs uppercase tracking-wider" id="cbSub">Sources Officielles</span>
-                <h2 class="text-3xl font-extrabold text-slate-900 mt-1" id="cbTitle">Banques Centrales du Monde</h2>
-                <p class="mt-2 text-slate-600 font-medium" id="cbDesc">Cliquez sur un pays pour accéder directement au site officiel de sa banque centrale et consulter les taux directeurs en temps réel.</p>
-            </div>
-
-            <!-- Maghreb & Monde Arabe -->
-            <div class="mb-12">
-                <h3 class="text-xl font-extrabold text-slate-900 mb-6 flex items-center gap-2 border-b-2 border-brand-100 pb-2">
-                    <i data-lucide="map-pin" class="w-5 h-5 text-brand-600"></i> <span id="cbArab">Maghreb & Monde Arabe</span>
-                </h3>
-                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
-                    <div class="bank-card">
-                        <div><div class="bank-title">BCT</div><div class="bank-country">Tunisie</div></div>
-                        <a href="https://www.bct.gov.tn" target="_blank" class="bank-link">Site Officiel <i data-lucide="external-link" class="w-3 h-3"></i></a>
-                    </div>
-                    <div class="bank-card">
-                        <div><div class="bank-title">BA</div><div class="bank-country">Algérie</div></div>
-                        <a href="https://www.bank-of-algeria.dz" target="_blank" class="bank-link">Site Officiel <i data-lucide="external-link" class="w-3 h-3"></i></a>
-                    </div>
-                    <div class="bank-card">
-                        <div><div class="bank-title">CBL</div><div class="bank-country">Libye</div></div>
-                        <a href="https://cbl.gov.ly" target="_blank" class="bank-link">Site Officiel <i data-lucide="external-link" class="w-3 h-3"></i></a>
-                    </div>
-                    <div class="bank-card">
-                        <div><div class="bank-title">BAM</div><div class="bank-country">Maroc</div></div>
-                        <a href="https://www.bkam.ma" target="_blank" class="bank-link">Site Officiel <i data-lucide="external-link" class="w-3 h-3"></i></a>
-                    </div>
-                    <div class="bank-card">
-                        <div><div class="bank-title">CBE</div><div class="bank-country">Égypte</div></div>
-                        <a href="https://www.cbe.org.eg" target="_blank" class="bank-link">Site Officiel <i data-lucide="external-link" class="w-3 h-3"></i></a>
-                    </div>
-                    <div class="bank-card">
-                        <div><div class="bank-title">SAMA</div><div class="bank-country">Arabie Saoudite</div></div>
-                        <a href="https://www.sama.gov.sa" target="_blank" class="bank-link">Site Officiel <i data-lucide="external-link" class="w-3 h-3"></i></a>
-                    </div>
-                    <div class="bank-card">
-                        <div><div class="bank-title">CBUAE</div><div class="bank-country">Émirats Arabes Unis</div></div>
-                        <a href="https://www.centralbank.ae" target="_blank" class="bank-link">Site Officiel <i data-lucide="external-link" class="w-3 h-3"></i></a>
-                    </div>
-                    <div class="bank-card">
-                        <div><div class="bank-title">QCB</div><div class="bank-country">Qatar</div></div>
-                        <a href="https://www.qcb.gov.qa" target="_blank" class="bank-link">Site Officiel <i data-lucide="external-link" class="w-3 h-3"></i></a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Afrique -->
-            <div class="mb-12">
-                <h3 class="text-xl font-extrabold text-slate-900 mb-6 flex items-center gap-2 border-b-2 border-brand-100 pb-2">
-                    <i data-lucide="globe" class="w-5 h-5 text-brand-600"></i> <span id="cbAfrica">Afrique</span>
-                </h3>
-                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
-                    <div class="bank-card">
-                        <div><div class="bank-title">BCEAO</div><div class="bank-country">UEMOA (Afrique de l'Ouest)</div></div>
-                        <a href="https://www.bceao.int" target="_blank" class="bank-link">Site Officiel <i data-lucide="external-link" class="w-3 h-3"></i></a>
-                    </div>
-                    <div class="bank-card">
-                        <div><div class="bank-title">BEAC</div><div class="bank-country">CEMAC (Afrique Centrale)</div></div>
-                        <a href="https://www.beac.int" target="_blank" class="bank-link">Site Officiel <i data-lucide="external-link" class="w-3 h-3"></i></a>
-                    </div>
-                    <div class="bank-card">
-                        <div><div class="bank-title">SARB</div><div class="bank-country">Afrique du Sud</div></div>
-                        <a href="https://www.resbank.co.za" target="_blank" class="bank-link">Site Officiel <i data-lucide="external-link" class="w-3 h-3"></i></a>
-                    </div>
-                    <div class="bank-card">
-                        <div><div class="bank-title">CBN</div><div class="bank-country">Nigéria</div></div>
-                        <a href="https://www.cbn.gov.ng" target="_blank" class="bank-link">Site Officiel <i data-lucide="external-link" class="w-3 h-3"></i></a>
-                    </div>
-                    <div class="bank-card">
-                        <div><div class="bank-title">CBK</div><div class="bank-country">Kenya</div></div>
-                        <a href="https://www.centralbank.go.ke" target="_blank" class="bank-link">Site Officiel <i data-lucide="external-link" class="w-3 h-3"></i></a>
-                    </div>
-                    <div class="bank-card">
-                        <div><div class="bank-title">BoG</div><div class="bank-country">Ghana</div></div>
-                        <a href="https://www.bog.gov.gh" target="_blank" class="bank-link">Site Officiel <i data-lucide="external-link" class="w-3 h-3"></i></a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Europe -->
-            <div class="mb-12">
-                <h3 class="text-xl font-extrabold text-slate-900 mb-6 flex items-center gap-2 border-b-2 border-brand-100 pb-2">
-                    <i data-lucide="landmark" class="w-5 h-5 text-brand-600"></i> <span id="cbEurope">Europe</span>
-                </h3>
-                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
-                    <div class="bank-card">
-                        <div><div class="bank-title">BCE</div><div class="bank-country">Zone Euro</div></div>
-                        <a href="https://www.ecb.europa.eu" target="_blank" class="bank-link">Site Officiel <i data-lucide="external-link" class="w-3 h-3"></i></a>
-                    </div>
-                    <div class="bank-card">
-                        <div><div class="bank-title">BoE</div><div class="bank-country">Royaume-Uni</div></div>
-                        <a href="https://www.bankofengland.co.uk" target="_blank" class="bank-link">Site Officiel <i data-lucide="external-link" class="w-3 h-3"></i></a>
-                    </div>
-                    <div class="bank-card">
-                        <div><div class="bank-title">Bundesbank</div><div class="bank-country">Allemagne</div></div>
-                        <a href="https://www.bundesbank.de" target="_blank" class="bank-link">Site Officiel <i data-lucide="external-link" class="w-3 h-3"></i></a>
-                    </div>
-                    <div class="bank-card">
-                        <div><div class="bank-title">BdF</div><div class="bank-country">France</div></div>
-                        <a href="https://www.banque-france.fr" target="_blank" class="bank-link">Site Officiel <i data-lucide="external-link" class="w-3 h-3"></i></a>
-                    </div>
-                    <div class="bank-card">
-                        <div><div class="bank-title">BdI</div><div class="bank-country">Italie</div></div>
-                        <a href="https://www.bancaditalia.it" target="_blank" class="bank-link">Site Officiel <i data-lucide="external-link" class="w-3 h-3"></i></a>
-                    </div>
-                    <div class="bank-card">
-                        <div><div class="bank-title">BdE</div><div class="bank-country">Espagne</div></div>
-                        <a href="https://www.bde.es" target="_blank" class="bank-link">Site Officiel <i data-lucide="external-link" class="w-3 h-3"></i></a>
-                    </div>
-                    <div class="bank-card">
-                        <div><div class="bank-title">SNB</div><div class="bank-country">Suisse</div></div>
-                        <a href="https://www.snb.ch" target="_blank" class="bank-link">Site Officiel <i data-lucide="external-link" class="w-3 h-3"></i></a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Amériques -->
-            <div class="mb-12">
-                <h3 class="text-xl font-extrabold text-slate-900 mb-6 flex items-center gap-2 border-b-2 border-brand-100 pb-2">
-                    <i data-lucide="globe-2" class="w-5 h-5 text-brand-600"></i> <span id="cbAmericas">Amériques</span>
-                </h3>
-                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
-                    <div class="bank-card">
-                        <div><div class="bank-title">FED</div><div class="bank-country">États-Unis</div></div>
-                        <a href="https://www.federalreserve.gov" target="_blank" class="bank-link">Site Officiel <i data-lucide="external-link" class="w-3 h-3"></i></a>
-                    </div>
-                    <div class="bank-card">
-                        <div><div class="bank-title">BoC</div><div class="bank-country">Canada</div></div>
-                        <a href="https://www.bankofcanada.ca" target="_blank" class="bank-link">Site Officiel <i data-lucide="external-link" class="w-3 h-3"></i></a>
-                    </div>
-                    <div class="bank-card">
-                        <div><div class="bank-title">Banxico</div><div class="bank-country">Mexique</div></div>
-                        <a href="https://www.banxico.org.mx" target="_blank" class="bank-link">Site Officiel <i data-lucide="external-link" class="w-3 h-3"></i></a>
-                    </div>
-                    <div class="bank-card">
-                        <div><div class="bank-title">BCB</div><div class="bank-country">Brésil</div></div>
-                        <a href="https://www.bcb.gov.br" target="_blank" class="bank-link">Site Officiel <i data-lucide="external-link" class="w-3 h-3"></i></a>
-                    </div>
-                    <div class="bank-card">
-                        <div><div class="bank-title">BCRA</div><div class="bank-country">Argentine</div></div>
-                        <a href="https://www.bcra.gob.ar" target="_blank" class="bank-link">Site Officiel <i data-lucide="external-link" class="w-3 h-3"></i></a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Asie & Océanie -->
-            <div>
-                <h3 class="text-xl font-extrabold text-slate-900 mb-6 flex items-center gap-2 border-b-2 border-brand-100 pb-2">
-                    <i data-lucide="map" class="w-5 h-5 text-brand-600"></i> <span id="cbAsia">Asie & Océanie</span>
-                </h3>
-                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
-                    <div class="bank-card">
-                        <div><div class="bank-title">BoJ</div><div class="bank-country">Japon</div></div>
-                        <a href="https://www.boj.or.jp" target="_blank" class="bank-link">Site Officiel <i data-lucide="external-link" class="w-3 h-3"></i></a>
-                    </div>
-                    <div class="bank-card">
-                        <div><div class="bank-title">PBoC</div><div class="bank-country">Chine</div></div>
-                        <a href="https://www.pbc.gov.cn" target="_blank" class="bank-link">Site Officiel <i data-lucide="external-link" class="w-3 h-3"></i></a>
-                    </div>
-                    <div class="bank-card">
-                        <div><div class="bank-title">RBI</div><div class="bank-country">Inde</div></div>
-                        <a href="https://www.rbi.org.in" target="_blank" class="bank-link">Site Officiel <i data-lucide="external-link" class="w-3 h-3"></i></a>
-                    </div>
-                    <div class="bank-card">
-                        <div><div class="bank-title">MAS</div><div class="bank-country">Singapour</div></div>
-                        <a href="https://www.mas.gov.sg" target="_blank" class="bank-link">Site Officiel <i data-lucide="external-link" class="w-3 h-3"></i></a>
-                    </div>
-                    <div class="bank-card">
-                        <div><div class="bank-title">RBA</div><div class="bank-country">Australie</div></div>
-                        <a href="https://www.rba.gov.au" target="_blank" class="bank-link">Site Officiel <i data-lucide="external-link" class="w-3 h-3"></i></a>
-                    </div>
-                    <div class="bank-card">
-                        <div><div class="bank-title">BOK</div><div class="bank-country">Corée du Sud</div></div>
-                        <a href="https://www.bok.or.kr" target="_blank" class="bank-link">Site Officiel <i data-lucide="external-link" class="w-3 h-3"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION : SIMULATEUR DE CRÉDIT & AMORTISSEMENT -->
-    <section id="credit" class="py-16 bg-slate-50 border-b border-slate-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-10">
-                <span class="text-brand-600 font-bold text-xs uppercase tracking-wider" id="creditBadge">CALCULATEUR D'EMPRUNT</span>
-                <h2 class="text-3xl font-extrabold text-slate-900 mt-1" id="creditTitle">Simulateur de Crédit & Amortissement</h2>
-                <p class="mt-2 text-slate-600 font-medium" id="creditDesc">Calculez vos mensualités avec option de remboursement anticipé.</p>
-            </div>
-            <div class="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-sm max-w-4xl mx-auto">
-                <div class="grid md:grid-cols-3 gap-6 mb-6">
-                    <div>
-                        <label class="sim-label" for="creditAmount" id="lblCreditAmt">Montant du Crédit :</label>
-                        <input type="number" id="creditAmount" value="100000" step="5000" oninput="calculateCredit()" class="sim-input">
-                    </div>
-                    <div>
-                        <label class="sim-label" for="creditRate" id="lblCreditRate">Taux d'Intérêt Annuel (%) :</label>
-                        <input type="number" id="creditRate" value="7" step="0.1" oninput="calculateCredit()" class="sim-input">
-                    </div>
-                    <div>
-                        <label class="sim-label" for="creditYears" id="lblCreditYears">Durée (Années) :</label>
-                        <input type="number" id="creditYears" value="15" min="1" max="30" oninput="calculateCredit()" class="sim-input">
-                    </div>
-                </div>
-                <div class="grid md:grid-cols-2 gap-6 mb-6">
-                    <div>
-                        <label class="sim-label" for="creditExtraPayment" id="lblExtraPayment">Remboursement anticipé mensuel (optionnel) :</label>
-                        <input type="number" id="creditExtraPayment" value="0" step="100" oninput="calculateCredit()" class="sim-input" placeholder="0">
-                    </div>
-                    <div>
-                        <label class="sim-label" for="creditExtraStartMonth" id="lblExtraStartMonth">À partir du mois :</label>
-                        <input type="number" id="creditExtraStartMonth" value="13" min="1" class="sim-input">
-                    </div>
-                </div>
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 p-6 bg-slate-100 rounded-2xl text-center border border-slate-200">
-                    <div>
-                        <span class="text-xs font-bold text-slate-500 uppercase" id="resMonthlyPayment">Mensualité Estimée</span>
-                        <div id="creditMonthlyPayment" class="text-2xl font-extrabold text-brand-600 mt-1">0</div>
-                    </div>
-                    <div>
-                        <span class="text-xs font-bold text-slate-500 uppercase" id="resTotalInterest">Total des Intérêts</span>
-                        <div id="creditTotalInterest" class="text-2xl font-extrabold text-rose-600 mt-1">0</div>
-                    </div>
-                    <div>
-                        <span class="text-xs font-bold text-slate-500 uppercase" id="resTotalPayback">Coût Total Rendu</span>
-                        <div id="creditTotalPayback" class="text-2xl font-extrabold text-slate-900 mt-1">0</div>
-                    </div>
-                </div>
-                <div class="mt-6">
-                    <h3 class="text-lg font-bold text-slate-900 mb-3" id="amortTitle">Tableau d'Amortissement</h3>
-                    <div class="overflow-x-auto max-h-80 rounded-xl border border-slate-200">
-                        <table class="w-full text-left border-collapse text-xs">
-                            <thead class="sticky top-0 bg-slate-100 font-bold text-slate-700">
-                                <tr>
-                                    <th class="p-3 border-b" id="thMonth">Mois</th>
-                                    <th class="p-3 border-b" id="thPayment">Mensualité</th>
-                                    <th class="p-3 border-b" id="thPrincipal">Part Capital</th>
-                                    <th class="p-3 border-b" id="thInterest">Part Intérêts</th>
-                                    <th class="p-3 border-b" id="thBalance">Restant Dû</th>
-                                </tr>
-                            </thead>
-                            <tbody id="creditTableBody" class="divide-y divide-slate-200"></tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION : OUTILS AVANCÉS (TVM, RETRAITE, ACHAT/LOCATION) -->
-    <section id="outils" class="py-16 bg-white border-b border-slate-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-10">
-                <span class="text-brand-600 font-bold text-xs uppercase tracking-wider" id="toolsSub">Boîte à Outils Pro</span>
-                <h2 class="text-3xl font-extrabold text-slate-900 mt-1" id="toolsTitle">Outils Financiers Avancés</h2>
-                <p class="mt-2 text-slate-600 font-medium" id="toolsDesc">TVM, Retraite, Achat vs Location, TRI et VAN pour analyser vos projets.</p>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-8">
-                <!-- Outil 1 : Calculateur TVM -->
-                <div class="bg-slate-50 p-6 rounded-3xl border border-slate-200 shadow-sm">
-                    <h3 class="font-extrabold text-lg text-slate-900 mb-2" id="toolTVM">Calculateur TVM (Valeur Temps de l'Argent)</h3>
-                    <p class="text-xs text-slate-600 mb-4" id="toolTVMDesc">Trouvez n'importe quelle variable (N, I/Y, PV, PMT, FV) à partir des autres.</p>
-                    <div class="grid grid-cols-2 gap-3">
-                        <div>
-                            <label class="sim-label" id="lblTVMN">N (périodes) :</label>
-                            <input type="number" id="tvmN" value="120" class="sim-input">
-                        </div>
-                        <div>
-                            <label class="sim-label" id="lblTVMIY">I/Y (taux annuel %) :</label>
-                            <input type="number" id="tvmIY" value="7" step="0.1" class="sim-input">
-                        </div>
-                        <div>
-                            <label class="sim-label" id="lblTVMPV">PV (valeur actuelle) :</label>
-                            <input type="number" id="tvmPV" value="100000" class="sim-input">
-                        </div>
-                        <div>
-                            <label class="sim-label" id="lblTVMPMT">PMT (paiement) :</label>
-                            <input type="number" id="tvmPMT" value="0" class="sim-input" placeholder="0">
-                        </div>
-                        <div>
-                            <label class="sim-label" id="lblTVMFV">FV (valeur future) :</label>
-                            <input type="number" id="tvmFV" value="0" class="sim-input" placeholder="0">
-                        </div>
-                        <div>
-                            <label class="sim-label" id="lblTVMSolve">Résoudre pour :</label>
-                            <select id="tvmSolve" class="sim-input">
-                                <option value="FV">FV (Valeur Future)</option>
-                                <option value="PMT">PMT (Paiement)</option>
-                                <option value="PV">PV (Valeur Actuelle)</option>
-                                <option value="N">N (Périodes)</option>
-                                <option value="IY">I/Y (Taux)</option>
-                            </select>
-                        </div>
-                    </div>
-                    <button onclick="calcTVM()" class="sim-btn" id="btnCalcTVM">Calculer</button>
-                    <div id="tvmResult" class="result-box" style="display:none" aria-live="polite"></div>
-                </div>
-
-                <!-- Outil 2 : Planification Retraite -->
-                <div class="bg-slate-50 p-6 rounded-3xl border border-slate-200 shadow-sm">
-                    <h3 class="font-extrabold text-lg text-slate-900 mb-2" id="toolRetirement">Planification Retraite</h3>
-                    <p class="text-xs text-slate-600 mb-4" id="toolRetirementDesc">Estimez le capital nécessaire et l'épargne mensuelle requise.</p>
-                    <label class="sim-label" id="lblRetAge">Âge actuel :</label>
-                    <input type="number" id="retAge" value="30" class="sim-input">
-                    <label class="sim-label" id="lblRetRetireAge">Âge de retraite souhaité :</label>
-                    <input type="number" id="retRetireAge" value="65" class="sim-input">
-                    <label class="sim-label" id="lblRetIncome">Revenu mensuel souhaité à la retraite :</label>
-                    <input type="number" id="retIncome" value="2000" class="sim-input">
-                    <label class="sim-label" id="lblRetInflation">Inflation annuelle (%) :</label>
-                    <input type="number" id="retInflation" value="2" step="0.1" class="sim-input">
-                    <label class="sim-label" id="lblRetRate">Rendement annuel de l'épargne (%) :</label>
-                    <input type="number" id="retRate" value="5" step="0.1" class="sim-input">
-                    <button onclick="calcRetirement()" class="sim-btn" id="btnCalcRet">Calculer</button>
-                    <div id="retirementResult" class="result-box" style="display:none" aria-live="polite"></div>
-                </div>
-
-                <!-- Outil 3 : Achat vs Location -->
-                <div class="bg-slate-50 p-6 rounded-3xl border border-slate-200 shadow-sm md:col-span-2">
-                    <h3 class="font-extrabold text-lg text-slate-900 mb-2" id="toolBuyRent">Comparateur Achat vs Location</h3>
-                    <p class="text-xs text-slate-600 mb-4" id="toolBuyRentDesc">Comparez le patrimoine net accumulé après une période donnée.</p>
-                    <div class="grid md:grid-cols-3 gap-4">
-                        <div>
-                            <label class="sim-label" id="lblBRPrice">Prix du bien :</label>
-                            <input type="number" id="brPrice" value="150000" class="sim-input">
-                        </div>
-                        <div>
-                            <label class="sim-label" id="lblBRApport">Apport initial :</label>
-                            <input type="number" id="brApport" value="20000" class="sim-input">
-                        </div>
-                        <div>
-                            <label class="sim-label" id="lblBRRate">Taux du crédit (%) :</label>
-                            <input type="number" id="brRate" value="7" step="0.1" class="sim-input">
-                        </div>
-                        <div>
-                            <label class="sim-label" id="lblBRYears">Durée du crédit (ans) :</label>
-                            <input type="number" id="brYears" value="20" class="sim-input">
-                        </div>
-                        <div>
-                            <label class="sim-label" id="lblBRRent">Loyer mensuel équivalent :</label>
-                            <input type="number" id="brRent" value="600" class="sim-input">
-                        </div>
-                        <div>
-                            <label class="sim-label" id="lblBRHorizon">Horizon de comparaison (ans) :</label>
-                            <input type="number" id="brHorizon" value="20" class="sim-input">
-                        </div>
-                    </div>
-                    <button onclick="calcBuyRent()" class="sim-btn" id="btnCalcBR">Comparer</button>
-                    <div id="buyRentResult" class="result-box" style="display:none" aria-live="polite"></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION FAQ -->
-    <section id="faq" class="py-16 bg-white">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-extrabold text-slate-900 text-center mb-8" id="faqTitle">Foire Aux Questions</h2>
-            <div class="space-y-4">
-                <details class="group bg-slate-50 p-5 rounded-2xl border border-slate-200">
-                    <summary class="font-bold text-sm sm:text-base cursor-pointer flex justify-between items-center text-slate-900" id="faqQ1">Pourquoi ne pas afficher directement les taux d'intérêt ?<i data-lucide="chevron-down" class="w-5 h-5 group-open:rotate-180 transition-transform"></i></summary>
-                    <p class="mt-3 text-xs sm:text-sm text-slate-600 font-medium" id="faqA1">Les taux directeurs changent fréquemment et varient selon les décisions des comités de politique monétaire. Pour vous garantir une information 100% fiable et à jour, nous vous redirigeons directement vers les sites officiels des banques centrales.</p>
-                </details>
-            </div>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="bg-slate-900 text-slate-400 py-8 border-t border-slate-800 text-center text-xs font-medium">
-        <div class="max-w-7xl mx-auto px-4">
-            <p>&copy; 2026 Epargne & Investissement Pro. <span id="footerRights">Tous droits réservés.</span></p>
-        </div>
-    </footer>
-
-    <!-- LOGIQUE JAVASCRIPT COMPLET -->
-    <script>
-      lucide.createIcons();
-
-      const translations = {
-        fr: {
-          docTitle: "Epargne & Investissement Pro - Portail des Banques Centrales & Simulateurs",
-          brandName: "Epargne & Investissement",
-          navHome: "Accueil", navCentralBanks: "Banques Centrales", navCredit: "Crédit", navTools: "Outils Avancés", navFaq: "FAQ",
-          heroBadge: "Portail Mondial des Banques Centrales",
-          heroTitle: 'Accédez aux <span class="text-brand-600">sources officielles</span> et simulez vos projets',
-          heroDesc: "Retrouvez les liens directs vers les banques centrales d'Afrique, d'Europe, des Amériques et d'Asie. Utilisez nos simulateurs avancés pour vos crédits, votre retraite et vos investissements.",
-          btnHeroBanks: 'Voir les Banques Centrales', btnHeroTools: 'Lancer un Simulateur',
-          cbSub: "Sources Officielles", cbTitle: "Banques Centrales du Monde", cbDesc: "Cliquez sur un pays pour accéder directement au site officiel de sa banque centrale et consulter les taux directeurs en temps réel.",
-          cbArab: "Maghreb & Monde Arabe", cbAfrica: "Afrique", cbEurope: "Europe", cbAmericas: "Amériques", cbAsia: "Asie & Océanie",
-          creditBadge: "CALCULATEUR D'EMPRUNT", creditTitle: "Simulateur de Crédit & Amortissement", creditDesc: "Calculez vos mensualités avec option de remboursement anticipé.",
-          lblCreditAmt: "Montant du Crédit :", lblCreditRate: "Taux d'Intérêt Annuel (%) :", lblCreditYears: "Durée (Années) :",
-          lblExtraPayment: "Remboursement anticipé mensuel (optionnel) :", lblExtraStartMonth: "À partir du mois :",
-          resMonthlyPayment: "Mensualité Estimée", resTotalInterest: "Total des Intérêts", resTotalPayback: "Coût Total Rendu",
-          amortTitle: "Tableau d'Amortissement", thMonth: "Mois", thPayment: "Mensualité", thPrincipal: "Part Capital", thInterest: "Part Intérêts", thBalance: "Restant Dû",
-          toolsSub: "Boîte à Outils Pro", toolsTitle: "Outils Financiers Avancés", toolsDesc: "TVM, Retraite, Achat vs Location, TRI et VAN pour analyser vos projets.",
-          toolTVM: "Calculateur TVM (Valeur Temps de l'Argent)", toolTVMDesc: "Trouvez n'importe quelle variable (N, I/Y, PV, PMT, FV) à partir des autres.",
-          lblTVMN: "N (périodes) :", lblTVMIY: "I/Y (taux annuel %) :", lblTVMPV: "PV (valeur actuelle) :", lblTVMPMT: "PMT (paiement) :", lblTVMFV: "FV (valeur future) :", lblTVMSolve: "Résoudre pour :", btnCalcTVM: "Calculer",
-          toolRetirement: "Planification Retraite", toolRetirementDesc: "Estimez le capital nécessaire et l'épargne mensuelle requise.",
-          lblRetAge: "Âge actuel :", lblRetRetireAge: "Âge de retraite souhaité :", lblRetIncome: "Revenu mensuel souhaité à la retraite :", lblRetInflation: "Inflation annuelle (%) :", lblRetRate: "Rendement annuel de l'épargne (%) :", btnCalcRet: "Calculer",
-          toolBuyRent: "Comparateur Achat vs Location", toolBuyRentDesc: "Comparez le patrimoine net accumulé après une période donnée.",
-          lblBRPrice: "Prix du bien :", lblBRApport: "Apport initial :", lblBRRate: "Taux du crédit (%) :", lblBRYears: "Durée du crédit (ans) :", lblBRRent: "Loyer mensuel équivalent :", lblBRHorizon: "Horizon de comparaison (ans) :", btnCalcBR: "Comparer",
-          faqTitle: "Foire Aux Questions", faqQ1: "Pourquoi ne pas afficher directement les taux d'intérêt ?", faqA1: "Les taux directeurs changent fréquemment et varient selon les décisions des comités de politique monétaire. Pour vous garantir une information 100% fiable et à jour, nous vous redirigeons directement vers les sites officiels des banques centrales.",
-          footerRights: "Tous droits réservés."
-        },
-        en: {
-          docTitle: "Savings & Investment Pro - Central Bank Portal & Simulators",
-          brandName: "Savings & Investment",
-          navHome: "Home", navCentralBanks: "Central Banks", navCredit: "Loan", navTools: "Advanced Tools", navFaq: "FAQ",
-          heroBadge: "Global Central Bank Portal",
-          heroTitle: 'Access <span class="text-brand-600">official sources</span> and simulate your projects',
-          heroDesc: "Find direct links to central banks in Africa, Europe, the Americas, and Asia. Use our advanced simulators for loans, retirement, and investments.",
-          btnHeroBanks: 'View Central Banks', btnHeroTools: 'Launch Simulator',
-          cbSub: "Official Sources", cbTitle: "Central Banks of the World", cbDesc: "Click on a country to access the official website of its central bank and check policy rates in real-time.",
-          cbArab: "Maghreb & Arab World", cbAfrica: "Africa", cbEurope: "Europe", cbAmericas: "Americas", cbAsia: "Asia & Oceania",
-          creditBadge: "LOAN CALCULATOR", creditTitle: "Loan & Amortization Simulator", creditDesc: "Calculate monthly payments with early repayment option.",
-          lblCreditAmt: "Loan Amount:", lblCreditRate: "Annual Interest Rate (%):", lblCreditYears: "Term (Years):",
-          lblExtraPayment: "Monthly Extra Payment (optional):", lblExtraStartMonth: "Starting from month:",
-          resMonthlyPayment: "Estimated Payment", resTotalInterest: "Total Interest", resTotalPayback: "Total Cost",
-          amortTitle: "Amortization Schedule", thMonth: "Month", thPayment: "Payment", thPrincipal: "Principal", thInterest: "Interest", thBalance: "Balance",
-          toolsSub: "Pro Toolbox", toolsTitle: "Advanced Financial Tools", toolsDesc: "TVM, Retirement, Buy vs Rent, IRR and NPV to analyze your projects.",
-          toolTVM: "TVM Calculator (Time Value of Money)", toolTVMDesc: "Solve for any variable (N, I/Y, PV, PMT, FV) from the others.",
-          lblTVMN: "N (periods):", lblTVMIY: "I/Y (annual rate %):", lblTVMPV: "PV (present value):", lblTVMPMT: "PMT (payment):", lblTVMFV: "FV (future value):", lblTVMSolve: "Solve for:", btnCalcTVM: "Calculate",
-          toolRetirement: "Retirement Planning", toolRetirementDesc: "Estimate the required capital and monthly savings needed.",
-          lblRetAge: "Current Age:", lblRetRetireAge: "Desired Retirement Age:", lblRetIncome: "Desired Monthly Retirement Income:", lblRetInflation: "Annual Inflation (%):", lblRetRate: "Annual Savings Return (%):", btnCalcRet: "Calculate",
-          toolBuyRent: "Buy vs Rent Comparator", toolBuyRentDesc: "Compare net wealth accumulated after a given period.",
-          lblBRPrice: "Property Price:", lblBRApport: "Initial Down Payment:", lblBRRate: "Loan Interest Rate (%):", lblBRYears: "Loan Term (years):", lblBRRent: "Equivalent Monthly Rent:", lblBRHorizon: "Comparison Horizon (years):", btnCalcBR: "Compare",
-          faqTitle: "Frequently Asked Questions", faqQ1: "Why not display interest rates directly?", faqA1: "Policy rates change frequently based on monetary policy committee decisions. To guarantee 100% reliable and up-to-date information, we redirect you directly to the official central bank websites.",
-          footerRights: "All rights reserved."
-        },
-        ar: {
-          docTitle: "الادخار والاستثمار الاحترافي - بوابة البنوك المركزية والمحاكيات",
-          brandName: "الادخار والاستثمار",
-          navHome: "الرئيسية", navCentralBanks: "البنوك المركزية", navCredit: "القروض", navTools: "أدوات متقدمة", navFaq: "الأسئلة الشائعة",
-          heroBadge: "البوابة العالمية للبنوك المركزية",
-          heroTitle: 'الوصول إلى <span class="text-brand-600">المصادر الرسمية</span> ومحاكاة مشاريعك',
-          heroDesc: "ابحث عن روابط مباشرة للبنوك المركزية في أفريقيا وأوروبا والأمريكتين وآسيا. استخدم محاكياتنا المتقدمة للقروض والتقاعد والاستثمارات.",
-          btnHeroBanks: 'عرض البنوك المركزية', btnHeroTools: 'إطلاق المحاكي',
-          cbSub: "مصادر رسمية", cbTitle: "البنوك المركزية في العالم", cbDesc: "انقر على دولة للوصول مباشرة إلى الموقع الرسمي لبنكها المركزي والاطلاع على أسعار الفائدة في الوقت الفعلي.",
-          cbArab: "المغرب العربي والعالم العربي", cbAfrica: "أفريقيا", cbEurope: "أوروبا", cbAmericas: "الأمريكتان", cbAsia: "آسيا وأوقيانوسيا",
-          creditBadge: "حاسبة القروض", creditTitle: "محاكي القروض والجدولة", creditDesc: "احسب أقساطك الشهرية مع خيار السداد المبكر.",
-          lblCreditAmt: "مبلغ القرض:", lblCreditRate: "سعر الفائدة السنوي (%):", lblCreditYears: "المدة (بالسنوات):",
-          lblExtraPayment: "سداد إضافي شهري (اختياري):", lblExtraStartMonth: "ابتداءً من الشهر:",
-          resMonthlyPayment: "القسط الشهري التقديري", resTotalInterest: "إجمالي الفوائد", resTotalPayback: "التكلفة الإجمالية",
-          amortTitle: "جدول الاستهلاك", thMonth: "الشهر", thPayment: "القسط", thPrincipal: "أصل الدين", thInterest: "الفوائد", thBalance: "الرصيد المتبقي",
-          toolsSub: "صندوق الأدوات", toolsTitle: "أدوات مالية متقدمة", toolsDesc: "TVM، التقاعد، الشراء مقابل الإيجار، IRR وNPV لتحليل مشاريعك.",
-          toolTVM: "حاسبة TVM (القيمة الزمنية للنقود)", toolTVMDesc: "حل أي متغير (N, I/Y, PV, PMT, FV) من المتغيرات الأخرى.",
-          lblTVMN: "N (الفترات):", lblTVMIY: "I/Y (المعدل السنوي %):", lblTVMPV: "PV (القيمة الحالية):", lblTVMPMT: "PMT (الدفعة):", lblTVMFV: "FV (القيمة المستقبلية):", lblTVMSolve: "حل من أجل:", btnCalcTVM: "احسب",
-          toolRetirement: "تخطيط التقاعد", toolRetirementDesc: "قدّر رأس المال المطلوب والادخار الشهري اللازم.",
-          lblRetAge: "العمر الحالي:", lblRetRetireAge: "عمر التقاعد المطلوب:", lblRetIncome: "الدخل الشهري المطلوب عند التقاعد:", lblRetInflation: "التضخم السنوي (%):", lblRetRate: "عائد الادخار السنوي (%):", btnCalcRet: "احسب",
-          toolBuyRent: "مقارن الشراء مقابل الإيجار", toolBuyRentDesc: "قارن صافي الثروة المتراكمة بعد فترة معينة.",
-          lblBRPrice: "سعر العقار:", lblBRApport: "الدفعة الأولى:", lblBRRate: "سعر فائدة القرض (%):", lblBRYears: "مدة القرض (سنوات):", lblBRRent: "الإيجار الشهري المكافئ:", lblBRHorizon: "أفق المقارنة (سنوات):", btnCalcBR: "قارن",
-          faqTitle: "الأسئلة الشائعة", faqQ1: "لماذا لا يتم عرض أسعار الفائدة مباشرة؟", faqA1: "تتغير أسعار الفائدة بشكل متكرر بناءً على قرارات لجنة السياسة النقدية. لضمان معلومات موثوقة ومحدثة بنسبة 100%، نوجهك مباشرة إلى المواقع الرسمية للبنوك المركزية.",
-          footerRights: "جميع الحقوق محفوظة."
-        }
-      };
-
-      let currentLang = 'fr';
-
-      function changeLanguage(lang) {
-        currentLang = lang;
-        const dict = translations[lang] || translations.fr;
-        const htmlTag = document.getElementById('htmlTag');
-        if (lang === 'ar') {
-          htmlTag.setAttribute('dir', 'rtl');
-          htmlTag.setAttribute('lang', 'ar');
-        } else {
-          htmlTag.setAttribute('dir', 'ltr');
-          htmlTag.setAttribute('lang', lang);
-        }
-
-        Object.keys(dict).forEach(key => {
-          const el = document.getElementById(key);
-          if (el) {
-            if (key === 'heroTitle') {
-              el.innerHTML = dict[key];
-            } else {
-              el.textContent = dict[key];
-            }
-          }
-        });
-      }
-
-      function updateRegionCurrency() {
-        document.getElementById('creditAmount').dispatchEvent(new Event('input'));
-        document.getElementById('retAge').dispatchEvent(new Event('input'));
-        document.getElementById('brPrice').dispatchEvent(new Event('input'));
-      }
-
-      function getDeviseSymbol() {
-        const cur = document.getElementById('currencySelect').value;
-        if (cur === 'DZD') return ' DZD';
-        if (cur === 'LYD') return ' LYD';
-        if (cur === 'MAD') return ' MAD';
-        if (cur === 'EUR') return ' €';
-        if (cur === 'USD') return ' $';
-        return currentLang === 'ar' ? ' د.ت' : ' TND';
-      }
-
-      function fmt(n, format) {
-        const sym = getDeviseSymbol();
-        const locale = currentLang === 'ar' ? 'ar-TN' : currentLang === 'en' ? 'en-US' : 'fr-FR';
-        if (format === 'currency') return Math.round(n).toLocaleString(locale) + sym;
-        if (format === 'percent') return n + '%';
-        return n.toLocaleString(locale);
-      }
-
-      // --- SIMULATEUR DE CRÉDIT AVEC REMBOURSEMENT ANTICIPÉ ---
-      function calculateCredit() {
-        const principal = parseFloat(document.getElementById('creditAmount').value) || 0;
-        const annualRate = parseFloat(document.getElementById('creditRate').value) || 0;
-        const years = parseInt(document.getElementById('creditYears').value) || 1;
-        const extraPayment = parseFloat(document.getElementById('creditExtraPayment').value) || 0;
-        const extraStartMonth = parseInt(document.getElementById('creditExtraStartMonth').value) || 1;
-        const sym = getDeviseSymbol();
-        const locale = currentLang === 'ar' ? 'ar-TN' : currentLang === 'en' ? 'en-US' : 'fr-FR';
-
-        const totalMonths = years * 12;
-        const monthlyRate = (annualRate / 100) / 12;
-        let monthlyPayment = monthlyRate > 0 ? (principal * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -totalMonths)) : principal / totalMonths;
-        
-        let totalPayback = 0;
-        let totalInterest = 0;
-        const tbody = document.getElementById('creditTableBody');
-        tbody.replaceChildren();
-
-        let remainingBalance = principal;
-        for (let m = 1; m <= totalMonths; m++) {
-          if (remainingBalance <= 0) break;
-
-          const interestPart = remainingBalance * monthlyRate;
-          let principalPart = monthlyPayment - interestPart;
-          
-          if (m >= extraStartMonth && extraPayment > 0) {
-            principalPart += extraPayment;
-          }
-          
-          if (principalPart > remainingBalance) {
-            principalPart = remainingBalance;
-          }
-          
-          remainingBalance -= principalPart;
-          if (remainingBalance < 0) remainingBalance = 0;
-
-          totalPayback += (principalPart + interestPart);
-          totalInterest += interestPart;
-
-          if (m <= 60 || m === totalMonths || remainingBalance === 0) {
-            const tr = document.createElement('tr');
-            tr.className = "hover:bg-slate-50";
-            tr.innerHTML = `
-              <td class="p-3 font-bold border-b">${m}</td>
-              <td class="p-3 border-b">${Math.round(principalPart + interestPart).toLocaleString(locale)}${sym}</td>
-              <td class="p-3 text-emerald-700 font-bold border-b">${Math.round(principalPart).toLocaleString(locale)}${sym}</td>
-              <td class="p-3 text-rose-600 border-b">${Math.round(interestPart).toLocaleString(locale)}${sym}</td>
-              <td class="p-3 font-bold border-b">${Math.round(remainingBalance).toLocaleString(locale)}${sym}</td>
-            `;
-            tbody.appendChild(tr);
-          }
-        }
-
-        document.getElementById('creditMonthlyPayment').textContent = Math.round(monthlyPayment).toLocaleString(locale) + sym;
-        document.getElementById('creditTotalInterest').textContent = Math.round(totalInterest).toLocaleString(locale) + sym;
-        document.getElementById('creditTotalPayback').textContent = Math.round(totalPayback).toLocaleString(locale) + sym;
-      }
-
-      // --- CALCULATEUR TVM ---
-      function calcTVM() {
-        const n = parseFloat(document.getElementById('tvmN').value) || 0;
-        const iy = parseFloat(document.getElementById('tvmIY').value) || 0;
-        const pv = parseFloat(document.getElementById('tvmPV').value) || 0;
-        const pmt = parseFloat(document.getElementById('tvmPMT').value) || 0;
-        const fv = parseFloat(document.getElementById('tvmFV').value) || 0;
-        const solveFor = document.getElementById('tvmSolve').value;
-        const sym = getDeviseSymbol();
-        const r = (iy / 100) / 12;
-        const resultBox = document.getElementById('tvmResult');
-
-        let result = 0;
-        let label = '';
-
-        if (solveFor === 'FV') {
-          if (r === 0) result = -pv - (pmt * n);
-          else result = -(pv * Math.pow(1 + r, n) + pmt * ((Math.pow(1 + r, n) - 1) / r));
-          label = 'FV (Valeur Future)';
-        } else if (solveFor === 'PMT') {
-          if (r === 0) result = (-pv - fv) / n;
-          else result = (-pv * Math.pow(1 + r, n) - fv) * r / (Math.pow(1 + r, n) - 1);
-          label = 'PMT (Paiement)';
-        } else if (solveFor === 'PV') {
-          if (r === 0) result = -fv - (pmt * n);
-          else result = -(fv + pmt * ((Math.pow(1 + r, n) - 1) / r)) / Math.pow(1 + r, n);
-          label = 'PV (Valeur Actuelle)';
-        } else if (solveFor === 'N') {
-          if (r === 0) result = (-pv - fv) / pmt;
-          else result = Math.log((pmt - fv * r) / (pv * r + pmt)) / Math.log(1 + r);
-          label = 'N (Périodes)';
-        } else if (solveFor === 'IY') {
-          let guess = 0.1;
-          for (let i = 0; i < 100; i++) {
-            let f = pv * Math.pow(1 + guess, n) + pmt * ((Math.pow(1 + guess, n) - 1) / guess) + fv;
-            let df = n * pv * Math.pow(1 + guess, n - 1) + pmt * (n * Math.pow(1 + guess, n - 1) * guess - (Math.pow(1 + guess, n) - 1)) / (guess * guess);
-            if (Math.abs(f) < 0.01) break;
-            guess -= f / df;
-          }
-          result = guess * 100;
-          label = 'I/Y (Taux annuel %)';
-        }
-
-        resultBox.style.display = 'block';
-        resultBox.innerHTML = `<div class="result-row"><span>${label}</span><strong>${solveFor === 'N' ? result.toFixed(2) : solveFor === 'IY' ? result.toFixed(2) + '%' : Math.round(result).toLocaleString() + sym}</strong></div>`;
-      }
-
-      // --- PLANIFICATION RETRAITE ---
-      function calcRetirement() {
-        const age = parseFloat(document.getElementById('retAge').value) || 30;
-        const retireAge = parseFloat(document.getElementById('retRetireAge').value) || 65;
-        const income = parseFloat(document.getElementById('retIncome').value) || 2000;
-        const inflation = (parseFloat(document.getElementById('retInflation').value) || 2) / 100;
-        const rate = (parseFloat(document.getElementById('retRate').value) || 5) / 100;
-        const sym = getDeviseSymbol();
-        const locale = currentLang === 'ar' ? 'ar-TN' : currentLang === 'en' ? 'en-US' : 'fr-FR';
-
-        const yearsToRetire = retireAge - age;
-        const monthsToRetire = yearsToRetire * 12;
-        const monthlyRate = rate / 12;
-        const monthlyInflation = inflation / 12;
-
-        const futureIncome = income * Math.pow(1 + monthlyInflation, monthsToRetire);
-        const capitalNeeded = futureIncome * 12 * 20;
-        let monthlySavings = 0;
-        if (monthlyRate > 0) {
-          monthlySavings = capitalNeeded * monthlyRate / (Math.pow(1 + monthlyRate, monthsToRetire) - 1);
-        } else {
-          monthlySavings = capitalNeeded / monthsToRetire;
-        }
-
-        const resultBox = document.getElementById('retirementResult');
-        resultBox.style.display = 'block';
-        resultBox.innerHTML = `
-          <div class="result-row"><span>Capital nécessaire à la retraite</span><strong>${Math.round(capitalNeeded).toLocaleString(locale)}${sym}</strong></div>
-          <div class="result-row"><span>Épargne mensuelle requise</span><strong>${Math.round(monthlySavings).toLocaleString(locale)}${sym}</strong></div>
-          <div class="result-row"><span>Horizon d'épargne</span><strong>${yearsToRetire} ans</strong></div>
-        `;
-      }
-
-      // --- COMPARATEUR ACHAT VS LOCATION ---
-      function calcBuyRent() {
-        const price = parseFloat(document.getElementById('brPrice').value) || 150000;
-        const apport = parseFloat(document.getElementById('brApport').value) || 20000;
-        const rate = (parseFloat(document.getElementById('brRate').value) || 7) / 100;
-        const years = parseFloat(document.getElementById('brYears').value) || 20;
-        const rent = parseFloat(document.getElementById('brRent').value) || 600;
-        const horizon = parseFloat(document.getElementById('brHorizon').value) || 20;
-        const sym = getDeviseSymbol();
-        const locale = currentLang === 'ar' ? 'ar-TN' : currentLang === 'en' ? 'en-US' : 'fr-FR';
-
-        const months = years * 12;
-        const monthlyRate = rate / 12;
-        const loanAmount = price - apport;
-        let monthlyPayment = monthlyRate > 0 ? (loanAmount * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -months)) : loanAmount / months;
-
-        const saleValue = price * Math.pow(1.02, horizon);
-        let remainingDebt = 0;
-        if (horizon < years) {
-          const remainingMonths = months - horizon * 12;
-          remainingDebt = monthlyPayment * (1 - Math.pow(1 + monthlyRate, -remainingMonths)) / monthlyRate;
-        }
-        const ownerNetWorth = saleValue - remainingDebt;
-
-        const investmentRate = 0.05 / 12;
-        let renterNetWorth = apport * Math.pow(1 + investmentRate, horizon * 12);
-        const monthlySavings = Math.max(0, monthlyPayment - rent);
-        if (monthlySavings > 0) {
-          renterNetWorth += monthlySavings * ((Math.pow(1 + investmentRate, horizon * 12) - 1) / investmentRate);
-        }
-
-        const resultBox = document.getElementById('buyRentResult');
-        resultBox.style.display = 'block';
-        resultBox.innerHTML = `
-          <div class="result-row"><span>Patrimoine net Propriétaire (après ${horizon} ans)</span><strong>${Math.round(ownerNetWorth).toLocaleString(locale)}${sym}</strong></div>
-          <div class="result-row"><span>Patrimoine net Locataire (après ${horizon} ans)</span><strong>${Math.round(renterNetWorth).toLocaleString(locale)}${sym}</strong></div>
-          <div class="result-row"><span>Différence</span><strong class="${ownerNetWorth > renterNetWorth ? 'text-emerald-600' : 'text-rose-600'}">${Math.round(ownerNetWorth - renterNetWorth).toLocaleString(locale)}${sym}</strong></div>
-        `;
-      }
-
-      // --- INITIALISATION ---
-      window.onload = function() {
-        calculateCredit();
-        calcRetirement();
-        calcBuyRent();
-      };
-    </script>
+</div></div></section>
+<section class="blk banks" id="banks"><div class="wrap"><span class="sub">Sources officielles</span><h2>Banques centrales du monde</h2><p class="lead">Acc&#232;s direct aux sites officiels pour consulter taux, communiqu&#233;s et statistiques.</p><h3>Maghreb et monde arabe</h3><div class="bgrid"><div class="bk"><b>BCT</b><span>Tunisie</span><a href="https://www.bct.gov.tn" target="_blank" rel="noopener nofollow">Site officiel</a></div><div class="bk"><b>BA</b><span>Alg&#233;rie</span><a href="https://www.bank-of-algeria.dz" target="_blank" rel="noopener nofollow">Site officiel</a></div><div class="bk"><b>CBL</b><span>Libye</span><a href="https://cbl.gov.ly" target="_blank" rel="noopener nofollow">Site officiel</a></div><div class="bk"><b>BAM</b><span>Maroc</span><a href="https://www.bkam.ma" target="_blank" rel="noopener nofollow">Site officiel</a></div><div class="bk"><b>CBE</b><span>&#201;gypte</span><a href="https://www.cbe.org.eg" target="_blank" rel="noopener nofollow">Site officiel</a></div><div class="bk"><b>SAMA</b><span>Arabie saoudite</span><a href="https://www.sama.gov.sa" target="_blank" rel="noopener nofollow">Site officiel</a></div><div class="bk"><b>CBUAE</b><span>&#201;mirats arabes unis</span><a href="https://www.centralbank.ae" target="_blank" rel="noopener nofollow">Site officiel</a></div><div class="bk"><b>QCB</b><span>Qatar</span><a href="https://www.qcb.gov.qa" target="_blank" rel="noopener nofollow">Site officiel</a></div></div><h3>Afrique</h3><div class="bgrid"><div class="bk"><b>BCEAO</b><span>Afrique de l&#x27;Ouest (UEMOA)</span><a href="https://www.bceao.int" target="_blank" rel="noopener nofollow">Site officiel</a></div><div class="bk"><b>BEAC</b><span>Afrique centrale (CEMAC)</span><a href="https://www.beac.int" target="_blank" rel="noopener nofollow">Site officiel</a></div><div class="bk"><b>SARB</b><span>Afrique du Sud</span><a href="https://www.resbank.co.za" target="_blank" rel="noopener nofollow">Site officiel</a></div><div class="bk"><b>CBN</b><span>Nig&#233;ria</span><a href="https://www.cbn.gov.ng" target="_blank" rel="noopener nofollow">Site officiel</a></div><div class="bk"><b>CBK</b><span>Kenya</span><a href="https://www.centralbank.go.ke" target="_blank" rel="noopener nofollow">Site officiel</a></div></div><h3>Europe</h3><div class="bgrid"><div class="bk"><b>ECB</b><span>Zone euro</span><a href="https://www.ecb.europa.eu" target="_blank" rel="noopener nofollow">Site officiel</a></div><div class="bk"><b>BoE</b><span>Royaume-Uni</span><a href="https://www.bankofengland.co.uk" target="_blank" rel="noopener nofollow">Site officiel</a></div><div class="bk"><b>Banque de France</b><span>France</span><a href="https://www.banque-france.fr" target="_blank" rel="noopener nofollow">Site officiel</a></div><div class="bk"><b>Bundesbank</b><span>Allemagne</span><a href="https://www.bundesbank.de" target="_blank" rel="noopener nofollow">Site officiel</a></div><div class="bk"><b>SNB</b><span>Suisse</span><a href="https://www.snb.ch" target="_blank" rel="noopener nofollow">Site officiel</a></div><div class="bk"><b>Banca d&#x27;Italia</b><span>Italie</span><a href="https://www.bancaditalia.it" target="_blank" rel="noopener nofollow">Site officiel</a></div><div class="bk"><b>Banco de Espana</b><span>Espagne</span><a href="https://www.bde.es" target="_blank" rel="noopener nofollow">Site officiel</a></div></div><h3>Am&#233;riques</h3><div class="bgrid"><div class="bk"><b>Fed</b><span>&#201;tats-Unis</span><a href="https://www.federalreserve.gov" target="_blank" rel="noopener nofollow">Site officiel</a></div><div class="bk"><b>BoC</b><span>Canada</span><a href="https://www.bankofcanada.ca" target="_blank" rel="noopener nofollow">Site officiel</a></div><div class="bk"><b>Banxico</b><span>Mexique</span><a href="https://www.banxico.org.mx" target="_blank" rel="noopener nofollow">Site officiel</a></div><div class="bk"><b>BCB</b><span>Br&#233;sil</span><a href="https://www.bcb.gov.br" target="_blank" rel="noopener nofollow">Site officiel</a></div></div><h3>Asie et Oc&#233;anie</h3><div class="bgrid"><div class="bk"><b>BoJ</b><span>Japon</span><a href="https://www.boj.or.jp" target="_blank" rel="noopener nofollow">Site officiel</a></div><div class="bk"><b>PBoC</b><span>Chine</span><a href="https://www.pbc.gov.cn" target="_blank" rel="noopener nofollow">Site officiel</a></div><div class="bk"><b>RBI</b><span>Inde</span><a href="https://www.rbi.org.in" target="_blank" rel="noopener nofollow">Site officiel</a></div><div class="bk"><b>MAS</b><span>Singapour</span><a href="https://www.mas.gov.sg" target="_blank" rel="noopener nofollow">Site officiel</a></div><div class="bk"><b>RBA</b><span>Australie</span><a href="https://www.rba.gov.au" target="_blank" rel="noopener nofollow">Site officiel</a></div><div class="bk"><b>BOK</b><span>Cor&#233;e du Sud</span><a href="https://www.bok.or.kr" target="_blank" rel="noopener nofollow">Site officiel</a></div></div></div></section>
+<section class="blk guides" id="guides"><div class="wrap"><span class="sub">Comprendre</span><h2>Guides pratiques</h2><div class="grid two"><article><h3>Comment se calcule une mensualit&#233; ?</h3><p>La mensualit&#233; d&#x27;un cr&#233;dit classique est constante : elle combine une part d&#x27;int&#233;r&#234;ts, calcul&#233;e sur le capital restant d&#251;, et une part de capital. Au d&#233;but, les int&#233;r&#234;ts p&#232;sent le plus ; avec le temps, la part de capital augmente. Un remboursement anticip&#233; r&#233;duit directement le capital et donc les int&#233;r&#234;ts futurs.</p></article><article><h3>TAEG : le vrai co&#251;t du cr&#233;dit</h3><p>Le taux nominal ne dit pas tout. Le TAEG int&#232;gre les frais de dossier et l&#x27;assurance, et se calcule sur l&#x27;ensemble des flux r&#233;els. Comparez toujours les offres sur le TAEG, pas uniquement sur le taux affich&#233;.</p></article><article><h3>Int&#233;r&#234;ts compos&#233;s et r&#232;gle de 72</h3><p>Avec des int&#233;r&#234;ts compos&#233;s, les gains produisent &#224; leur tour des gains. La r&#232;gle de 72 donne une estimation rapide : divisez 72 par le taux annuel pour obtenir le nombre d&#x27;ann&#233;es n&#233;cessaires pour doubler un capital. &#192; 6 %, comptez environ 12 ans.</p></article><article><h3>Rendement r&#233;el et inflation</h3><p>Un placement &#224; 5 % avec 3 % d&#x27;inflation n&#x27;enrichit que d&#x27;environ 1,9 % en pouvoir d&#x27;achat. Le rendement r&#233;el, calcul&#233; nets d&#x27;inflation et de taxes, est le seul qui compte pour une projection &#224; long terme.</p></article></div></div></section>
+<section class="blk" id="faq"><div class="wrap"><h2>Questions fr&#233;quentes</h2><details><summary>Mes donn&#233;es sont-elles envoy&#233;es quelque part ?</summary><p>Non. Tous les calculs s&#x27;ex&#233;cutent localement dans votre navigateur. Seules vos pr&#233;f&#233;rences (devise, th&#232;me, choix de cookies) sont m&#233;moris&#233;es sur votre appareil.</p></details><details><summary>Les r&#233;sultats sont-ils des conseils financiers ?</summary><p>Non. Ce sont des estimations p&#233;dagogiques fond&#233;es sur les hypoth&#232;ses que vous saisissez. Pour une d&#233;cision, consultez votre banque ou un conseiller agr&#233;&#233;.</p></details><details><summary>D&#x27;o&#249; viennent les taux directeurs affich&#233;s ?</summary><p>Des sites officiels des banques centrales, avec la date de v&#233;rification. Ils &#233;voluent &#224; chaque r&#233;union de politique mon&#233;taire : consultez la source officielle avant toute d&#233;cision.</p></details><details><summary>Quelle diff&#233;rence entre taux nominal et TAEG ?</summary><p>Le taux nominal est celui du contrat ; le TAEG ajoute frais et assurance et exprime le co&#251;t annuel effectif total du cr&#233;dit.</p></details><details><summary>Le simulateur g&#232;re-t-il le remboursement anticip&#233; ?</summary><p>Oui. Indiquez un versement suppl&#233;mentaire mensuel et le mois de d&#233;part : le simulateur affiche les int&#233;r&#234;ts &#233;conomis&#233;s et les mois gagn&#233;s.</p></details></div></section>
+</main>
+<footer class="foot"><div class="wrap">
+<div class="links"><a href="about.html">&#192; propos</a><a href="contact.html">Contact</a><a href="privacy.html">Politique de confidentialit&#233;</a><a href="cookie-policy.html">Politique de cookies</a><a href="terms.html">Conditions d&#x27;utilisation</a><button type="button" data-consent>G&#233;rer les cookies</button></div>
+<p>Outils p&#233;dagogiques : aucun contenu ne constitue un conseil en investissement. &#201;dit&#233; par Haykel Laouiti, La Marsa, Tunisie.</p>
+<p>&copy; 2026 &#201;pargne &amp; Investissement Pro. Tous droits r&#233;serv&#233;s.</p>
+</div></footer>
+<script>window.I18N={"invalid": "V\u00e9rifiez les valeurs saisies.", "monthly": "Mensualit\u00e9 (hors assurance)", "insM": "Assurance mensuelle", "interest": "Total des int\u00e9r\u00eats", "insTot": "Total assurance", "fees": "Frais de dossier", "totalCost": "Co\u00fbt total du cr\u00e9dit", "totalPaid": "Total vers\u00e9 \u00e0 la banque", "taegL": "TAEG estim\u00e9", "months": "Dur\u00e9e r\u00e9elle (mois)", "savedInt": "Int\u00e9r\u00eats \u00e9conomis\u00e9s", "savedMon": "Mois gagn\u00e9s", "chartBal": "Capital restant d\u00fb", "chartInv": "Versements", "chartInt": "Int\u00e9r\u00eats", "finalV": "Capital final", "contribV": "Total vers\u00e9", "interestV": "Int\u00e9r\u00eats gagn\u00e9s", "goalReached": "Votre \u00e9pargne actuelle suffit d\u00e9j\u00e0 pour atteindre l'objectif.", "monthlyNeeded": "Versement mensuel n\u00e9cessaire", "fvInit": "Valeur future de l'\u00e9pargne actuelle", "contribTotal": "Total des versements", "netNom": "Rendement net de taxe", "realRate": "Rendement r\u00e9el annuel", "futNom": "Valeur nominale finale", "futReal": "Valeur en pouvoir d'achat actuel", "idleV": "Pouvoir d'achat sans placement", "needsL": "Besoins", "wantsL": "Envies", "saveL": "\u00c9pargne", "sumWarn": "Les pourcentages totalisent {n} % (id\u00e9alement 100 %).", "ageWarn": "L'\u00e2ge de retraite doit \u00eatre sup\u00e9rieur \u00e0 l'\u00e2ge actuel et inf\u00e9rieur \u00e0 l'esp\u00e9rance de vie.", "yrs": "Ann\u00e9es avant la retraite", "futMonthly": "Revenu mensuel \u00e0 la retraite (valeur future)", "capitalN": "Capital n\u00e9cessaire \u00e0 la retraite", "fvExisting": "Valeur future de l'\u00e9pargne existante", "gapL": "Capital restant \u00e0 constituer", "monthlySave": "\u00c9pargne mensuelle requise", "rule4": "Rep\u00e8re : r\u00e8gle des 4 %", "ownerNet": "Patrimoine net propri\u00e9taire", "renterNet": "Patrimoine net locataire", "diffL": "\u00c9cart (propri\u00e9taire - locataire)", "monthlyOwn": "Sortie mensuelle propri\u00e9taire (mois 1)", "saleL": "Valeur du bien \u00e0 l'horizon", "debtL": "Dette restante \u00e0 l'horizon", "ownerWins": "Dans ces hypoth\u00e8ses, acheter est plus favorable.", "renterWins": "Dans ces hypoth\u00e8ses, louer et placer la diff\u00e9rence est plus favorable.", "noSolution": "Aucune solution trouv\u00e9e avec ces valeurs. Utilisez des signes oppos\u00e9s pour PV et PMT/FV (argent vers\u00e9 n\u00e9gatif, re\u00e7u positif).", "periods": "p\u00e9riodes", "na": "n/a", "tvmNames": {"FV": "Valeur future (FV)", "PMT": "Versement (PMT)", "PV": "Valeur actuelle (PV)", "N": "Nombre de p\u00e9riodes (N)", "IY": "Taux annuel nominal"}, "npvL": "VAN (valeur actuelle nette)", "irrL": "TRI (taux de rendement interne)", "paybackL": "D\u00e9lai de r\u00e9cup\u00e9ration", "csvHead": ["Mois", "Mensualite", "Capital", "Interets", "Restant du"], "csvName": "tableau-amortissement", "verify": "\u00e0 reconfirmer", "cmpTitle": "Vie priv\u00e9e.", "cmpText": "Nous utilisons des cookies publicitaires (Google AdSense) uniquement avec votre accord. Les simulateurs fonctionnent sans.", "cmpMore": "En savoir plus", "cmpLink": "cookie-policy.html", "cmpYes": "Accepter", "cmpNo": "Refuser", "tvmOpt": {"FV": "FV (valeur future)", "PMT": "PMT (versement)", "PV": "PV (valeur actuelle)", "N": "N (p\u00e9riodes)", "IY": "Taux annuel"}};window.EP_RATES={"updated": "2026-11-16", "rates": [{"id": "BCT", "name": {"fr": "BCT (Tunisie)", "en": "BCT (Tunisia)", "ar": "\u0627\u0644\u0628\u0646\u0643 \u0627\u0644\u0645\u0631\u0643\u0632\u064a \u0627\u0644\u062a\u0648\u0646\u0633\u064a"}, "value": 7.0, "asOf": "2026-11-15", "src": "bct.gov.tn", "url": "https://www.bct.gov.tn", "ok": true}, {"id": "BA", "name": {"fr": "Banque d'Alg\u00e9rie", "en": "Bank of Algeria", "ar": "\u0628\u0646\u0643 \u0627\u0644\u062c\u0632\u0627\u0626\u0631"}, "value": 2.75, "asOf": "2026-11-15", "src": "bank-of-algeria.dz", "url": "https://www.bank-of-algeria.dz", "ok": false}, {"id": "CBL", "name": {"fr": "Banque centrale de Libye", "en": "Central Bank of Libya", "ar": "\u0645\u0635\u0631\u0641 \u0644\u064a\u0628\u064a\u0627 \u0627\u0644\u0645\u0631\u0643\u0632\u064a"}, "value": 3.0, "asOf": "2026-11-15", "src": "cbl.gov.ly", "url": "https://cbl.gov.ly", "ok": true}, {"id": "BAM", "name": {"fr": "Bank Al-Maghrib (Maroc)", "en": "Bank Al-Maghrib (Morocco)", "ar": "\u0628\u0646\u0643 \u0627\u0644\u0645\u063a\u0631\u0628"}, "value": 2.25, "asOf": "2026-11-15", "src": "bkam.ma", "url": "https://www.bkam.ma", "ok": true}, {"id": "ECB", "name": {"fr": "BCE \u2014 taux de d\u00e9p\u00f4t", "en": "ECB \u2014 deposit facility", "ar": "\u0627\u0644\u0628\u0646\u0643 \u0627\u0644\u0645\u0631\u0643\u0632\u064a \u0627\u0644\u0623\u0648\u0631\u0648\u0628\u064a \u2014 \u0633\u0639\u0631 \u0641\u0627\u0626\u062f\u0629 \u0627\u0644\u0625\u064a\u062f\u0627\u0639"}, "value": 2.5, "asOf": "2026-11-16", "src": "ecb.europa.eu", "url": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/key_ecb_interest_rates/html/index.en.html", "ok": true}, {"id": "FED", "name": {"fr": "Fed \u2014 fourchette fed funds", "en": "Fed \u2014 federal funds target range", "ar": "\u0627\u0644\u0627\u062d\u062a\u064a\u0627\u0637\u064a \u0627\u0644\u0641\u064a\u062f\u0631\u0627\u0644\u064a \u2014 \u0646\u0637\u0627\u0642 \u0627\u0644\u0641\u0627\u0626\u062f\u0629"}, "value": null, "text": "3.75 - 4.00 %", "asOf": "2026-11-15", "src": "federalreserve.gov", "url": "https://www.federalreserve.gov/monetarypolicy.htm", "ok": true}, {"id": "LIVA", "name": {"fr": "France \u2014 Livret A (taux r\u00e9glement\u00e9)", "en": "France \u2014 Livret A (regulated rate)", "ar": "\u0641\u0631\u0646\u0633\u0627 \u2014 Livret A (\u0633\u0639\u0631 \u0645\u0646\u0638\u0645)"}, "value": 1.7, "asOf": "2026-11-15", "src": "banque-france.fr", "url": "https://www.banque-france.fr", "ok": true}]};</script>
+<script src="assets/calc.js" defer></script>
+<script src="assets/app.js" defer></script>
 </body>
 </html>

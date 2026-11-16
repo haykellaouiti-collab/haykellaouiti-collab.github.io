@@ -1,0 +1,25 @@
+{
+  "name": "Savings & Investment Pro / Epargne & Investissement Pro",
+  "short_name": "Epargne Pro",
+  "description": "Free calculators: loan with APR, compound interest, savings goal, retirement, buy vs rent, TVM, NPV/IRR. Policy rates and links to central banks worldwide.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f8fafc",
+  "theme_color": "#2563eb",
+  "lang": "fr",
+  "icons": [
+    {
+      "src": "assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
